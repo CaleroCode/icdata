@@ -1,0 +1,224 @@
+/* Pequeños ajustes personales encima de Tailwind */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+/* Texto de la bio justificado */
+#profile-bio,
+#profile-bio p {
+  text-align: justify;
+}
+
+/* Imágenes de Instagram: B/N -> color al hover */
+.instagram-photo {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.instagram-photo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+/* Animación del modal antigua: gira y crece (ya no la usamos, pero no molesta) */
+@keyframes zoom-rotate-in {
+  from {
+    transform: scale(0.5) rotate(-10deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.modal-image-anim {
+  animation: zoom-rotate-in 0.4s ease-out;
+}
+
+/* El contenedor del modal (por si quieres perspectiva 3D en el futuro) */
+#photo-modal {
+  perspective: 1200px;
+}
+
+/* El contenido del modal es la "card" COMPLETA que hace el baivén
+   y AHORA tiene scroll propio si hace falta */
+#modal-content {
+  transform-origin: center center;
+  transform-style: flat;
+  opacity: 0;
+  max-height: 80vh;     /* límite de alto del modal */
+  overflow-y: auto;     /* scroll interno si el texto es largo */
+}
+
+/* Imagen del modal más pequeña y centrada */
+#modal-image {
+  display: block;
+  max-width: 70%;
+  max-height: 55vh;
+  margin: 0 auto;
+}
+
+/* Texto del modal de fotos justificado */
+#modal-caption {
+  text-align: justify;
+}
+
+/* En móviles, que use más ancho para no quedar ridícula */
+@media (max-width: 640px) {
+  #modal-image {
+    max-width: 100%;
+    max-height: 50vh;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;            /* Firefox */
+  scrollbar-color: #34d399 #020617; /* thumb | track */
+}
+
+html::-webkit-scrollbar {
+  width: 10px;                      /* Chrome / Edge / Safari */
+}
+
+html::-webkit-scrollbar-track {
+  background: #020617;              /* fondo oscuro */
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #34d399;              /* mismo verde emerald-400 */
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #6ee7b7;              /* un pelín más claro al hover */
+}
+
+/* Ajusta el offset para las secciones con ancla */
+#about,
+#github,
+#projects-highlight,
+#instagram,
+#notes,
+#contact {
+  scroll-margin-top: 6rem;
+}
+
+/* Wrapper de la foto del hero */
+.hero-photo-wrapper {
+  position: relative;
+}
+
+/* Círculo invisible que manda en el flujo del texto */
+.hero-shape {
+  float: right;
+  width: 16rem;   /* más grande */
+  height: 16rem;
+  border-radius: 9999px;
+  shape-outside: circle(50%);
+  -webkit-shape-outside: circle(50%);
+  shape-margin: 0.3rem; /* cuanto más pequeño, más pegado al círculo */
+  margin-left: 1rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Imagen real, colocada exactamente sobre el círculo */
+.hero-float-img {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  width: 16rem;   /* más grande */
+  height: 16rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  opacity: 0.4;      /* ~40% */
+  pointer-events: none; /* para que no moleste al seleccionar texto */
+}
+
+/* --- Línea divisoria entre secciones --- */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0),
+    #34d399,
+    rgba(15, 23, 42, 0)
+  ); /* mismo verde que text-emerald-400 */
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8); /* resplandor verde */
+  border-radius: 9999px;
+  opacity: 0.9;
+}
+
+/* --- Animación estilo tarjetas "Endpoints principales" (por si la quieres usar) --- */
+.api-card-open {
+  animation: api-card-pop 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes api-card-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9) rotateX(18deg);
+    box-shadow: 0 0 0 rgba(15, 23, 42, 0.0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.03) rotateX(4deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* --- Baivén suave de aumento para TODO el modal-content --- */
+.photo-spin-zoom {
+  animation: modal-pop-bounce 0.38s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes modal-pop-bounce {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(10px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* Scroll interno para las notas del modal */
+.custom-note-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #34d399 #020617;
+}
+
+.custom-note-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-note-scroll::-webkit-scrollbar-track {
+  background: #020617;
+  border-radius: 9999px;
+}
+
+.custom-note-scroll::-webkit-scrollbar-thumb {
+  background: #34d399; /* mismo verde emerald */
+  border-radius: 9999px;
+}
+
+/* Texto del modal de notas justificado */
+#note-modal-content {
+  text-align: justify;
+}
