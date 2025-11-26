@@ -25,7 +25,7 @@ const TRANSLATIONS = {
 
     instagram_title: "Fotografía & visual",
     instagram_subtitle:
-      "Un poco de lo que veo cuando no estoy programando",
+      "¡Puedes ver todas mis fotografías en Instagram!",
 
     notes_title: "Notas",
     notes_subtitle: "Pequeños resúmenes de lo que voy aprendiendo",
@@ -38,6 +38,7 @@ const TRANSLATIONS = {
     contact_btn_email: "Escríbeme",
     contact_btn_linkedin: "Ver LinkedIn",
     contact_btn_cv: "Descargar CV (PDF)",
+  
 
     footer_tagline: "Hecho con FastAPI, TailwindCSS y mucho café ☕",
   },
