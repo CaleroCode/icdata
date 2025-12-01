@@ -1,50 +1,6 @@
-:root {
-  --color-bg: #020617;              /* slate-950 */
-  --color-surface: #020617;
-  --color-surface-alt: #020617;
-  --color-card: #020617;
-  --color-border: #1e293b;          /* slate-800 aprox */
-  --color-border-soft: #0f172a;
-  --color-text: #e5e7eb;            /* slate-200 */
-  --color-text-muted: #94a3b8;      /* slate-400 */
-  --color-text-soft: #cbd5f5;       /* suavizado */
-  --color-accent: #34d399;          /* emerald-400 */
-  --color-accent-soft: #6ee7b7;
-  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.4);
-
-  --layout-width: 64rem;
-}
-
-/* ----------- Reset / base ----------- */
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-accent) var(--color-bg);
-}
-
-html::-webkit-scrollbar {
-  width: 10px;
-}
-
-html::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
-
-html::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
-  border-radius: 9999px;
-}
-
-html::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent-soft);
-}
-
-body.page-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+/* Pequeños ajustes personales encima de Tailwind */
+body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-  margin: 0;
 }
 
 /* Texto de la bio justificado */
@@ -53,479 +9,8 @@ body.page-body {
   text-align: justify;
 }
 
-/* ----------- Header / Navbar ----------- */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  border-bottom: 1px solid var(--color-border);
-  background-color: rgba(2, 6, 23, 0.9); /* slate-950/90 */
-  backdrop-filter: blur(10px);
-}
-
-.header-inner {
-  max-width: var(--layout-width);
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.brand-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.brand-avatar {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-accent);
-  overflow: hidden;
-}
-
-.brand-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.brand-name {
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  font-size: 0.875rem;
-  color: var(--color-text);
-}
-
-.header-spacer {
-  flex: 1;
-}
-
-.nav-desktop {
-  display: none;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.875rem;
-}
-
-.nav-link {
-  font-size: 0.8rem;
-  color: var(--color-text-soft);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.nav-link:hover {
-  color: var(--color-accent-soft);
-}
-
-/* Selector idioma desktop */
-.language-switch-desktop {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-left: 0.5rem;
-}
-
-.language-button {
-  padding: 0.25rem 0.5rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-border);
-  background: transparent;
-  color: var(--color-text-muted);
-  font-family: "Fira Mono", ui-monospace, monospace;
-  font-size: 0.7rem;
-  cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.language-button-active {
-  border-color: var(--color-accent);
-  color: var(--color-accent-soft);
-}
-
-/* Botón menú móvil */
-.menu-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 9999px;
-  border: 1px solid var(--color-border);
-  background: transparent;
-  color: var(--color-text);
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-
-.menu-toggle:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent-soft);
-}
-
-.menu-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.menu-icon-hidden {
-  display: none;
-}
-
-/* Menú móvil */
-.mobile-menu {
-  border-top: 1px solid var(--color-border);
-  background-color: rgba(2, 6, 23, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 0.75rem 1rem 1rem;
-}
-
-.mobile-menu-inner {
-  width: 100%;
-  max-width: 20rem;
-  margin-left: auto;
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.mobile-nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-end;
-}
-
-.mobile-nav-link {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  text-decoration: none;
-  padding: 0.25rem 0;
-  transition: color 0.2s ease;
-}
-
-.mobile-nav-link:hover {
-  color: var(--color-accent-soft);
-}
-
-.mobile-language-block {
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: flex-end;
-}
-
-.mobile-language-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-text-muted);
-}
-
-.mobile-language-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Desktop responsive para nav */
-@media (min-width: 768px) {
-  .nav-desktop {
-    display: flex;
-  }
-  .menu-toggle {
-    display: none;
-  }
-  .mobile-menu {
-    display: none !important;
-  }
-}
-
-/* ----------- Layout general ----------- */
-
-.layout-main {
-  max-width: var(--layout-width);
-  margin: 0 auto;
-  padding: 2.5rem 1rem 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.section {
-  width: 100%;
-}
-
-.section-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.section-subtitle {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-
-.section-footer-right {
-  margin-top: 0.5rem;
-  text-align: right;
-}
-
-/* Texto link pequeño */
-.text-link {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  transition: color 0.2s ease;
-}
-
-.text-link:hover {
-  color: var(--color-accent-soft);
-}
-
-/* ----------- Hero / About ----------- */
-
-.section-about {
-  display: grid;
-  gap: 2.5rem;
-  align-items: flex-start;
-}
-
-.hero-text {
-  position: relative;
-}
-
-.hero-tagline {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--color-accent);
-  margin-bottom: 0.75rem;
-}
-
-.hero-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-@media (min-width: 768px) {
-  .hero-title {
-    font-size: 2.25rem;
-  }
-}
-
-.hero-highlight {
-  color: var(--color-accent);
-}
-
-.hero-underline {
-  text-decoration: underline;
-  text-decoration-color: rgba(52, 211, 153, 0.6);
-}
-
-.profile-bio {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-}
-
-.skills-wrapper {
-  font-size: 0.75rem;
-}
-
-/* Wrapper de la foto del hero */
-.hero-photo-wrapper {
-  position: relative;
-  display: none; /* por defecto oculto en mobile */
-}
-
-/* círculo invisible que manda en el flujo del texto */
-.hero-shape {
-  float: right;
-  width: 16rem;
-  height: 16rem;
-  border-radius: 9999px;
-  shape-outside: circle(50%);
-  -webkit-shape-outside: circle(50%);
-  shape-margin: 0.3rem;
-  margin-left: 1rem;
-  margin-bottom: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-/* Imagen real, colocada sobre el círculo */
-.hero-float-img {
-  position: absolute;
-  right: 0;
-  top: 0.5rem;
-  width: 16rem;
-  height: 16rem;
-  border-radius: 9999px;
-  object-fit: cover;
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-@media (min-width: 768px) {
-  .hero-photo-wrapper {
-    display: block;
-  }
-}
-
-/* Skills (badges) */
-.skill-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  background-color: #020617;
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  font-size: 0.75rem;
-}
-
-/* ----------- Divider entre secciones ----------- */
-
-.section-divider {
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(15, 23, 42, 0),
-    var(--color-accent),
-    rgba(15, 23, 42, 0)
-  );
-  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
-  border-radius: 9999px;
-  opacity: 0.9;
-}
-
-.layout-divider-wrapper {
-  max-width: var(--layout-width);
-  margin: 2.5rem auto 0;
-  padding: 0 1rem;
-}
-
-/* Ajuste de scroll para anclas */
-#about,
-#github,
-#projects-highlight,
-#instagram,
-#notes,
-#contact {
-  scroll-margin-top: 6rem;
-}
-
-/* ----------- Grids generales ----------- */
-
-.card-grid {
-  display: grid;
-  gap: 1rem;
-}
-
-.card-grid-3 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-@media (min-width: 768px) {
-  .card-grid-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* ----------- GitHub repos / tarjetas ----------- */
-
-.project-card,
-.generic-card {
-  background-color: #020617;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  padding: 1rem;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.0);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.project-card:hover,
-.generic-card:hover {
-  border-color: rgba(52, 211, 153, 0.7);
-  box-shadow: var(--shadow-soft);
-  transform: translateY(-1px);
-}
-
-.project-card-header {
-  margin-bottom: 0.75rem;
-}
-
-.project-card-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.project-card-description {
-  font-size: 0.8rem;
-  color: #cbd5f5;
-  margin: 0.25rem 0 0.75rem;
-}
-
-.project-card-body {
-  font-size: 0.8rem;
-}
-
-.project-card-tech-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-text-muted);
-  margin-bottom: 0.25rem;
-}
-
-.project-card-tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-bottom: 0.75rem;
-}
-
-.project-card-link {
-  font-size: 0.75rem;
-  color: var(--color-accent-soft);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-/* Repos de GitHub (contenedor se rellena desde JS) */
-#github-repos .generic-card a {
-  color: inherit;
-}
-
-/* ----------- Imágenes de Instagram ----------- */
-
-/* Imágenes: B/N -> color al hover */
+/* Imágenes de Instagram: B/N -> color al hover */
 .instagram-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   filter: grayscale(100%);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
@@ -535,83 +20,162 @@ body.page-body {
   transform: scale(1.02);
 }
 
-/* Tarjeta de foto instagram */
-.section-instagram .generic-card {
-  overflow: hidden;
+/* Animación del modal antigua: gira y crece (ya no la usamos, pero no molesta) */
+@keyframes zoom-rotate-in {
+  from {
+    transform: scale(0.5) rotate(-10deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
-/* ----------- Modales ----------- */
-
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 50;
+.modal-image-anim {
+  animation: zoom-rotate-in 0.4s ease-out;
 }
 
-.modal-content {
-  position: relative;
-  background-color: #020617;
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  max-width: 48rem;
-  width: 90%;
-  padding: 1rem 1.5rem;
-  max-height: 80vh;
-  overflow-y: auto;
+/* El contenedor del modal (por si quieres perspectiva 3D en el futuro) */
+#photo-modal {
+  perspective: 1200px;
+}
+
+/* El contenido del modal es la "card" COMPLETA que hace el baivén
+   y AHORA tiene scroll propio si hace falta */
+#modal-content {
   transform-origin: center center;
   transform-style: flat;
   opacity: 0;
+  max-height: 80vh;     /* límite de alto del modal */
+  overflow-y: auto;     /* scroll interno si el texto es largo */
 }
 
-.modal-image-wrapper {
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.modal-image {
+/* Imagen del modal más pequeña y centrada */
+#modal-image {
   display: block;
   max-width: 70%;
   max-height: 55vh;
   margin: 0 auto;
-  object-fit: contain;
 }
 
-.modal-caption {
-  font-size: 0.75rem;
-  color: var(--color-text);
+/* Texto del modal de fotos justificado */
+#modal-caption {
   text-align: justify;
 }
 
-.modal-close-button {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: transparent;
-  border: none;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: color 0.2s ease;
-}
-
-.modal-close-button:hover {
-  color: var(--color-accent-soft);
-}
-
-/* En móviles, imagen algo más grande */
+/* En móviles, que use más ancho para no quedar ridícula */
 @media (max-width: 640px) {
-  .modal-image {
+  #modal-image {
     max-width: 100%;
     max-height: 50vh;
   }
 }
 
-/* Animación del modal de fotos */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;            /* Firefox */
+  scrollbar-color: #34d399 #020617; /* thumb | track */
+}
+
+html::-webkit-scrollbar {
+  width: 10px;                      /* Chrome / Edge / Safari */
+}
+
+html::-webkit-scrollbar-track {
+  background: #020617;              /* fondo oscuro */
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #34d399;              /* mismo verde emerald-400 */
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #6ee7b7;              /* un pelín más claro al hover */
+}
+
+/* Ajusta el offset para las secciones con ancla */
+#about,
+#github,
+#projects-highlight,
+#instagram,
+#notes,
+#contact {
+  scroll-margin-top: 6rem;
+}
+
+/* Wrapper de la foto del hero */
+.hero-photo-wrapper {
+  position: relative;
+}
+
+/* Círculo invisible que manda en el flujo del texto */
+.hero-shape {
+  float: right;
+  width: 16rem;   /* más grande */
+  height: 16rem;
+  border-radius: 9999px;
+  shape-outside: circle(50%);
+  -webkit-shape-outside: circle(50%);
+  shape-margin: 0.3rem; /* cuanto más pequeño, más pegado al círculo */
+  margin-left: 1rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Imagen real, colocada exactamente sobre el círculo */
+.hero-float-img {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  width: 16rem;   /* más grande */
+  height: 16rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  opacity: 0.4;      /* ~40% */
+  pointer-events: none; /* para que no moleste al seleccionar texto */
+}
+
+/* --- Línea divisoria entre secciones --- */
+.section-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0),
+    #34d399,
+    rgba(15, 23, 42, 0)
+  ); /* mismo verde que text-emerald-400 */
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8); /* resplandor verde */
+  border-radius: 9999px;
+  opacity: 0.9;
+}
+
+/* --- Animación estilo tarjetas "Endpoints principales" (por si la quieres usar) --- */
+.api-card-open {
+  animation: api-card-pop 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes api-card-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9) rotateX(18deg);
+    box-shadow: 0 0 0 rgba(15, 23, 42, 0.0);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1.03) rotateX(4deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* --- Baivén suave de aumento para TODO el modal-content --- */
 .photo-spin-zoom {
   animation: modal-pop-bounce 0.38s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
@@ -634,268 +198,27 @@ body.page-body {
   }
 }
 
-/* Modal de notas */
-.note-modal-content {
-  position: relative;
-  background-color: #020617;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  max-width: 56rem;
-  width: 95%;
-  padding: 1rem 1.5rem;
-}
-
-.note-modal-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  padding-right: 2rem;
-}
-
-.note-modal-scroll {
-  margin-top: 0.5rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--color-border);
-  max-height: 70vh;
-  overflow-y: auto;
-}
-
-/* Scroll interno para notas */
-.note-modal-scroll {
+/* Scroll interno para las notas del modal */
+.custom-note-scroll {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-accent) var(--color-bg);
+  scrollbar-color: #34d399 #020617;
 }
 
-.note-modal-scroll::-webkit-scrollbar {
+.custom-note-scroll::-webkit-scrollbar {
   width: 8px;
 }
 
-.note-modal-scroll::-webkit-scrollbar-track {
-  background: var(--color-bg);
+.custom-note-scroll::-webkit-scrollbar-track {
+  background: #020617;
   border-radius: 9999px;
 }
 
-.note-modal-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+.custom-note-scroll::-webkit-scrollbar-thumb {
+  background: #34d399; /* mismo verde emerald */
   border-radius: 9999px;
 }
 
 /* Texto del modal de notas justificado */
-.note-modal-text {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--color-text);
+#note-modal-content {
   text-align: justify;
-}
-
-/* ----------- Notas / mini blog ----------- */
-
-.section-notes .card-grid {
-  margin-top: 1rem;
-}
-
-.section-notes article {
-  background-color: #020617;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.section-notes article:hover {
-  border-color: rgba(52, 211, 153, 0.7);
-  box-shadow: var(--shadow-soft);
-  transform: translateY(-1px);
-}
-
-.section-notes h3 {
-  font-size: 0.95rem;
-  margin-bottom: 0.25rem;
-}
-
-.section-notes p {
-  font-size: 0.8rem;
-}
-
-/* ----------- Contacto ----------- */
-
-.section-contact {
-  max-width: 48rem;
-  margin: 4rem auto 3rem;
-}
-
-.contact-card {
-  background-color: #020617;
-  border-radius: 1rem;
-  border: 1px solid var(--color-border);
-  padding: 1.5rem 2rem;
-}
-
-.contact-intro {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
-  margin-bottom: 1rem;
-}
-
-.contact-details {
-  margin-bottom: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.contact-detail-item {
-  font-size: 0.9rem;
-  color: var(--color-text);
-}
-
-.contact-detail-label {
-  font-weight: 500;
-}
-
-.contact-button-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-/* Botones */
-.primary-button,
-.secondary-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.primary-button {
-  background-color: var(--color-accent);
-  color: #020617;
-  border: none;
-}
-
-.primary-button:hover {
-  background-color: var(--color-accent-soft);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-soft);
-}
-
-.secondary-button {
-  background: transparent;
-  border: 1px solid #475569;
-  color: var(--color-text);
-}
-
-.secondary-button:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent-soft);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-soft);
-}
-
-/* ----------- Footer ----------- */
-
-.site-footer {
-  border-top: 1px solid var(--color-border);
-  padding: 1rem;
-  text-align: center;
-  font-size: 0.75rem;
-  color: #64748b;
-}
-
-.footer-tagline {
-  display: block;
-  margin-top: 0.25rem;
-  font-size: 0.7rem;
-  color: #475569;
-}
-
-/* ----------- Botón scroll-to-top ----------- */
-
-.scroll-top-button {
-  position: fixed;
-  bottom: 1.25rem;
-  right: 1.25rem;
-  z-index: 40;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 9999px;
-  background-color: var(--color-accent);
-  color: #020617;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.scroll-top-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
-}
-
-/* ----------- Utilidades que usa el JS (clases tipo Tailwind) ----------- */
-
-.hidden {
-  display: none !important;
-}
-
-.opacity-0 {
-  opacity: 0;
-}
-
-.opacity-100 {
-  opacity: 1;
-}
-
-.pointer-events-none {
-  pointer-events: none;
-}
-
-.pointer-events-auto {
-  pointer-events: auto;
-}
-
-/* Para el botón scroll-top, el JS intercambia estas clases */
-.translate-y-4 {
-  transform: translateY(1rem);
-}
-
-.translate-y-0 {
-  transform: translateY(0);
-}
-
-/* Por si quieres animación de tarjetas tipo "pop" */
-.api-card-open {
-  animation: api-card-pop 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-}
-
-@keyframes api-card-pop {
-  0% {
-    opacity: 0;
-    transform: translateY(40px) scale(0.9) rotateX(18deg);
-    box-shadow: 0 0 0 rgba(15, 23, 42, 0.0);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(-8px) scale(1.03) rotateX(4deg);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1) rotateX(0deg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
-  }
 }
