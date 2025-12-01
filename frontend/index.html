@@ -11,184 +11,141 @@
     content="Portafolio de Iván Calero: desarrollo web, fotografía y diseño visual. Proyectos con Python, FastAPI, React, Pygame y la suite Adobe."
   />
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Nuestro CSS propio -->
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Solo un detalle: scroll suave para los anclajes -->
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans">
+<body class="page-body">
+
   <!-- Navbar -->
-<header class="border-b border-slate-800 sticky top-0 z-10 bg-slate-950/90 backdrop-blur">
-  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center">
-    <!-- IZQUIERDA: logo + nombre -->
-    <div class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-full border border-emerald-400 overflow-hidden">
-        <img
-          src="assets/instagram/principal.jpg"
-          alt="Foto principal de Iván Calero"
-          class="w-full h-full object-cover"
-        />
+  <header class="site-header">
+    <div class="header-inner">
+      <!-- IZQUIERDA: logo + nombre -->
+      <div class="brand-wrapper">
+        <div class="brand-avatar">
+          <img
+            src="assets/instagram/principal.jpg"
+            alt="Foto principal de Iván Calero"
+          />
+        </div>
+        <span class="brand-name">icdata</span>
       </div>
-      <span class="font-semibold tracking-wide text-sm text-slate-200">icdata</span>
-    </div>
 
-    <!-- ESPACIADOR PARA EMPUJAR NAV + HAMBURGUESA A LA DERECHA -->
-    <div class="flex-1"></div>
+      <div class="header-spacer"></div>
 
-    <!-- NAV DESKTOP (DERECHA) -->
-    <nav
-      id="nav-desktop"
-      class="hidden md:flex items-center gap-4 text-sm"
-    >
-      <a id="nav-about"
-         href="#about"
-         class="text-xs md:text-sm text-slate-300 hover:text-emerald-400 transition">
-        Sobre mí
-      </a>
-      <a id="nav-github"
-         href="#github"
-         class="text-xs md:text-sm text-slate-300 hover:text-emerald-400 transition">
-        GitHub
-      </a>
-      <a id="nav-projects"
-         href="#projects-highlight"
-         class="text-xs md:text-sm text-slate-300 hover:text-emerald-400 transition">
-        Proyectos
-      </a>
-      <a id="nav-instagram"
-         href="#instagram"
-         class="text-xs md:text-sm text-slate-300 hover:text-emerald-400 transition">
-        Fotografía
-      </a>
-      <a id="nav-notes"
-         href="#notes"
-         class="text-xs md:text-sm text-slate-300 hover:text-emerald-400 transition">
-        Notas
-      </a>
-      <a id="nav-contact"
-         href="#contact"
-         class="text-xs md:text-sm text-slate-300 hover:text-emerald-400 transition">
-        Contacto
-      </a>
-
-      <!-- Selector de idioma (desktop) -->
-      <div class="flex items-center gap-1 text-[0.7rem] ml-2">
-        <button id="lang-es"
-                class="px-2 py-1 rounded-full border border-emerald-400 text-emerald-300 font-mono">
-          ES
-        </button>
-        <button id="lang-en"
-                class="px-2 py-1 rounded-full border border-slate-700 text-slate-400 font-mono hover:text-emerald-300 hover:border-emerald-400">
-          EN
-        </button>
-      </div>
-    </nav>
-
-    <!-- BOTÓN MENÚ HAMBURGUESA (MÓVIL, DERECHA) -->
-    <button
-      id="menu-toggle"
-      class="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-slate-700 text-slate-200 hover:border-emerald-400 hover:text-emerald-300 transition"
-      aria-label="Abrir menú"
-      aria-expanded="false"
-    >
-      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
-
-  <!-- MENÚ MÓVIL -->
-  <!-- MENÚ MÓVIL -->
-  <div
-    id="mobile-menu"
-    class="md:hidden border-t border-slate-800 bg-slate-950/95 backdrop-blur px-4 pb-4 pt-3 hidden flex flex-col items-end"
-  >
-    <div class="w-full max-w-xs ml-auto space-y-3 text-right">
-      <nav class="flex flex-col gap-2 text-sm items-end">
-        <a id="nav-about-mobile"
-           href="#about"
-           class="py-1 text-slate-200 hover:text-emerald-400 transition">
+      <!-- NAV DESKTOP (DERECHA) -->
+      <nav id="nav-desktop" class="nav-desktop">
+        <a id="nav-about" href="#about" class="nav-link">
           Sobre mí
         </a>
-        <a id="nav-github-mobile"
-           href="#github"
-           class="py-1 text-slate-200 hover:text-emerald-400 transition">
+        <a id="nav-github" href="#github" class="nav-link">
           GitHub
         </a>
-        <a id="nav-projects-mobile"
-           href="#projects-highlight"
-           class="py-1 text-slate-200 hover:text-emerald-400 transition">
+        <a id="nav-projects" href="#projects-highlight" class="nav-link">
           Proyectos
         </a>
-        <a id="nav-instagram-mobile"
-           href="#instagram"
-           class="py-1 text-slate-200 hover:text-emerald-400 transition">
+        <a id="nav-instagram" href="#instagram" class="nav-link">
           Fotografía
         </a>
-        <a id="nav-notes-mobile"
-           href="#notes"
-           class="py-1 text-slate-200 hover:text-emerald-400 transition">
+        <a id="nav-notes" href="#notes" class="nav-link">
           Notas
         </a>
-        <a id="nav-contact-mobile"
-           href="#contact"
-           class="py-1 text-slate-200 hover:text-emerald-400 transition">
+        <a id="nav-contact" href="#contact" class="nav-link">
           Contacto
         </a>
-      </nav>
 
-      <!-- Selector de idioma (móvil) alineado a la derecha -->
-      <div class="mt-3 pt-3 border-t border-slate-800 flex flex-col gap-2 items-end">
-        <span class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500">
-          Idioma
-        </span>
-        <div class="flex items-center gap-2 text-[0.75rem]">
-          <button id="lang-es-mobile"
-                  class="px-3 py-1 rounded-full border border-emerald-400 text-emerald-300 font-mono">
+        <!-- Selector de idioma (desktop) -->
+        <div class="language-switch-desktop">
+          <button id="lang-es" class="language-button language-button-active">
             ES
           </button>
-          <button id="lang-en-mobile"
-                  class="px-3 py-1 rounded-full border border-slate-700 text-slate-400 font-mono hover:text-emerald-300 hover:border-emerald-400">
+          <button id="lang-en" class="language-button">
             EN
           </button>
         </div>
+      </nav>
+
+      <!-- BOTÓN MENÚ HAMBURGUESA (MÓVIL, DERECHA) -->
+      <button
+        id="menu-toggle"
+        class="menu-toggle"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="menu-icon menu-icon-hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- MENÚ MÓVIL -->
+    <div
+      id="mobile-menu"
+      class="mobile-menu hidden"
+    >
+      <div class="mobile-menu-inner">
+        <nav class="mobile-nav-links">
+          <a id="nav-about-mobile" href="#about" class="mobile-nav-link">
+            Sobre mí
+          </a>
+          <a id="nav-github-mobile" href="#github" class="mobile-nav-link">
+            GitHub
+          </a>
+          <a id="nav-projects-mobile" href="#projects-highlight" class="mobile-nav-link">
+            Proyectos
+          </a>
+          <a id="nav-instagram-mobile" href="#instagram" class="mobile-nav-link">
+            Fotografía
+          </a>
+          <a id="nav-notes-mobile" href="#notes" class="mobile-nav-link">
+            Notas
+          </a>
+          <a id="nav-contact-mobile" href="#contact" class="mobile-nav-link">
+            Contacto
+          </a>
+        </nav>
+
+        <!-- Selector de idioma (móvil) alineado a la derecha -->
+        <div class="mobile-language-block">
+          <span class="mobile-language-label">
+            Idioma
+          </span>
+          <div class="mobile-language-buttons">
+            <button id="lang-es-mobile" class="language-button language-button-active">
+              ES
+            </button>
+            <button id="lang-en-mobile" class="language-button">
+              EN
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </header>
 
-</header>
+  <main class="layout-main">
 
-
-
-  <main class="max-w-5xl mx-auto px-4 py-10 space-y-16">
     <!-- Hero / Presentación -->
-    <section id="about" class="max-w-5xl mx-auto grid md:grid-cols-1 gap-10 items-start">
-      <div>
+    <section id="about" class="section section-about">
+      <div class="hero-text">
         <p
           id="hero-tagline"
-          class="text-xs uppercase tracking-[0.25em] text-emerald-400 mb-3"
+          class="hero-tagline"
         >
           portafolio profesional
         </p>
-        <h1 id="hero-title" class="text-3xl md:text-4xl font-bold mb-3">
-          ¡Hola, soy <span class="text-emerald-400">Iván Calero</span>!<br />
+        <h1 id="hero-title" class="hero-title">
+          ¡Hola, soy <span class="hero-highlight">Iván Calero</span>!<br />
           Doy forma a ideas con
-          <span class="underline decoration-emerald-400/60">imagen y código</span>.
+          <span class="hero-underline">imagen y código</span>.
         </h1>
 
         <!-- Wrapper para la imagen con texto rodeándola en curva -->
-        <div class="hero-photo-wrapper hidden md:block">
+        <div class="hero-photo-wrapper">
           <div class="hero-shape"></div>
           <img
             src="assets/instagram/principal.jpg"
@@ -197,138 +154,137 @@
           />
         </div>
 
-        <div id="profile-bio" class="text-sm text-slate-300 leading-relaxed mb-5">
+        <div id="profile-bio" class="profile-bio">
           Cargando perfil...
         </div>
 
-        <div id="skills" class="text-xs"></div>
+        <div id="skills" class="skills-wrapper"></div>
       </div>
     </section>
 
     <!-- Línea divisoria -->
-    <div class="section-divider mx-auto"></div>
+    <div class="section-divider"></div>
 
     <!-- GitHub -->
-    <section id="github" class="space-y-4">
-      <div class="flex items-baseline justify-between">
-        <h2 id="github-title" class="text-xl font-semibold">Proyectos destacados de GitHub</h2>
-        <span id="github-subtitle" class="text-xs text-slate-400">Datos servidos por el backend en Python</span>
+    <section id="github" class="section section-github">
+      <div class="section-header">
+        <h2 id="github-title" class="section-title">Proyectos destacados de GitHub</h2>
+        <span id="github-subtitle" class="section-subtitle">Datos servidos por el backend en Python</span>
       </div>
 
-      <div id="github-repos" class="grid md:grid-cols-3 gap-4">
+      <div id="github-repos" class="card-grid card-grid-3">
         <!-- tarjetas de repos aquí -->
       </div>
 
-      <div class="mt-2 text-right text-xs">
+      <div class="section-footer-right">
         <a id="all-repos-link"
            href="#"
            target="_blank"
-           class="inline-flex items-center gap-1 text-slate-400 hover:text-emerald-400 transition">
-          Ver todos los repos en GitHub
-          <span aria-hidden="true">↗</span>
+           class="text-link">
+          Ver todos los repos en GitHub ↗
         </a>
       </div>
     </section>
 
     <!-- Línea divisoria -->
-    <div class="section-divider mx-auto"></div>
+    <div class="section-divider"></div>
 
     <!-- Proyectos destacados -->
-    <section id="projects-highlight" class="max-w-5xl mx-auto mt-12 space-y-6">
-      <div class="flex items-baseline justify-between">
-        <h2 id="projects-title" class="text-xl font-semibold">Proyectos destacados</h2>
-        <span id="projects-subtitle" class="text-xs text-slate-400">
+    <section id="projects-highlight" class="section section-projects">
+      <div class="section-header">
+        <h2 id="projects-title" class="section-title">Proyectos destacados</h2>
+        <span id="projects-subtitle" class="section-subtitle">
           Un poco más de contexto sobre lo que construyo
         </span>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-4">
+      <div class="card-grid card-grid-3">
         <!-- EM-PULSE -->
-        <article class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
-          <header class="mb-3">
-            <h3 class="text-sm font-semibold mb-1">EM-PULSE</h3>
-            <p class="text-xs text-slate-300">
+        <article class="project-card">
+          <header class="project-card-header">
+            <h3 class="project-card-title">EM-PULSE</h3>
+            <p class="project-card-description">
               Plataforma web creada para sensibilizar sobre la esclerosis múltiple,
               ayudando a familiares y entorno a entender mejor los síntomas y el día a día
               de las personas que la sufren.
             </p>
           </header>
-          <div class="mt-2">
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400 mb-1">
+          <div class="project-card-body">
+            <p class="project-card-tech-label">
               Tecnologías
             </p>
-            <div class="flex flex-wrap gap-1 mb-3 text-[0.65rem]">
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">FastAPI</span>
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">React</span>
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">PostgreSQL</span>
+            <div class="project-card-tech-list">
+              <span class="skill-badge">FastAPI</span>
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">PostgreSQL</span>
             </div>
-            <p class="text-xs text-slate-300 mb-3">
+            <p class="project-card-description">
               Me permitió unir backend, frontend y base de datos en una arquitectura completa,
               trabajando también conceptos de accesibilidad y empatía hacia el usuario final.
             </p>
             <a href="https://github.com/CaleroCode/EM-pulse"
                target="_blank"
-               class="inline-flex items-center gap-1 text-[0.75rem] text-emerald-300 hover:text-emerald-200">
+               class="project-card-link">
               Ver en GitHub ↗
             </a>
           </div>
         </article>
 
         <!-- CocinIA -->
-        <article class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
-          <header class="mb-3">
-            <h3 class="text-sm font-semibold mb-1">CocinIA</h3>
-            <p class="text-xs text-slate-300">
+        <article class="project-card">
+          <header class="project-card-header">
+            <h3 class="project-card-title">CocinIA</h3>
+            <p class="project-card-description">
               Aplicación que genera recetas personalizadas combinando ingredientes y preferencias
               del usuario, usando modelos de lenguaje y un backend en Python.
             </p>
           </header>
-          <div class="mt-2">
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400 mb-1">
+          <div class="project-card-body">
+            <p class="project-card-tech-label">
               Tecnologías
             </p>
-            <div class="flex flex-wrap gap-1 mb-3 text-[0.65rem]">
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">Python</span>
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">Flask</span>
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">NLP</span>
+            <div class="project-card-tech-list">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Flask</span>
+              <span class="skill-badge">NLP</span>
             </div>
-            <p class="text-xs text-slate-300 mb-3">
+            <p class="project-card-description">
               Aquí exploré el uso de modelos de IA en un contexto práctico, integrando APIs
               y cuidando la experiencia de usuario al presentar resultados claros y útiles.
             </p>
             <a href="https://github.com/CaleroCode/CocinIA"
                target="_blank"
-               class="inline-flex items-center gap-1 text-[0.75rem] text-emerald-300 hover:text-emerald-200">
+               class="project-card-link">
               Ver en GitHub ↗
             </a>
           </div>
         </article>
 
         <!-- Nutty Lucky -->
-        <article class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
-          <header class="mb-3">
-            <h3 class="text-sm font-semibold mb-1">Nutty Lucky</h3>
-            <p class="text-xs text-slate-300">
+        <article class="project-card">
+          <header class="project-card-header">
+            <h3 class="project-card-title">Nutty Lucky</h3>
+            <p class="project-card-description">
               Endless runner en 2D donde una ardilla salta entre planos del bosque, esquiva
               obstáculos y recoge bellotas mientras huye de fantasmas.
             </p>
           </header>
-          <div class="mt-2">
-            <p class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-400 mb-1">
+          <div class="project-card-body">
+            <p class="project-card-tech-label">
               Tecnologías
             </p>
-            <div class="flex flex-wrap gap-1 mb-3 text-[0.65rem]">
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">Python</span>
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">Pygame</span>
-              <span class="px-2 py-1 rounded-full bg-slate-950 border border-slate-700 text-emerald-300">Game dev</span>
+            <div class="project-card-tech-list">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Pygame</span>
+              <span class="skill-badge">Game dev</span>
             </div>
-            <p class="text-xs text-slate-300 mb-3">
+            <p class="project-card-description">
               Me sirvió para practicar programación orientada a objetos, gestión de estados,
               colisiones, parallax y diseño de mecánicas de juego en un entorno divertido.
             </p>
             <a href="https://github.com/CaleroCode/nutty_lucky"
                target="_blank"
-               class="inline-flex items-center gap-1 text-[0.75rem] text-emerald-300 hover:text-emerald-200">
+               class="project-card-link">
               Ver en GitHub ↗
             </a>
           </div>
@@ -337,161 +293,148 @@
     </section>
 
     <!-- Línea divisoria -->
-    <div class="section-divider mx-auto"></div>
+    <div class="section-divider"></div>
 
     <!-- Sección Instagram -->
-    <section id="instagram" class="space-y-4">
-      <div class="flex items-baseline justify-between">
-        <h2 id="instagram-title" class="text-xl font-semibold">Fotografía & visual</h2>
-        <span id="instagram-subtitle" class="text-xs text-slate-400">¡Puedes ver todas mis fotografías en Instagram!</span>
+    <section id="instagram" class="section section-instagram">
+      <div class="section-header">
+        <h2 id="instagram-title" class="section-title">Fotografía & visual</h2>
+        <span id="instagram-subtitle" class="section-subtitle">
+          ¡Puedes ver todas mis fotografías en Instagram!
+        </span>
       </div>
 
-      <div id="instagram-photos" class="grid md:grid-cols-3 gap-4">
+      <div id="instagram-photos" class="card-grid card-grid-3">
         <!-- tarjetas de fotos aquí -->
       </div>
 
-      <div class="mt-2 text-right text-xs">
+      <div class="section-footer-right">
         <a id="instagram-link-more"
            href="#"
            target="_blank"
-           class="inline-flex items-center gap-1 text-slate-400 hover:text-emerald-400 transition">
-          Ver más fotos en Instagram
-          <span aria-hidden="true">↗</span>
+           class="text-link">
+          Ver más fotos en Instagram ↗
         </a>
       </div>
     </section>
   </main>
 
   <!-- Modal para fotos de Instagram -->
-  <div id="photo-modal"
-       class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-    <div id="modal-content"
-         class="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-[90%] p-4 md:p-6 relative">
-      <button id="modal-close"
-              class="absolute top-3 right-3 text-slate-400 hover:text-emerald-400 text-sm">
+  <div id="photo-modal" class="modal-overlay hidden">
+    <div id="modal-content" class="modal-content">
+      <button id="modal-close" class="modal-close-button">
         ✕
       </button>
-      <div class="w-full mb-4">
-        <img id="modal-image"
-             src=""
-             alt=""
-             class="w-full max-h-[70vh] object-contain mx-auto">
+      <div class="modal-image-wrapper">
+        <img id="modal-image" src="" alt="" class="modal-image">
       </div>
-      <p id="modal-caption" class="text-xs text-slate-200"></p>
+      <p id="modal-caption" class="modal-caption"></p>
     </div>
   </div>
 
-<!-- Modal para artículos / notas -->
-<div id="note-modal"
-     class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 hidden">
-  <div
-    class="bg-slate-900 border border-slate-700 rounded-2xl max-w-4xl w-[95%] p-4 md:p-6 relative"
-  >
-    <button
-      id="note-modal-close"
-      class="absolute top-3 right-3 text-slate-400 hover:text-emerald-400 text-sm"
-    >
-      ✕
-    </button>
-
-    <h3
-      id="note-modal-title"
-      class="text-xl font-semibold mb-3 pr-8"
-    ></h3>
-
-    <!-- CONTENEDOR SCROLLEABLE SOLO PARA EL TEXTO -->
-    <div
-      class="mt-2 pt-2 border-t border-slate-700 max-h-[70vh] overflow-y-auto custom-note-scroll"
-    >
-      <div
-        id="note-modal-content"
-        class="prose prose-invert prose-sm max-w-none text-slate-100 text-sm leading-relaxed"
+  <!-- Modal para artículos / notas -->
+  <div id="note-modal" class="modal-overlay hidden">
+    <div class="note-modal-content">
+      <button
+        id="note-modal-close"
+        class="modal-close-button"
       >
+        ✕
+      </button>
+
+      <h3
+        id="note-modal-title"
+        class="note-modal-title"
+      ></h3>
+
+      <div class="note-modal-scroll">
+        <div
+          id="note-modal-content"
+          class="note-modal-text"
+        >
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-
 
   <!-- Línea divisoria antes de Notas -->
-  <div class="max-w-5xl mx-auto px-4 mt-10">
-    <div class="section-divider mx-auto"></div>
+  <div class="layout-divider-wrapper">
+    <div class="section-divider"></div>
   </div>
 
   <!-- Notas / mini blog -->
-  <section id="notes" class="max-w-5xl mx-auto mt-16 space-y-6">
-    <div class="flex items-baseline justify-between">
-      <h2 id="notes-title" class="text-xl font-semibold">Notas / Aprendizajes</h2>
-      <span id="notes-subtitle" class="text-xs text-slate-400">
+  <section id="notes" class="section section-notes">
+    <div class="section-header">
+      <h2 id="notes-title" class="section-title">Notas / Aprendizajes</h2>
+      <span id="notes-subtitle" class="section-subtitle">
         Pequeños resúmenes de lo que voy aprendiendo
       </span>
     </div>
 
-    <div id="notes-list" class="grid md:grid-cols-3 gap-4">
+    <div id="notes-list" class="card-grid card-grid-3">
       <!-- Las tarjetas se rellenan desde JS -->
     </div>
   </section>
 
   <!-- Línea divisoria entre Notas y Contacto -->
-  <div class="max-w-5xl mx-auto px-4 mt-10">
-    <div class="section-divider mx-auto"></div>
+  <div class="layout-divider-wrapper">
+    <div class="section-divider"></div>
   </div>
 
   <!-- Contacto -->
-  <section id="contact" class="max-w-3xl mx-auto mt-16 mb-12">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8">
-      <h2 id="contact-title" class="text-xl font-semibold mb-2">¿Hablamos?</h2>
-      <p id="contact-text" class="text-sm text-slate-300 mb-4">
+  <section id="contact" class="section section-contact">
+    <div class="contact-card">
+      <h2 id="contact-title" class="section-title">¿Hablamos?</h2>
+      <p id="contact-text" class="contact-intro">
         Estoy abierto a oportunidades como desarrollador full stack junior, proyectos creativos
         y colaboraciones donde pueda unir desarrollo web, diseño visual y fotografía.
       </p>
 
-      <div class="space-y-3 mb-6">
-        <p class="text-sm text-slate-200">
-          📧 <span class="font-medium">Email:</span>
+      <div class="contact-details">
+        <p class="contact-detail-item">
+          📧 <span class="contact-detail-label">Email:</span>
           <a href="mailto:ivanicaleroo@gmail.com"
              id="contact-email-link"
-             class="text-emerald-300 hover:text-emerald-200">
+             class="text-link">
             ¡Mándame un correo!
           </a>
         </p>
-        <p class="text-sm text-slate-200">
-          🔗 <span class="font-medium">LinkedIn:</span>
+        <p class="contact-detail-item">
+          🔗 <span class="contact-detail-label">LinkedIn:</span>
           <a href="https://www.linkedin.com/in/ivancalero/"
              target="_blank"
              id="contact-linkedin-link"
-             class="text-emerald-300 hover:text-emerald-200">
+             class="text-link">
             Ver perfil
           </a>
         </p>
       </div>
 
-      <div class="flex flex-wrap gap-3">
+      <div class="contact-button-row">
         <a href="mailto:ivanicaleroo@gmail.com"
            id="contact-btn-email"
-           class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-emerald-500 text-slate-950 text-sm font-medium hover:bg-emerald-400 transform hover:-translate-y-0.5 transition">
+           class="primary-button">
           Escríbeme
         </a>
         <a href="https://www.linkedin.com/in/ivancalero/"
            target="_blank"
            id="contact-btn-linkedin"
-           class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-slate-600 text-slate-100 text-sm hover:border-emerald-400 hover:text-emerald-300 transform hover:-translate-y-0.5 transition">
+           class="secondary-button">
           Ver LinkedIn
         </a>
         <a href="assets/cv-ivan-calero.pdf"
            target="_blank"
            id="contact-btn-cv"
-           class="inline-flex items-center justify-center px-4 py-2 rounded-full border border-slate-600 text-slate-100 text-sm hover:border-emerald-400 hover:text-emerald-300 transform hover:-translate-y-0.5 transition">
+           class="secondary-button">
           Descargar CV (PDF)
         </a>
       </div>
     </div>
   </section>
 
-  <footer class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+  <footer class="site-footer">
     © <span id="year"></span> icdata · Iván Calero
-    <span id="footer-tagline" class="block mt-1 text-[0.65rem] text-slate-600">
+    <span id="footer-tagline" class="footer-tagline">
       Hecho con FastAPI, TailwindCSS y mucho café ☕
     </span>
   </footer>
@@ -499,7 +442,7 @@
   <!-- Botón scroll-to-top -->
   <button
     id="scroll-top"
-    class="fixed bottom-5 right-5 z-40 w-10 h-10 rounded-full bg-emerald-500 text-slate-950 shadow-lg flex items-center justify-center text-lg opacity-0 pointer-events-none translate-y-4 transition transform hover:-translate-y-0.5 hover:shadow-xl"
+    class="scroll-top-button opacity-0 pointer-events-none translate-y-4"
     aria-label="Volver arriba"
   >
     ↑
