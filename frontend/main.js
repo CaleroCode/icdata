@@ -1,4 +1,4 @@
-const API_BASE = "https://icdata.onrender.com";
+const API_BASE = "https://icdata-api.onrender.com";
 
 // idioma actual
 let currentLang = "es";
