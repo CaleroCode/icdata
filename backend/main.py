@@ -116,8 +116,8 @@ Actualmente, estoy ampliando mis horizontes profesionales y tecnológicos al cur
         "bio": bio,
         "links": {
             "github": f"https://github.com/{GITHUB_USERNAME}",
-            "instagram": "https://instagram.com/ivancalero.wildlife",
-            "linkedin": "https://www.linkedin.com/in/tu-usuario/",
+            "instagram": "https://instagram.com/calero.wildlife",
+            "linkedin": "https://www.linkedin.com/in/ivancalero/",
         },
         "skills": skills,
     }
