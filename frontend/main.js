@@ -37,12 +37,7 @@ function applyTheme() {
   updateThemeStyles(hue, sat, bright);
 }
 
-// Detectar si el brillo es muy claro (necesita texto oscuro)
-function isLightTheme(brightValue) {
-  return brightValue > 110;
-}
-
-// Actualizar estilos CSS dinámicos - APLICAR A TODO
+// Actualizar estilos CSS dinámicos - CAMBIAR SOLO EL FONDO, NO LOS ACENTOS
 function updateThemeStyles(hue, sat, bright) {
   let styleEl = document.getElementById("dynamic-theme-styles");
   if (!styleEl) {
@@ -51,74 +46,25 @@ function updateThemeStyles(hue, sat, bright) {
     document.head.appendChild(styleEl);
   }
   
-  const isLight = isLightTheme(bright);
   const baseHSL = (lightness) => `hsl(${hue}, ${sat}%, ${lightness * (bright / 100)}%)`;
   
-  // Colores para diferentes usos
-  const primaryColor = baseHSL(60);        // Color principal (accent)
-  const primaryLight = baseHSL(75);        // Color más claro
-  const primaryDarker = baseHSL(40);       // Color más oscuro
-  const bgColor = baseHSL(5);              // Fondo oscuro derivado del tema
-  const bgSecondary = baseHSL(8);          // Fondo secundario
-  const textColor = isLight ? "#000000" : "#e2e8f0";        // Texto: negro si es claro, blanco si es oscuro
-  const textSecondary = isLight ? "#1f2937" : "#94a3b8";    // Texto secundario
+  // Colores para los FONDOS derivados del slider
+  const bgColor = baseHSL(5);              // Fondo principal (equivalente a slate-950)
+  const bgSecondary = baseHSL(8);          // Fondo secundario (equivalente a slate-900)
+  const bgTertiary = baseHSL(12);          // Fondo terciario (equivalente a slate-800)
   const borderColor = baseHSL(20);         // Bordes
   
+  // EL ACENTO VERDE ESMERALDA SE MANTIENE IGUAL (#34d399 emerald-400)
+  
   const css = `
-    /* Tema dinámico global */
+    /* Tema dinámico - SOLO FONDOS */
     :root {
       --hue: ${hue};
       --sat: ${sat}%;
       --bright: ${bright}%;
-      --theme-primary: ${primaryColor};
-      --theme-primary-light: ${primaryLight};
-      --theme-primary-dark: ${primaryDarker};
-      --theme-bg: ${bgColor};
-      --theme-bg-secondary: ${bgSecondary};
-      --theme-text: ${textColor};
-      --theme-text-secondary: ${textSecondary};
-      --theme-border: ${borderColor};
     }
     
-    /* Cambiar colores emerald en toda la página */
-    .text-emerald-400,
-    .text-emerald-300,
-    .text-emerald-300\\/50,
-    .border-emerald-400,
-    .border-emerald-400\\/70,
-    .hover\\:text-emerald-400:hover,
-    .hover\\:border-emerald-400:hover,
-    .hover\\:text-emerald-300:hover,
-    .hover\\:border-emerald-300:hover {
-      color: ${primaryColor} !important;
-      border-color: ${primaryColor} !important;
-    }
-    
-    .decoration-emerald-400\\/60 {
-      text-decoration-color: ${primaryColor} !important;
-    }
-    
-    .bg-emerald-400 {
-      background-color: ${primaryColor} !important;
-    }
-    
-    /* Texto blanco por defecto debe adaptarse */
-    body,
-    .text-slate-100,
-    .text-slate-200,
-    .text-white {
-      color: ${textColor} !important;
-    }
-    
-    .text-slate-300 {
-      color: ${textSecondary} !important;
-    }
-    
-    .text-slate-400 {
-      color: ${textSecondary} !important;
-    }
-    
-    /* Fondos: tonos del tema */
+    /* Fondos: se modifican según el slider */
     body,
     .bg-slate-950 {
       background-color: ${bgColor} !important;
@@ -129,32 +75,23 @@ function updateThemeStyles(hue, sat, bright) {
     }
     
     .bg-slate-800 {
-      background-color: ${baseHSL(12)} !important;
+      background-color: ${bgTertiary} !important;
     }
     
-    /* Bordes */
+    /* Bordes: también se modifican según el slider */
     .border-slate-800,
     .border-slate-700 {
       border-color: ${borderColor} !important;
     }
     
-    /* Scrollbar del tema */
-    html::-webkit-scrollbar-thumb {
-      background: ${primaryColor} !important;
-    }
-    
-    html::-webkit-scrollbar-thumb:hover {
-      background: ${primaryLight} !important;
-    }
-    
-    /* Inputs y controles */
-    input[type="range"] {
-      accent-color: ${primaryColor};
-    }
-    
-    /* Links */
-    a {
-      color: ${primaryColor} !important;
+    /* ACENTOS: Se mantienen en verde/esmeralda ORIGINAL (#34d399) */
+    /* NO modificar estos colores */
+    .text-emerald-400,
+    .text-emerald-300,
+    .border-emerald-400,
+    .hover\\:text-emerald-400:hover,
+    .hover\\:border-emerald-400:hover {
+      /* Mantener valor original */
     }
   `;
   
