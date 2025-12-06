@@ -222,3 +222,56 @@ html::-webkit-scrollbar-thumb:hover {
 #note-modal-content {
   text-align: justify;
 }
+
+/* Estilos para los sliders de tema personalizado */
+.theme-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Thumb para Chrome/Safari */
+.theme-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+.theme-slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 12px rgba(16, 185, 129, 0.5);
+}
+
+/* Thumb para Firefox */
+.theme-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+.theme-slider::-moz-range-thumb:hover {
+  box-shadow: 0 2px 12px rgba(16, 185, 129, 0.5);
+}
+
+/* Track para Firefox */
+.theme-slider::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+.theme-slider::-moz-range-progress {
+  background: transparent;
+}
+

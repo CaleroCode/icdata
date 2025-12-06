@@ -3,7 +3,121 @@ const API_BASE = "https://icdata-api.onrender.com";
 // idioma actual
 let currentLang = "es";
 
-// Traducciones estáticas (navbar, títulos, contacto, hero, etc.)
+// Variables del tema personalizado
+let themeSettings = {
+  hue: 160,          // 160 = verde/esmeralda por defecto
+  saturation: 100,   // 100% = saturación completa
+  brightness: 100    // 100% = brillo normal
+};
+
+// Cargar tema guardado desde localStorage
+function loadThemeSettings() {
+  const saved = localStorage.getItem("themeSettings");
+  if (saved) {
+    try {
+      themeSettings = JSON.parse(saved);
+    } catch (e) {
+      console.error("Error cargando tema guardado", e);
+    }
+  }
+  applyTheme();
+}
+
+// Guardar tema en localStorage
+function saveThemeSettings() {
+  localStorage.setItem("themeSettings", JSON.stringify(themeSettings));
+}
+
+// Aplicar el tema al documento
+function applyTheme() {
+  const hue = themeSettings.hue;
+  const sat = themeSettings.saturation;
+  const bright = themeSettings.brightness;
+  
+  // Crear variables CSS dinámicas basadas en HSL
+  // El color principal será con saturación y brillo personalizados
+  const root = document.documentElement;
+  
+  // Colores derivados del HSL del usuario
+  const primary = `hsl(${hue}, ${sat}%, ${50 * (bright / 100)}%)`; // color base
+  const primaryLight = `hsl(${hue}, ${sat}%, ${65 * (bright / 100)}%)`; // versión clara
+  const primaryDark = `hsl(${hue}, ${sat}%, ${35 * (bright / 100)}%)`; // versión oscura
+  
+  // Aplicar variables CSS
+  root.style.setProperty("--color-primary", primary);
+  root.style.setProperty("--color-primary-light", primaryLight);
+  root.style.setProperty("--color-primary-dark", primaryDark);
+  
+  // Actualizar todas las clases que usan emerald-400 dinámicamente
+  // Usaremos un CSS personalizado que se actualice
+  updateThemeStyles(hue, sat, bright);
+}
+
+// Actualizar estilos CSS dinámicos
+function updateThemeStyles(hue, sat, bright) {
+  let styleEl = document.getElementById("dynamic-theme-styles");
+  if (!styleEl) {
+    styleEl = document.createElement("style");
+    styleEl.id = "dynamic-theme-styles";
+    document.head.appendChild(styleEl);
+  }
+  
+  const baseHSL = (lightness) => `hsl(${hue}, ${sat}%, ${lightness * (bright / 100)}%)`;
+  const css = `
+    :root {
+      --hue: ${hue};
+      --sat: ${sat}%;
+      --bright: ${bright}%;
+    }
+    
+    .text-emerald-400,
+    .border-emerald-400,
+    .hover\\:text-emerald-400:hover,
+    .hover\\:border-emerald-400:hover {
+      --tw-text-opacity: 1;
+      color: ${baseHSL(60)} !important;
+      border-color: ${baseHSL(60)} !important;
+    }
+    
+    .decoration-emerald-400\\/60 {
+      text-decoration-color: ${baseHSL(60)} !important;
+    }
+    
+    .bg-emerald-400 {
+      background-color: ${baseHSL(60)} !important;
+    }
+    
+    /* Scrollbar también toma el color del tema */
+    html::-webkit-scrollbar-thumb {
+      background: ${baseHSL(50)} !important;
+    }
+    
+    html::-webkit-scrollbar-thumb:hover {
+      background: ${baseHSL(65)} !important;
+    }
+    
+    /* Variables para cualquier componente que use emerald */
+    .emerald-300 {
+      color: ${baseHSL(70)} !important;
+    }
+    
+    .emerald-400 {
+      color: ${baseHSL(60)} !important;
+    }
+    
+    .text-emerald-300 {
+      color: ${baseHSL(70)} !important;
+    }
+    
+    .text-emerald-300\/50 {
+      color: ${baseHSL(70)}80 !important;
+    }
+  `;
+  
+  styleEl.textContent = css;
+}
+
+// Traducucciones estáticas (navbar, títulos, contacto, hero, etc.)
 const TRANSLATIONS = {
   es: {
     hero_tagline: "portafolio profesional",
@@ -308,6 +422,140 @@ function setupLangSwitch() {
   applyActiveStyles();
 }
 
+// ----- Selector de tema personalizado -----
+function setupThemeSwitch() {
+  const themeToggle = document.getElementById("theme-toggle");
+  const themePanel = document.getElementById("theme-panel");
+  const hueSlider = document.getElementById("hue-slider");
+  const saturationSlider = document.getElementById("saturation-slider");
+  const brightnessSlider = document.getElementById("brightness-slider");
+  const hueValue = document.getElementById("hue-value");
+  const saturationValue = document.getElementById("saturation-value");
+  const brightnessValue = document.getElementById("brightness-value");
+  const themeReset = document.getElementById("theme-reset");
+
+  // Controles móviles
+  const hueSlideMobile = document.getElementById("theme-mobile-hue");
+  const saturationSlideMobile = document.getElementById("theme-mobile-sat");
+  const brightnessSlideMobile = document.getElementById("theme-mobile-bright");
+  const hueValueMobile = document.getElementById("theme-mobile-hue-value");
+  const saturationValueMobile = document.getElementById("theme-mobile-sat-value");
+  const brightnessValueMobile = document.getElementById("theme-mobile-bright-value");
+  const themeResetMobile = document.getElementById("theme-mobile-reset");
+
+  if (!themeToggle || !themePanel) return;
+
+  // Mostrar/ocultar panel
+  themeToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    themePanel.classList.toggle("hidden");
+  });
+
+  // Cerrar panel al hacer click fuera
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#theme-toggle") && !e.target.closest("#theme-panel")) {
+      themePanel.classList.add("hidden");
+    }
+  });
+
+  // Actualizar tema con los sliders
+  const updateFromSliders = () => {
+    themeSettings.hue = parseInt(hueSlider.value);
+    themeSettings.saturation = parseInt(saturationSlider.value);
+    themeSettings.brightness = parseInt(brightnessSlider.value);
+    
+    // Sincronizar sliders móviles
+    if (hueSlideMobile) hueSlideMobile.value = themeSettings.hue;
+    if (saturationSlideMobile) saturationSlideMobile.value = themeSettings.saturation;
+    if (brightnessSlideMobile) brightnessSlideMobile.value = themeSettings.brightness;
+    
+    applyTheme();
+    saveThemeSettings();
+    updateLabels();
+  };
+
+  const updateFromSlidersMobile = () => {
+    if (!hueSlideMobile) return;
+    
+    themeSettings.hue = parseInt(hueSlideMobile.value);
+    themeSettings.saturation = parseInt(saturationSlideMobile.value);
+    themeSettings.brightness = parseInt(brightnessSlideMobile.value);
+    
+    // Sincronizar sliders desktop
+    if (hueSlider) hueSlider.value = themeSettings.hue;
+    if (saturationSlider) saturationSlider.value = themeSettings.saturation;
+    if (brightnessSlider) brightnessSlider.value = themeSettings.brightness;
+    
+    applyTheme();
+    saveThemeSettings();
+    updateLabels();
+  };
+
+  const updateLabels = () => {
+    const hueNames = [
+      "Rojo", "Naranja", "Amarillo", "Verde claro", "Verde", 
+      "Verde/Cian", "Cian", "Azul", "Morado", "Magenta", "Rojo"
+    ];
+    const hue = themeSettings.hue;
+    const index = Math.round(hue / 36) % hueNames.length;
+    
+    // Actualizar desktop
+    if (hueValue) hueValue.textContent = `${hue}° (${hueNames[index]})`;
+    if (saturationValue) saturationValue.textContent = `${themeSettings.saturation}%`;
+    if (brightnessValue) brightnessValue.textContent = `${themeSettings.brightness}%`;
+    
+    // Actualizar móvil
+    if (hueValueMobile) hueValueMobile.textContent = `${hue}°`;
+    if (saturationValueMobile) saturationValueMobile.textContent = `${themeSettings.saturation}%`;
+    if (brightnessValueMobile) brightnessValueMobile.textContent = `${themeSettings.brightness}%`;
+  };
+
+  // Event listeners desktop
+  if (hueSlider) hueSlider.addEventListener("input", updateFromSliders);
+  if (saturationSlider) saturationSlider.addEventListener("input", updateFromSliders);
+  if (brightnessSlider) brightnessSlider.addEventListener("input", updateFromSliders);
+
+  // Event listeners móvil
+  if (hueSlideMobile) hueSlideMobile.addEventListener("input", updateFromSlidersMobile);
+  if (saturationSlideMobile) saturationSlideMobile.addEventListener("input", updateFromSlidersMobile);
+  if (brightnessSlideMobile) brightnessSlideMobile.addEventListener("input", updateFromSlidersMobile);
+
+  // Resetear a valores por defecto (desktop)
+  if (themeReset) {
+    themeReset.addEventListener("click", () => {
+      themeSettings = { hue: 160, saturation: 100, brightness: 100 };
+      if (hueSlider) hueSlider.value = 160;
+      if (saturationSlider) saturationSlider.value = 100;
+      if (brightnessSlider) brightnessSlider.value = 100;
+      if (hueSlideMobile) hueSlideMobile.value = 160;
+      if (saturationSlideMobile) saturationSlideMobile.value = 100;
+      if (brightnessSlideMobile) brightnessSlideMobile.value = 100;
+      saveThemeSettings();
+      applyTheme();
+      updateLabels();
+    });
+  }
+
+  // Resetear a valores por defecto (móvil)
+  if (themeResetMobile) {
+    themeResetMobile.addEventListener("click", () => {
+      themeSettings = { hue: 160, saturation: 100, brightness: 100 };
+      if (hueSlider) hueSlider.value = 160;
+      if (saturationSlider) saturationSlider.value = 100;
+      if (brightnessSlider) brightnessSlider.value = 100;
+      if (hueSlideMobile) hueSlideMobile.value = 160;
+      if (saturationSlideMobile) saturationSlideMobile.value = 100;
+      if (brightnessSlideMobile) brightnessSlideMobile.value = 100;
+      saveThemeSettings();
+      applyTheme();
+      updateLabels();
+    });
+  }
+
+  // Inicializar labels
+  updateLabels();
+}
+
 // ----- Menú hamburguesa (móvil) -----
 function setupMobileMenu() {
   const toggleBtn = document.getElementById("menu-toggle");
@@ -381,6 +629,9 @@ const sectionObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Cargar tema guardado PRIMERO, antes de aplicar traducciones
+  loadThemeSettings();
+  
   const yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
@@ -388,6 +639,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setupLangSwitch();
   setupMobileMenu();
+  setupThemeSwitch();
   applyTranslations();
   loadProfile();
 

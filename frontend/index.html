@@ -88,6 +88,55 @@
           EN
         </button>
       </div>
+
+      <!-- Selector de tema/color (desktop) -->
+      <div class="relative ml-3">
+        <button id="theme-toggle"
+                class="inline-flex items-center justify-center w-8 h-8 rounded-full border border-slate-700 text-slate-400 hover:border-emerald-400 hover:text-emerald-300 transition"
+                aria-label="Selector de tema"
+                title="Personaliza los colores">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24M1 12h6m6 0h6m-16.78 7.78l4.24-4.24m5.08-5.08l4.24-4.24"/>
+          </svg>
+        </button>
+        
+        <!-- Panel deslizante de colores (oculto por defecto) -->
+        <div id="theme-panel" 
+             class="hidden absolute right-0 top-full mt-2 bg-slate-900 border border-slate-700 rounded-lg p-4 z-50 w-64 shadow-xl">
+          <p class="text-xs text-slate-400 mb-3 font-semibold uppercase tracking-wider">Personaliza los colores</p>
+          
+          <!-- Slider de tono general -->
+          <div class="space-y-3">
+            <div>
+              <label for="hue-slider" class="text-xs text-slate-300 mb-1 block">Tono</label>
+              <input type="range" id="hue-slider" min="0" max="360" value="160"
+                     class="w-full h-2 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-cyan-500 to-red-500 rounded-lg appearance-none cursor-pointer theme-slider">
+              <p id="hue-value" class="text-xs text-slate-400 mt-1">160° (Verde/Esmeralda)</p>
+            </div>
+            
+            <div>
+              <label for="saturation-slider" class="text-xs text-slate-300 mb-1 block">Saturación</label>
+              <input type="range" id="saturation-slider" min="0" max="100" value="100"
+                     class="w-full h-2 bg-gradient-to-r from-slate-400 to-emerald-400 rounded-lg appearance-none cursor-pointer theme-slider">
+              <p id="saturation-value" class="text-xs text-slate-400 mt-1">100%</p>
+            </div>
+            
+            <div>
+              <label for="brightness-slider" class="text-xs text-slate-300 mb-1 block">Brillo</label>
+              <input type="range" id="brightness-slider" min="50" max="150" value="100"
+                     class="w-full h-2 bg-gradient-to-r from-slate-900 to-slate-100 rounded-lg appearance-none cursor-pointer theme-slider">
+              <p id="brightness-value" class="text-xs text-slate-400 mt-1">100%</p>
+            </div>
+          </div>
+          
+          <!-- Botón para resetear -->
+          <button id="theme-reset"
+                  class="mt-4 w-full px-3 py-2 text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-600 rounded transition">
+            Resetear a defecto
+          </button>
+        </div>
+      </div>
     </nav>
 
     <!-- BOTÓN MENÚ HAMBURGUESA (MÓVIL, DERECHA) -->
@@ -161,6 +210,37 @@
           <button id="lang-en-mobile"
                   class="px-3 py-1 rounded-full border border-slate-700 text-slate-400 font-mono hover:text-emerald-300 hover:border-emerald-400">
             EN
+          </button>
+        </div>
+      </div>
+
+      <!-- Selector de tema (móvil) -->
+      <div class="mt-3 pt-3 border-t border-slate-800">
+        <span class="text-[0.7rem] uppercase tracking-[0.2em] text-slate-500 block mb-2">
+          Tema
+        </span>
+        <div class="space-y-2 text-right">
+          <div>
+            <label for="theme-mobile-hue" class="text-[0.7rem] text-slate-300">Tono</label>
+            <input type="range" id="theme-mobile-hue" min="0" max="360" value="160"
+                   class="w-full h-1.5 rounded appearance-none cursor-pointer theme-slider">
+            <p id="theme-mobile-hue-value" class="text-[0.65rem] text-slate-500 mt-1">160°</p>
+          </div>
+          <div>
+            <label for="theme-mobile-sat" class="text-[0.7rem] text-slate-300">Saturación</label>
+            <input type="range" id="theme-mobile-sat" min="0" max="100" value="100"
+                   class="w-full h-1.5 rounded appearance-none cursor-pointer theme-slider">
+            <p id="theme-mobile-sat-value" class="text-[0.65rem] text-slate-500 mt-1">100%</p>
+          </div>
+          <div>
+            <label for="theme-mobile-bright" class="text-[0.7rem] text-slate-300">Brillo</label>
+            <input type="range" id="theme-mobile-bright" min="50" max="150" value="100"
+                   class="w-full h-1.5 rounded appearance-none cursor-pointer theme-slider">
+            <p id="theme-mobile-bright-value" class="text-[0.65rem] text-slate-500 mt-1">100%</p>
+          </div>
+          <button id="theme-mobile-reset"
+                  class="w-full mt-2 px-2 py-1 text-[0.7rem] bg-slate-800 hover:bg-slate-700 text-slate-300 rounded transition">
+            Resetear tema
           </button>
         </div>
       </div>
