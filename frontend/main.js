@@ -7,7 +7,7 @@ let currentLang = "es";
 let themeSettings = {
   hue: 210,          // Azul
   saturation: 100,   // 100% saturación
-  brightness: 6      // 6% = muy oscuro (equivalente a #0f172a)
+  brightness: 90     // 90% = azul oscuro pero visible (#0f172a)
 };
 
 // Cargar tema guardado desde localStorage
@@ -504,13 +504,13 @@ function setupThemeSwitch() {
   // Resetear a valores por defecto (desktop)
   if (themeReset) {
     themeReset.addEventListener("click", () => {
-      themeSettings = { hue: 210, saturation: 100, brightness: 6 };
+      themeSettings = { hue: 210, saturation: 100, brightness: 90 };
       if (hueSlider) hueSlider.value = 210;
       if (saturationSlider) saturationSlider.value = 100;
-      if (brightnessSlider) brightnessSlider.value = 6;
+      if (brightnessSlider) brightnessSlider.value = 90;
       if (hueSlideMobile) hueSlideMobile.value = 210;
       if (saturationSlideMobile) saturationSlideMobile.value = 100;
-      if (brightnessSlideMobile) brightnessSlideMobile.value = 6;
+      if (brightnessSlideMobile) brightnessSlideMobile.value = 90;
       saveThemeSettings();
       applyTheme();
       updateLabels();
@@ -520,13 +520,13 @@ function setupThemeSwitch() {
   // Resetear a valores por defecto (móvil)
   if (themeResetMobile) {
     themeResetMobile.addEventListener("click", () => {
-      themeSettings = { hue: 210, saturation: 100, brightness: 6 };
+      themeSettings = { hue: 210, saturation: 100, brightness: 90 };
       if (hueSlider) hueSlider.value = 210;
       if (saturationSlider) saturationSlider.value = 100;
-      if (brightnessSlider) brightnessSlider.value = 6;
+      if (brightnessSlider) brightnessSlider.value = 90;
       if (hueSlideMobile) hueSlideMobile.value = 210;
       if (saturationSlideMobile) saturationSlideMobile.value = 100;
-      if (brightnessSlideMobile) brightnessSlideMobile.value = 6;
+      if (brightnessSlideMobile) brightnessSlideMobile.value = 90;
       saveThemeSettings();
       applyTheme();
       updateLabels();
