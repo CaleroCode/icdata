@@ -286,7 +286,15 @@ function setupLangSwitch() {
     applyActiveStyles();
     applyTranslations();
     loadProfile();
-    loadNotes();
+    
+    // Recargar secciones de lazy loading si ya fueron cargadas
+    const notesSection = document.getElementById("notes");
+    if (notesSection && notesSection.dataset.notesLoaded) {
+      loadNotes();
+    }
+    
+    // GitHub no necesita recarga por idioma (es independiente del idioma)
+    // Instagram tampoco necesita recarga por idioma
   }
 
   esButtons.forEach((btn) =>
@@ -344,6 +352,34 @@ function setupMobileMenu() {
 }
 
 // ----- Inicio -----
+// Lazy loading con Intersection Observer para GitHub, Instagram y Notas
+const observerOptions = {
+  root: null,
+  rootMargin: "100px",
+  threshold: 0.1,
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting && !entry.target.dataset.loaded) {
+      entry.target.dataset.loaded = "true";
+      
+      if (entry.target.id === "github" && !entry.target.dataset.githubLoaded) {
+        entry.target.dataset.githubLoaded = "true";
+        loadGithubRepos();
+      }
+      if (entry.target.id === "instagram" && !entry.target.dataset.instagramLoaded) {
+        entry.target.dataset.instagramLoaded = "true";
+        loadInstagramPhotos();
+      }
+      if (entry.target.id === "notes" && !entry.target.dataset.notesLoaded) {
+        entry.target.dataset.notesLoaded = "true";
+        loadNotes();
+      }
+    }
+  });
+}, observerOptions);
+
 document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) {
@@ -354,9 +390,15 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
   applyTranslations();
   loadProfile();
-  loadGithubRepos();
-  loadInstagramPhotos();
-  loadNotes();
+
+  // Observer para lazy loading de GitHub, Instagram y Notas
+  const githubSection = document.getElementById("github");
+  const instagramSection = document.getElementById("instagram");
+  const notesSection = document.getElementById("notes");
+
+  if (githubSection) sectionObserver.observe(githubSection);
+  if (instagramSection) sectionObserver.observe(instagramSection);
+  if (notesSection) sectionObserver.observe(notesSection);
 
   // Scroll-to-top
   const scrollBtn = document.getElementById("scroll-top");
