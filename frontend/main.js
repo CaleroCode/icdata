@@ -5,9 +5,9 @@ let currentLang = "es";
 
 // Variables del tema personalizado
 let themeSettings = {
-  hue: 160,          // 160 = verde/esmeralda por defecto
-  saturation: 100,   // 100% = saturación completa
-  brightness: 100    // 100% = brillo normal
+  hue: 217,          // 217 = azul oscuro por defecto (similar a #0f172a)
+  saturation: 33,    // 33% = saturación baja para oscuro
+  brightness: 10     // 10% = muy oscuro
 };
 
 // Cargar tema guardado desde localStorage
@@ -504,13 +504,13 @@ function setupThemeSwitch() {
   // Resetear a valores por defecto (desktop)
   if (themeReset) {
     themeReset.addEventListener("click", () => {
-      themeSettings = { hue: 160, saturation: 100, brightness: 100 };
-      if (hueSlider) hueSlider.value = 160;
-      if (saturationSlider) saturationSlider.value = 100;
-      if (brightnessSlider) brightnessSlider.value = 100;
-      if (hueSlideMobile) hueSlideMobile.value = 160;
-      if (saturationSlideMobile) saturationSlideMobile.value = 100;
-      if (brightnessSlideMobile) brightnessSlideMobile.value = 100;
+      themeSettings = { hue: 217, saturation: 33, brightness: 10 };
+      if (hueSlider) hueSlider.value = 217;
+      if (saturationSlider) saturationSlider.value = 33;
+      if (brightnessSlider) brightnessSlider.value = 10;
+      if (hueSlideMobile) hueSlideMobile.value = 217;
+      if (saturationSlideMobile) saturationSlideMobile.value = 33;
+      if (brightnessSlideMobile) brightnessSlideMobile.value = 10;
       saveThemeSettings();
       applyTheme();
       updateLabels();
@@ -520,13 +520,13 @@ function setupThemeSwitch() {
   // Resetear a valores por defecto (móvil)
   if (themeResetMobile) {
     themeResetMobile.addEventListener("click", () => {
-      themeSettings = { hue: 160, saturation: 100, brightness: 100 };
-      if (hueSlider) hueSlider.value = 160;
-      if (saturationSlider) saturationSlider.value = 100;
-      if (brightnessSlider) brightnessSlider.value = 100;
-      if (hueSlideMobile) hueSlideMobile.value = 160;
-      if (saturationSlideMobile) saturationSlideMobile.value = 100;
-      if (brightnessSlideMobile) brightnessSlideMobile.value = 100;
+      themeSettings = { hue: 217, saturation: 33, brightness: 10 };
+      if (hueSlider) hueSlider.value = 217;
+      if (saturationSlider) saturationSlider.value = 33;
+      if (brightnessSlider) brightnessSlider.value = 10;
+      if (hueSlideMobile) hueSlideMobile.value = 217;
+      if (saturationSlideMobile) saturationSlideMobile.value = 33;
+      if (brightnessSlideMobile) brightnessSlideMobile.value = 10;
       saveThemeSettings();
       applyTheme();
       updateLabels();
