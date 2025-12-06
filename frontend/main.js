@@ -34,26 +34,15 @@ function applyTheme() {
   const sat = themeSettings.saturation;
   const bright = themeSettings.brightness;
   
-  // Crear variables CSS dinámicas basadas en HSL
-  // El color principal será con saturación y brillo personalizados
-  const root = document.documentElement;
-  
-  // Colores derivados del HSL del usuario
-  const primary = `hsl(${hue}, ${sat}%, ${50 * (bright / 100)}%)`; // color base
-  const primaryLight = `hsl(${hue}, ${sat}%, ${65 * (bright / 100)}%)`; // versión clara
-  const primaryDark = `hsl(${hue}, ${sat}%, ${35 * (bright / 100)}%)`; // versión oscura
-  
-  // Aplicar variables CSS
-  root.style.setProperty("--color-primary", primary);
-  root.style.setProperty("--color-primary-light", primaryLight);
-  root.style.setProperty("--color-primary-dark", primaryDark);
-  
-  // Actualizar todas las clases que usan emerald-400 dinámicamente
-  // Usaremos un CSS personalizado que se actualice
   updateThemeStyles(hue, sat, bright);
 }
 
-// Actualizar estilos CSS dinámicos
+// Detectar si el brillo es muy claro (necesita texto oscuro)
+function isLightTheme(brightValue) {
+  return brightValue > 110;
+}
+
+// Actualizar estilos CSS dinámicos - APLICAR A TODO
 function updateThemeStyles(hue, sat, bright) {
   let styleEl = document.getElementById("dynamic-theme-styles");
   if (!styleEl) {
@@ -62,55 +51,110 @@ function updateThemeStyles(hue, sat, bright) {
     document.head.appendChild(styleEl);
   }
   
+  const isLight = isLightTheme(bright);
   const baseHSL = (lightness) => `hsl(${hue}, ${sat}%, ${lightness * (bright / 100)}%)`;
+  
+  // Colores para diferentes usos
+  const primaryColor = baseHSL(60);        // Color principal (accent)
+  const primaryLight = baseHSL(75);        // Color más claro
+  const primaryDarker = baseHSL(40);       // Color más oscuro
+  const bgColor = baseHSL(5);              // Fondo oscuro derivado del tema
+  const bgSecondary = baseHSL(8);          // Fondo secundario
+  const textColor = isLight ? "#000000" : "#e2e8f0";        // Texto: negro si es claro, blanco si es oscuro
+  const textSecondary = isLight ? "#1f2937" : "#94a3b8";    // Texto secundario
+  const borderColor = baseHSL(20);         // Bordes
+  
   const css = `
+    /* Tema dinámico global */
     :root {
       --hue: ${hue};
       --sat: ${sat}%;
       --bright: ${bright}%;
+      --theme-primary: ${primaryColor};
+      --theme-primary-light: ${primaryLight};
+      --theme-primary-dark: ${primaryDarker};
+      --theme-bg: ${bgColor};
+      --theme-bg-secondary: ${bgSecondary};
+      --theme-text: ${textColor};
+      --theme-text-secondary: ${textSecondary};
+      --theme-border: ${borderColor};
     }
     
+    /* Cambiar colores emerald en toda la página */
     .text-emerald-400,
+    .text-emerald-300,
+    .text-emerald-300\\/50,
     .border-emerald-400,
+    .border-emerald-400\\/70,
     .hover\\:text-emerald-400:hover,
-    .hover\\:border-emerald-400:hover {
-      --tw-text-opacity: 1;
-      color: ${baseHSL(60)} !important;
-      border-color: ${baseHSL(60)} !important;
+    .hover\\:border-emerald-400:hover,
+    .hover\\:text-emerald-300:hover,
+    .hover\\:border-emerald-300:hover {
+      color: ${primaryColor} !important;
+      border-color: ${primaryColor} !important;
     }
     
     .decoration-emerald-400\\/60 {
-      text-decoration-color: ${baseHSL(60)} !important;
+      text-decoration-color: ${primaryColor} !important;
     }
     
     .bg-emerald-400 {
-      background-color: ${baseHSL(60)} !important;
+      background-color: ${primaryColor} !important;
     }
     
-    /* Scrollbar también toma el color del tema */
+    /* Texto blanco por defecto debe adaptarse */
+    body,
+    .text-slate-100,
+    .text-slate-200,
+    .text-white {
+      color: ${textColor} !important;
+    }
+    
+    .text-slate-300 {
+      color: ${textSecondary} !important;
+    }
+    
+    .text-slate-400 {
+      color: ${textSecondary} !important;
+    }
+    
+    /* Fondos: tonos del tema */
+    body,
+    .bg-slate-950 {
+      background-color: ${bgColor} !important;
+    }
+    
+    .bg-slate-900 {
+      background-color: ${bgSecondary} !important;
+    }
+    
+    .bg-slate-800 {
+      background-color: ${baseHSL(12)} !important;
+    }
+    
+    /* Bordes */
+    .border-slate-800,
+    .border-slate-700 {
+      border-color: ${borderColor} !important;
+    }
+    
+    /* Scrollbar del tema */
     html::-webkit-scrollbar-thumb {
-      background: ${baseHSL(50)} !important;
+      background: ${primaryColor} !important;
     }
     
     html::-webkit-scrollbar-thumb:hover {
-      background: ${baseHSL(65)} !important;
+      background: ${primaryLight} !important;
     }
     
-    /* Variables para cualquier componente que use emerald */
-    .emerald-300 {
-      color: ${baseHSL(70)} !important;
+    /* Inputs y controles */
+    input[type="range"] {
+      accent-color: ${primaryColor};
     }
     
-    .emerald-400 {
-      color: ${baseHSL(60)} !important;
-    }
-    
-    .text-emerald-300 {
-      color: ${baseHSL(70)} !important;
-    }
-    
-    .text-emerald-300\/50 {
-      color: ${baseHSL(70)}80 !important;
+    /* Links */
+    a {
+      color: ${primaryColor} !important;
     }
   `;
   
