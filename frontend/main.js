@@ -15,7 +15,15 @@ function loadThemeSettings() {
   const saved = localStorage.getItem("themeSettings");
   if (saved) {
     try {
-      themeSettings = JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // Validar que los valores sean razonables, si no usar defectos
+      if (parsed.brightness && parsed.brightness < 6) {
+        // Si el brillo es menor a 6, resetear a defecto
+        themeSettings = { hue: 210, saturation: 100, brightness: 90 };
+        saveThemeSettings();
+      } else {
+        themeSettings = parsed;
+      }
     } catch (e) {
       console.error("Error cargando tema guardado", e);
     }
