@@ -43,6 +43,7 @@ function applyTheme() {
   const bright = themeSettings.brightness;
   
   updateThemeStyles(hue, sat, bright);
+  updateSliderGradients();
 }
 
 // Actualizar estilos CSS dinámicos - CAMBIAR SOLO EL FONDO, NO LOS ACENTOS
@@ -411,6 +412,46 @@ function setupLangSwitch() {
   applyActiveStyles();
 }
 
+// ----- Actualizar gradientes de los sliders -----
+function updateSliderGradients() {
+  const hueSlider = document.getElementById("hue-slider");
+  const saturationSlider = document.getElementById("saturation-slider");
+  const brightnessSlider = document.getElementById("brightness-slider");
+  const hueSlideMobile = document.getElementById("theme-mobile-hue");
+  const saturationSlideMobile = document.getElementById("theme-mobile-sat");
+  const brightnessSlideMobile = document.getElementById("theme-mobile-bright");
+
+  // Crear gradiente de tono (0-360)
+  const hueGradient = `linear-gradient(to right, 
+    hsl(0, 100%, 50%), 
+    hsl(60, 100%, 50%), 
+    hsl(120, 100%, 50%), 
+    hsl(180, 100%, 50%), 
+    hsl(240, 100%, 50%), 
+    hsl(300, 100%, 50%), 
+    hsl(360, 100%, 50%))`;
+
+  // Crear gradiente de saturación (0-100%)
+  const satGradient = `linear-gradient(to right, 
+    hsl(${themeSettings.hue}, 0%, 50%), 
+    hsl(${themeSettings.hue}, 100%, 50%))`;
+
+  // Crear gradiente de brillo (6-150%)
+  const brightGradient = `linear-gradient(to right, 
+    hsl(${themeSettings.hue}, 100%, 3%), 
+    hsl(${themeSettings.hue}, 100%, 75%))`;
+
+  // Aplicar a sliders desktop
+  if (hueSlider) hueSlider.style.background = hueGradient;
+  if (saturationSlider) saturationSlider.style.background = satGradient;
+  if (brightnessSlider) brightnessSlider.style.background = brightGradient;
+
+  // Aplicar a sliders móvil
+  if (hueSlideMobile) hueSlideMobile.style.background = hueGradient;
+  if (saturationSlideMobile) saturationSlideMobile.style.background = satGradient;
+  if (brightnessSlideMobile) brightnessSlideMobile.style.background = brightGradient;
+}
+
 // ----- Selector de tema personalizado -----
 function setupThemeSwitch() {
   const themeToggle = document.getElementById("theme-toggle");
@@ -461,6 +502,7 @@ function setupThemeSwitch() {
     applyTheme();
     saveThemeSettings();
     updateLabels();
+    updateSliderGradients();
   };
 
   const updateFromSlidersMobile = () => {
@@ -478,6 +520,7 @@ function setupThemeSwitch() {
     applyTheme();
     saveThemeSettings();
     updateLabels();
+    updateSliderGradients();
   };
 
   const updateLabels = () => {
