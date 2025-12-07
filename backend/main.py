@@ -61,6 +61,7 @@ def get_profile(lang: str = "es"):
         "Frameworks & Libraries": [
             "FastAPI",
             "Flask",
+            "Django",
             "React",
             "Node.js",
             "Express",
@@ -77,7 +78,11 @@ def get_profile(lang: str = "es"):
             "PostgreSQL",
             "MySQL",
             "SQLite",
-            "MongoDB",
+        ],
+        "Web Technologies": [
+            "PWA",
+            "Service Workers",
+            "REST APIs",
         ],
         "Design, 3D & Video": [
             "Adobe Photoshop",
