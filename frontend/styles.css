@@ -101,7 +101,8 @@ html::-webkit-scrollbar-thumb:hover {
 #projects-highlight,
 #instagram,
 #notes,
-#contact {
+#contact,
+#pwa-install {
   scroll-margin-top: 6rem;
 }
 

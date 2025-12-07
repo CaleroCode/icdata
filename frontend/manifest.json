@@ -1,0 +1,78 @@
+{
+  "name": "icdata - Portafolio de Iván Calero",
+  "short_name": "icdata",
+  "description": "Portafolio profesional: desarrollo web, fotografía y diseño visual",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#34d399",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/screenshot-540.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/screenshot-1280.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Ver GitHub",
+      "short_name": "GitHub",
+      "description": "Accede a mis proyectos en GitHub",
+      "url": "/#github",
+      "icons": [
+        {
+          "src": "assets/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Ver Fotografía",
+      "short_name": "Fotografía",
+      "description": "Accede a mi galería de fotografía",
+      "url": "/#instagram",
+      "icons": [
+        {
+          "src": "assets/icon-96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

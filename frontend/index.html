@@ -5,6 +5,16 @@
   <title>icdata | Portafolio de Iván Calero</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- PWA Metadatos -->
+  <meta name="theme-color" content="#34d399" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="icdata" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="assets/principal.jpg" />
+  <link rel="apple-touch-icon" href="assets/principal.jpg" />
+
   <!-- SEO básico muy sencillo -->
   <meta
     name="description"
@@ -46,6 +56,11 @@
       id="nav-desktop"
       class="hidden md:flex items-center gap-4 text-sm"
     >
+      <a id="nav-icdata"
+         href="#pwa-install"
+         class="text-xs md:text-sm text-emerald-400 hover:text-emerald-300 transition font-semibold">
+        ICDATA
+      </a>
       <a id="nav-about"
          href="#about"
          class="text-xs md:text-sm text-slate-300 hover:text-emerald-400 transition">
@@ -569,6 +584,47 @@
     </div>
   </section>
 
+  <!-- Sección PWA Install -->
+  <section id="pwa-install" class="max-w-3xl mx-auto mt-16 mb-12 scroll-margin-top">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 md:p-8 space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full bg-emerald-400 flex items-center justify-center text-slate-950 text-xl font-bold">
+          ⬇️
+        </div>
+        <h2 class="text-2xl font-semibold text-emerald-300">ICDATA</h2>
+      </div>
+
+      <p class="text-sm text-slate-300 leading-relaxed">
+        Descarga mi portafolio como una <span class="font-semibold text-emerald-300">aplicación nativa</span> en tu smartphone. 
+        Tendrás acceso a todo mi contenido en cualquier momento, incluso sin conexión a internet.
+      </p>
+
+      <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4 text-xs text-slate-300 space-y-2">
+        <p class="font-semibold text-emerald-300">¿Qué es una PWA?</p>
+        <p>
+          Una <strong>Progressive Web App (PWA)</strong> es una aplicación web que funciona como una app nativa. 
+          Se instala directamente desde tu navegador sin necesidad de acceder a la App Store.
+        </p>
+        <ul class="list-disc list-inside space-y-1 mt-2">
+          <li>✅ Se instala en segundos desde tu navegador</li>
+          <li>✅ Funciona sin conexión a internet</li>
+          <li>✅ Ocupa muy poco espacio en tu dispositivo</li>
+          <li>✅ Acceso rápido como una app nativa</li>
+        </ul>
+      </div>
+
+      <div class="space-y-2">
+        <button id="pwa-install-btn"
+                class="w-full px-4 py-3 rounded-lg bg-emerald-400 text-slate-950 font-semibold text-sm hover:bg-emerald-300 transform hover:-translate-y-0.5 transition shadow-lg hover:shadow-xl">
+          📲 Instalar ICDATA
+        </button>
+        <p class="text-[0.7rem] text-slate-400 text-center">
+          Compatible con iOS, Android y navegadores de escritorio
+        </p>
+      </div>
+    </div>
+  </section>
+
   <footer class="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
     © <span id="year"></span> icdata · Iván Calero
     <span id="footer-tagline" class="block mt-1 text-[0.65rem] text-slate-600">
@@ -586,5 +642,6 @@
   </button>
 
   <script src="main.js"></script>
+  <script src="pwa.js"></script>
 </body>
 </html>
