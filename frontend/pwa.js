@@ -20,12 +20,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
   console.log('Evento beforeinstallprompt capturado');
   event.preventDefault();
   deferredPrompt = event;
-  
-  // Mostrar botón de instalar
-  const installBtn = document.getElementById('pwa-install-btn');
-  if (installBtn) {
-    installBtn.style.display = 'block';
-  }
+  console.log('PWA lista para instalar');
 });
 
 // Manejar clic en botón de instalar
@@ -33,10 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const installBtn = document.getElementById('pwa-install-btn');
   
   if (installBtn) {
-    // Ocultar el botón por defecto (solo mostrar si está disponible)
-    installBtn.style.display = 'none';
-    
     installBtn.addEventListener('click', async () => {
+      console.log('Clic en botón instalar. deferredPrompt:', deferredPrompt ? 'disponible' : 'no disponible');
+      
       if (deferredPrompt) {
         // Mostrar el diálogo de instalación nativa
         deferredPrompt.prompt();
@@ -47,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Limpiar la referencia
         deferredPrompt = null;
-        
-        // Ocultar el botón después de intentar instalar
-        installBtn.style.display = 'none';
         
         // Mostrar mensaje de éxito
         if (outcome === 'accepted') {

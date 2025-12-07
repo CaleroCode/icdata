@@ -106,6 +106,13 @@ html::-webkit-scrollbar-thumb:hover {
   scroll-margin-top: 6rem;
 }
 
+/* Botón de instalación PWA */
+#pwa-install-btn {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* Wrapper de la foto del hero */
 .hero-photo-wrapper {
   position: relative;
