@@ -431,7 +431,7 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .theme-panel-container {
-  display: none;
+  display: block;
   position: absolute;
   right: 0;
   top: 100%;
@@ -443,6 +443,10 @@ html::-webkit-scrollbar-thumb:hover {
   z-index: 50;
   width: 16rem;
   box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
+}
+
+.theme-panel-container.hidden {
+  display: none;
 }
 
 .theme-panel-title {
