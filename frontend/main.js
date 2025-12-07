@@ -896,6 +896,172 @@ async function loadNotes() {
     const notes = await res.json();
 
     container.innerHTML = "";
+
+    // Nota sobre PWA (agregada localmente)
+    const pwaNoteCard = document.createElement("article");
+    pwaNoteCard.className =
+      "bg-gradient-to-br from-emerald-900/30 to-slate-900 border-2 border-emerald-400/50 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-emerald-300 transition";
+
+    const pwaContent = currentLang === "en"
+      ? {
+          title: "Learning PWA! 🚀",
+          summary: "Understanding Progressive Web Apps, Service Workers, and offline-first architecture",
+          fullText: `# Learning PWA! 🚀
+
+Progressive Web Apps (PWAs) are web applications that work like native apps. During this learning journey, I've implemented:
+
+## What is a PWA?
+A Progressive Web App combines the best features of web and native applications:
+- **Installation**: Installs directly from the browser without App Store
+- **Offline**: Works without internet connection using Service Workers
+- **Fast**: Cached assets load instantly
+- **Native feel**: Appears as a native app on your device
+
+## Technologies Used
+
+### 1. **manifest.json**
+The PWA manifest file defines:
+- App name, description, and icons
+- Theme colors and start URL
+- Display mode (standalone, fullscreen, etc.)
+- App shortcuts and categories
+
+### 2. **Service Worker (sw.js)**
+A JavaScript worker that runs in the background:
+- **Intercepts network requests** and caches assets
+- **Network-first strategy**: Try network, fallback to cache
+- **Offline support**: Serves cached content when offline
+- **Auto-updates**: Cleans up old cache versions
+
+### 3. **beforeinstallprompt API**
+Handles the native installation prompt:
+- Captures the browser's install event
+- Shows custom install button
+- Tracks installation success
+- Provides fallback instructions for iOS
+
+### 4. **Dynamic Theming**
+The app maintains color preferences across installation:
+- HSL-based color system (Hue, Saturation, Brightness)
+- localStorage persistence
+- Slider customization that works in installed app
+
+## Key Learnings
+
+✅ **Intersection Observer** for lazy loading (don't waste resources)
+✅ **Service Worker caching strategies** (network-first for API, cache-first for assets)
+✅ **HSL color manipulation** (more flexible than hex colors)
+✅ **localStorage validation** (prevent broken states from persisting)
+✅ **Manifest best practices** (icons, screenshots, colors matter)
+✅ **iOS PWA limitations** (no install prompt, manual "Add to Home Screen")
+
+## Browser Support
+- ✅ Chrome/Edge: Full PWA support
+- ✅ Firefox: Service Worker + Installation
+- ✅ Safari: Limited (no install prompt, but works as web app)
+- ✅ Android Chrome: Full support
+
+## Benefits Implemented
+1. **No App Store**: Users install directly from browser
+2. **Smaller than native apps**: ~100KB vs 50-200MB native apps
+3. **Instant updates**: No need to wait for app store approval
+4. **Works offline**: Critical content cached locally
+5. **Icon on home screen**: Feels like a native app
+
+The ICDATA portfolio is now a fully functional PWA that can be installed on any device! 📱💻`
+        }
+      : {
+          title: "¡Aprendiendo PWA! 🚀",
+          summary: "Entendiendo Progressive Web Apps, Service Workers y arquitectura offline-first",
+          fullText: `# ¡Aprendiendo PWA! 🚀
+
+Las Progressive Web Apps (PWAs) son aplicaciones web que funcionan como apps nativas. Durante este aprendizaje, he implementado:
+
+## ¿Qué es una PWA?
+Una Progressive Web App combina las mejores características de aplicaciones web y nativas:
+- **Instalación**: Se instala directamente desde el navegador sin App Store
+- **Offline**: Funciona sin conexión a internet usando Service Workers
+- **Rápida**: Los assets cacheados cargan al instante
+- **Sensación nativa**: Aparece como una app nativa en tu dispositivo
+
+## Tecnologías Utilizadas
+
+### 1. **manifest.json**
+El archivo manifest define:
+- Nombre, descripción e iconos de la app
+- Colores del tema y URL de inicio
+- Modo de visualización (standalone, fullscreen, etc.)
+- Accesos rápidos y categorías
+
+### 2. **Service Worker (sw.js)**
+Un JavaScript worker que corre en segundo plano:
+- **Intercepta solicitudes de red** y cachea assets
+- **Estrategia network-first**: Intenta red, cae a cache
+- **Soporte offline**: Sirve contenido cacheado sin conexión
+- **Auto-actualizaciones**: Limpia versiones antiguas del cache
+
+### 3. **API beforeinstallprompt**
+Maneja el diálogo nativo de instalación:
+- Captura el evento de instalación del navegador
+- Muestra botón de instalación personalizado
+- Rastrea el éxito de la instalación
+- Proporciona instrucciones alternativas para iOS
+
+### 4. **Temas Dinámicos**
+La app mantiene preferencias de color después de instalar:
+- Sistema de color basado en HSL (Tonalidad, Saturación, Brillo)
+- Persistencia en localStorage
+- Personalización con sliders que funciona en app instalada
+
+## Aprendizajes Clave
+
+✅ **Intersection Observer** para lazy loading (no desperdiciar recursos)
+✅ **Estrategias de caching en Service Worker** (network-first para API, cache-first para assets)
+✅ **Manipulación de colores HSL** (más flexible que colores hex)
+✅ **Validación de localStorage** (prevenir estados rotos que persistan)
+✅ **Mejores prácticas de manifest** (iconos, screenshots, colores importan)
+✅ **Limitaciones de PWA en iOS** (sin diálogo de instalación, "Agregar a pantalla de inicio" manual)
+
+## Compatibilidad con Navegadores
+- ✅ Chrome/Edge: Soporte completo de PWA
+- ✅ Firefox: Service Worker + Instalación
+- ✅ Safari: Limitado (sin diálogo de instalación, pero funciona como app web)
+- ✅ Android Chrome: Soporte completo
+
+## Beneficios Implementados
+1. **Sin App Store**: Los usuarios instalan directamente desde el navegador
+2. **Más pequeña que apps nativas**: ~100KB vs 50-200MB apps nativas
+3. **Actualizaciones instantáneas**: Sin esperar aprobación de app store
+4. **Funciona offline**: Contenido crítico cacheado localmente
+5. **Icono en pantalla de inicio**: Parece una app nativa
+
+¡El portafolio ICDATA ahora es una PWA completamente funcional que se puede instalar en cualquier dispositivo! 📱💻`
+        };
+
+    pwaNoteCard.innerHTML = `
+      <header class="mb-3">
+        <h3 class="text-sm font-semibold mb-1">${pwaContent.title}</h3>
+        <p class="text-xs text-slate-300">${pwaContent.summary}</p>
+      </header>
+      <p class="text-[0.7rem] text-emerald-300 mt-2 inline-flex items-center gap-1">
+        ${
+          currentLang === "en"
+            ? "Read full article ↗"
+            : "Leer artículo completo ↗"
+        }
+      </p>
+    `;
+
+    pwaNoteCard.addEventListener("click", () => {
+      openNoteModal({
+        title: pwaContent.title,
+        content: pwaContent.fullText
+      });
+    });
+
+    container.appendChild(pwaNoteCard);
+
+    // Resto de notas del backend
     notes.forEach((note) => {
       const card = document.createElement("article");
       card.className =
