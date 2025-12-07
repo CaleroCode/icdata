@@ -1,0 +1,16 @@
+{
+  "name": "icdata-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio de Iván Calero - Desarrollo web, fotografía y diseño visual",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i ./frontend/input.css -o ./frontend/styles-tw.css --watch",
+    "build": "tailwindcss -i ./frontend/input.css -o ./frontend/styles-tw.css --minify"
+  },
+  "keywords": ["portfolio", "tailwind", "fastapi"],
+  "author": "Iván Calero",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
