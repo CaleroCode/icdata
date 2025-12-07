@@ -661,6 +661,59 @@ html::-webkit-scrollbar-thumb:hover {
   border-radius: 0.25rem;
   appearance: none;
   cursor: pointer;
+  background: transparent;
+}
+
+/* Thumb para Chrome/Safari en móvil */
+.mobile-theme-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+.mobile-theme-slider-input::-webkit-slider-thumb:hover {
+  box-shadow: 0 2px 12px rgba(52, 211, 153, 0.5);
+}
+
+/* Track para Chrome/Safari en móvil */
+.mobile-theme-slider-input::-webkit-slider-runnable-track {
+  height: 0.375rem;
+  background: rgb(30, 41, 59);
+  border-radius: 0.25rem;
+}
+
+/* Thumb para Firefox en móvil */
+.mobile-theme-slider-input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #0f172a;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.2s ease;
+}
+
+.mobile-theme-slider-input::-moz-range-thumb:hover {
+  box-shadow: 0 2px 12px rgba(52, 211, 153, 0.5);
+}
+
+/* Track para Firefox en móvil */
+.mobile-theme-slider-input::-moz-range-track {
+  background: rgb(30, 41, 59);
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.mobile-theme-slider-input::-moz-range-progress {
+  background: transparent;
 }
 
 .mobile-theme-slider-value {
