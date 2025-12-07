@@ -1243,3 +1243,28 @@ html::-webkit-scrollbar-thumb:hover {
   line-height: 1.5;
   max-width: 100%;
 }
+
+/* Additional Semantic Wrappers */
+.theme-panel-wrapper {
+  position: relative;
+  margin-left: 0.75rem;
+}
+
+.card-content-wrapper {
+  margin-top: 0.5rem;
+}
+
+.section-links-wrapper {
+  margin-top: 0.5rem;
+  text-align: right;
+  font-size: 0.75rem;
+}
+
+.section-divider-wrapper {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 2.5rem;
+}
