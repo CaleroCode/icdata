@@ -1329,3 +1329,153 @@ html::-webkit-scrollbar-thumb:hover {
   padding-right: 1rem;
   margin-top: 2.5rem;
 }
+
+/* ============================================================================
+   PROYECTOS FEATURED LAYOUT (Dos columnas para EM-PULSE)
+   ============================================================================ */
+
+.projects-featured-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .projects-featured-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.projects-featured-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.projects-featured-left .card-tech-tags {
+  justify-content: center;
+}
+
+.card-presentation-note {
+  font-size: 0.8rem;
+  color: rgb(52, 211, 153);
+  font-style: italic;
+  text-align: center;
+  margin: 0.75rem 0 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+.projects-featured-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  min-height: 120px;
+}
+
+.projects-logo-img {
+  max-width: 140px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.2));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.projects-logo-img:hover {
+  filter: drop-shadow(0 0 15px rgba(52, 211, 153, 0.4));
+  transform: scale(1.05);
+}
+
+.projects-featured-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.05) 0%, rgba(52, 211, 153, 0) 100%);
+  border: 1px solid rgba(52, 211, 153, 0.1);
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .projects-featured-right {
+    padding: 1.5rem;
+  }
+}
+
+.projects-featured-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.projects-featured-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(52, 211, 153);
+  margin: 0;
+}
+
+.projects-featured-subtitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgb(226, 232, 240);
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+.projects-featured-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgb(203, 213, 225);
+  margin: 0;
+  text-align: justify;
+}
+
+.projects-featured-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projects-featured-list li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgb(203, 213, 225);
+  padding-left: 1.75rem;
+  position: relative;
+}
+
+.projects-featured-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: rgb(52, 211, 153);
+  font-weight: 600;
+}
+
+/* ============================================================================
+   OTROS PROYECTOS
+   ============================================================================ */
+
+.projects-other-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgb(30, 41, 59);
+}
+
+.projects-other-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(226, 232, 240);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
