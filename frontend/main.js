@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://icdata-api.onrender.com";
 
 // idioma actual - cargar del localStorage o usar español por defecto
 let currentLang = localStorage.getItem("language") || "es";

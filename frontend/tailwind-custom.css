@@ -142,7 +142,14 @@ html::-webkit-scrollbar-thumb:hover {
   border-radius: 9999px;
   object-fit: cover;
   opacity: 0.4;      /* ~40% */
-  pointer-events: none; /* para que no moleste al seleccionar texto */
+  pointer-events: auto;
+  transition: opacity 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-float-img:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 16px rgba(52, 211, 153, 0.8));
 }
 
 /* --- Línea divisoria entre secciones --- */
