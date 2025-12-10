@@ -57,25 +57,20 @@
       id="nav-desktop"
       class="nav-desktop"
     >
-      <a id="nav-icdata"
-         href="#pwa-install"
-         class="nav-link-active">
-        ICDATA
-      </a>
       <a id="nav-about"
          href="#about"
          class="nav-link">
         Sobre mí
       </a>
-      <a id="nav-github"
-         href="#github"
-         class="nav-link">
-        GitHub
-      </a>
       <a id="nav-projects"
          href="#projects-highlight"
          class="nav-link">
         Proyectos
+      </a>
+      <a id="nav-github"
+         href="#github"
+         class="nav-link">
+        GitHub
       </a>
       <a id="nav-instagram"
          href="#instagram"
@@ -91,6 +86,11 @@
          href="#contact"
          class="nav-link">
         Contacto
+      </a>
+      <a id="nav-icdata"
+         href="#pwa-install"
+         class="nav-link-active">
+        ICDATA
       </a>
 
       <!-- Selector de idioma (desktop) -->
@@ -306,33 +306,6 @@
       <div class="section-divider mx-auto"></div>
     </div>
 
-    <!-- GitHub -->
-    <section id="github" class="section-full">
-      <div class="section-header-flex">
-        <h2 id="github-title" class="section-title">Proyectos destacados de GitHub</h2>
-        <span id="github-subtitle" class="section-subtitle">Datos servidos por el backend en Python</span>
-      </div>
-
-      <div id="github-repos" class="section-grid">
-        <!-- tarjetas de repos aquí -->
-      </div>
-
-      <div class="section-links-wrapper">
-        <a id="all-repos-link"
-           href="#"
-           target="_blank"
-           class="card-link">
-          Ver todos los repos en GitHub
-          <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Línea divisoria -->
-    <div class="divider-line">
-      <div class="section-divider mx-auto"></div>
-    </div>
-
     <!-- Proyectos destacados -->
     <section id="projects-highlight" class="max-w-5xl mx-auto mt-12 space-y-6">
       <div class="section-header-flex">
@@ -434,6 +407,39 @@
           </div>
         </article>
       </div>
+      <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+        <a href="#about" class="scroll-to-link" style="color: rgb(52, 211, 153); text-decoration: none; font-size: 1.5rem;" title="Volver arriba">↑</a>
+      </div>
+    </section>
+
+    <!-- Línea divisoria -->
+    <div class="divider-line">
+      <div class="section-divider mx-auto"></div>
+    </div>
+
+    <!-- GitHub -->
+    <section id="github" class="section-full">
+      <div class="section-header-flex">
+        <h2 id="github-title" class="section-title">Proyectos destacados de GitHub</h2>
+        <span id="github-subtitle" class="section-subtitle">Datos servidos por el backend en Python</span>
+      </div>
+
+      <div id="github-repos" class="section-grid">
+        <!-- tarjetas de repos aquí -->
+      </div>
+
+      <div class="section-links-wrapper">
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 2rem;">
+          <a id="all-repos-link"
+             href="#"
+             target="_blank"
+             class="card-link">
+            Ver todos los repos en GitHub
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a href="#about" class="scroll-to-link" style="color: rgb(52, 211, 153); text-decoration: none; font-size: 1.5rem;" title="Volver arriba">↑</a>
+        </div>
+      </div>
     </section>
 
     <!-- Línea divisoria -->
@@ -453,13 +459,16 @@
       </div>
 
       <div class="section-links-wrapper">
-        <a id="instagram-link-more"
-           href="#"
-           target="_blank"
-           class="card-link">
-          Ver más fotos en Instagram
-          <span aria-hidden="true">↗</span>
-        </a>
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 2rem;">
+          <a id="instagram-link-more"
+             href="#"
+             target="_blank"
+             class="card-link">
+            Ver más fotos en Instagram
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a href="#about" class="scroll-to-link" style="color: rgb(52, 211, 153); text-decoration: none; font-size: 1.5rem;" title="Volver arriba">↑</a>
+        </div>
       </div>
     </section>
   </main>
@@ -532,6 +541,9 @@
 
     <div id="notes-list" class="section-grid">
       <!-- Las tarjetas se rellenan desde JS -->
+    </div>
+    <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+      <a href="#about" class="scroll-to-link" style="color: rgb(52, 211, 153); text-decoration: none; font-size: 1.5rem;" title="Volver arriba">↑</a>
     </div>
   </section>
 
