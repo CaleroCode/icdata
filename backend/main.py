@@ -468,62 +468,107 @@ async def get_github_repos():
 
 
 # ---------- INSTAGRAM FOTOS ----------
+# Instagram photo captions translations
+PHOTO_CAPTIONS = {
+    1: {
+        "es": "De mis fotos favoritas. Me llevó muchos meses conseguir el encuadre y la luz perfectos para capturar este mágico momento ¡La paciencia y la perseverancia siempre dan sus frutos! Gracias a la distancia del 600mm f4 de Canon, pude poner el hide a varios metros y mantener una distancia de seguridad suficiente.",
+        "en": "One of my favorite photos. It took me many months to achieve the perfect framing and lighting to capture this magical moment. Patience and perseverance always pay off! Thanks to the range of my Canon 600mm f4, I was able to place the hide several meters away and maintain a safe distance.",
+    },
+    2: {
+        "es": "Un hermoso ejemplar, con la cornamenta en plena fase de crecimiento. Los ciervos son animales impresionantes, y fotografiarlos en su hábitat natural es una experiencia única que siempre me llena de emoción. El lugar, en uno de mis rincones favoritos del Parque Natural de Redes (Principado de Asturias), ayuda a que el encuadre sea genial.",
+        "en": "A beautiful specimen with antlers in full growth phase. Deer are impressive animals, and photographing them in their natural habitat is a unique experience that always fills me with emotion. The location, in one of my favorite corners of the Redes Natural Park (Asturias), helps create an excellent composition.",
+    },
+    11: {
+        "es": "Fotografía realizada gracias a un hide casero en el medio del río, poniendo carnaza (eliminada mediante las herramientas de Adobe Photoshop) y esperando pacientemente a que se decidiera a ponerse en una posición fotogénica. El agua en primer plano, el valle detrás de él y la gran montaña en el fondo ayudan a crear una fotografía que, personalmente, forma parte de mis Top10 mejores fotografías.",
+        "en": "Photo taken from a homemade hide in the middle of the river, using bait (removed with Adobe Photoshop tools) and patiently waiting for the right moment. The water in the foreground, the valley behind and the large mountain in the background help create a photograph that is personally part of my Top 10 best photos.",
+    },
+    3: {
+        "es": "Lugar emblemático del Principado de Asturias, lugar católico de visita obligada. Se trata de la Cueva Santa, situada cerca de la Basílica de Santa María la Real de Covadonga. Fotografía con un gran angular,jugando con la velocidad de obturación para conseguir ese tan precioso efecto seda en la cascada.",
+        "en": "An emblematic location in Asturias and a must-visit Catholic site. This is the Holy Cave, located near the Basilica of Santa María la Real de Covadonga. Shot with a wide-angle lens, playing with shutter speed to achieve that precious silk effect on the waterfall.",
+    },
+    4: {
+        "es": "Enero de 2021, en plena tormenta Filomena. Esta preciosa cierva y un servidor, bajo la enorme ventisca, compartimos un momento bellísimo cuando me miró fíjamente y tuve la oportunidad para capturar esta imagen. La nieve cayendo, el viento y el frío no fueron impedimento para que esta fotografía formara parte de mis favoritas.",
+        "en": "January 2021, in the midst of Storm Filomena. This beautiful doe and I shared a beautiful moment in the enormous blizzard when she looked directly at me and I had the chance to capture this image. Falling snow, wind and cold did not prevent this photo from becoming one of my favorites.",
+    },
+    5: {
+        "es": "Trabajo realizado gracias a un maestro de la cetrería. La luz y la composición están estudiadas, con un par de flashes en un estudio fotografíco. Se consiguió crear una luz suave y envolvente, que resalta los detalles del ave y crea un ambiente dramático.",
+        "en": "Work done thanks to a master of falconry. The light and composition are carefully studied, with a pair of flashes in a photo studio. A soft, enveloping light was achieved, highlighting the details of the bird and creating a dramatic atmosphere.",
+    },
+    6: {
+        "es": "Un gamo, en la Sierra del Sueve (Principado de Asturias). Fotografía realizada a ras de suelo, con un tumbing hide, con un 300mm de tamron. La luz suave del amanecer, el entorno natural y la posición del animal hacen que esta fotografía sea de las que más he vendido.",
+        "en": "A fallow deer in the Sierra del Sueve (Asturias). Photo taken at ground level with a tumbing hide and a 300mm Tamron lens. The soft light of dawn, the natural environment and the animal's position make this one of my best-selling photographs.",
+    },
+    7: {
+        "es": "Un precioso zorro rojo (Vulpes vulpes), fotografiado en plena naturaleza, en el Parque Natural de Somiedo (Principado de Asturias). La bonita nevada hace de la escena un entorno mágico, y el zorro, con su pelaje espeso y su mirada curiosa, añade un toque de vida y dinamismo a la imagen.",
+        "en": "A beautiful red fox (Vulpes vulpes), photographed in the wild at the Somiedo Natural Park (Asturias). The lovely snowfall makes the scene a magical setting, and the fox, with its thick fur and curious gaze, adds a touch of life and dynamism to the image.",
+    },
+    8: {
+        "es": "¿Qué es más hermoso que disfrutar de la compañía de una madre protectora con sus cachorros? Una de las zonas oseras más importantes del Principado de Asturias, ofrece escenas tan magníficas e impactantes como ésta.",
+        "en": "What is more beautiful than enjoying the company of a protective mother with her cubs? One of the most important bear zones in Asturias offers scenes as magnificent and striking as this one.",
+    },
+    9: {
+        "es": "El Rey. Sin duda mi favorita (hablando de fotografías de osos). La fuerza, la majestuosidad y la presencia de este ejemplar adulto de oso pardo (Ursus arctos) son impresionantes. La luz suave del amanecer resalta los detalles de su pelaje y crea un ambiente mágico alrededor de este magnífico animal.",
+        "en": "The King. Undoubtedly my favorite (speaking of bear photographs). The strength, majesty and presence of this adult brown bear specimen (Ursus arctos) are impressive. The soft light of dawn highlights the details of its fur and creates a magical atmosphere around this magnificent animal.",
+    },
+    10: {
+        "es": "Uno de mis animales favoritos. Con esa majestuosidad, ese porte, esa cornamenta imponente... El ciervo es sin duda uno de los animales más bellos y emblemáticos de la fauna europea. Fotografía realizada en el Parque Natural de Redes (Principado de Asturias), en plena época de berrea.",
+        "en": "One of my favorite animals. With that majesty, that bearing, that imposing antlers... The deer is undoubtedly one of the most beautiful and emblematic animals of European fauna. Photo taken at the Redes Natural Park (Asturias), during the rutting season.",
+    },
+}
+
+
 @app.get("/api/instagram-photos")
-def get_instagram_photos():
-    return [
+def get_instagram_photos(lang: str = "es"):
+    photos = [
         {
             "id": 1,
             "image_url": "assets/instagram/foto1.jpg",
-            "caption": "De mis fotos favoritas. Me llevó muchos meses conseguir el encuadre y la luz perfectos para capturar este mágico momento ¡La paciencia y la perseverancia siempre dan sus frutos! Gracias a la distancia del 600mm f4 de Canon, pude poner el hide a varios metros y mantener una distancia de seguridad suficiente.",
         },
         {
             "id": 2,
             "image_url": "assets/instagram/foto2.jpg",
-            "caption": "Un hermoso ejemplar, con la cornamenta en plena fase de crecimiento. Los ciervos son animales impresionantes, y fotografiarlos en su hábitat natural es una experiencia única que siempre me llena de emoción. El lugar, en uno de mis rincones favoritos del Parque Natural de Redes (Principado de Asturias), ayuda a que el encuadre sea genial.",
         },
         {
             "id": 11,
             "image_url": "assets/instagram/foto011.jpg",
-            "caption": "Fotografía realizada gracias a un hide casero en el medio del río, poniendo carnaza (eliminada mediante las herramientas de Adobe Photoshop) y esperando pacientemente a que se decidiera a ponerse en una posición fotogénica. El agua en primer plano, el valle detrás de él y la gran montaña en el fondo ayudan a crear una fotografía que, personalmente, forma parte de mis Top10 mejores fotografías.",
         },
         {
             "id": 3,
             "image_url": "assets/instagram/foto3.jpg",
-            "caption": "Lugar emblemático del Principado de Asturias, lugar católico de visita obligada. Se trata de la Cueva Santa, situada cerca de la Basílica de Santa María la Real de Covadonga. Fotografía con un gran angular,jugando con la velocidad de obturación para conseguir ese tan precioso efecto seda en la cascada.",
         },
         {
             "id": 4,
             "image_url": "assets/instagram/foto4.jpg",
-            "caption": "Enero de 2021, en plena tormenta Filomena. Esta preciosa cierva y un servidor, bajo la enorme ventisca, compartimos un momento bellísimo cuando me miró fíjamente y tuve la oportunidad para capturar esta imagen. La nieve cayendo, el viento y el frío no fueron impedimento para que esta fotografía formara parte de mis favoritas.",
         },
         {
             "id": 5,
             "image_url": "assets/instagram/foto5.jpg",
-            "caption": "Trabajo realizado gracias a un maestro de la cetrería. La luz y la composición están estudiadas, con un par de flashes en un estudio fotografíco. Se consiguió crear una luz suave y envolvente, que resalta los detalles del ave y crea un ambiente dramático.",
         },
         {
             "id": 6,
             "image_url": "assets/instagram/foto6.jpg",
-            "caption": "Un gamo, en la Sierra del Sueve (Principado de Asturias). Fotografía realizada a ras de suelo, con un tumbing hide, con un 300mm de tamron. La luz suave del amanecer, el entorno natural y la posición del animal hacen que esta fotografía sea de las que más he vendido.",
         },
         {
             "id": 7,
             "image_url": "assets/instagram/foto7.jpg",
-            "caption": "Un precioso zorro rojo (Vulpes vulpes), fotografiado en plena naturaleza, en el Parque Natural de Somiedo (Principado de Asturias). La bonita nevada hace de la escena un entorno mágico, y el zorro, con su pelaje espeso y su mirada curiosa, añade un toque de vida y dinamismo a la imagen.",
         },
         {
             "id": 8,
             "image_url": "assets/instagram/foto8.jpg",
-            "caption": "¿Qué es más hermoso que disfrutar de la compañía de una madre protectora con sus cachorros? Una de las zonas oseras más importantes del Principado de Asturias, ofrece escenas tan magníficas e impactantes como ésta.",
         },
         {
             "id": 9,
             "image_url": "assets/instagram/foto9.jpg",
-            "caption": "El Rey. Sin duda mi favorita (hablando de fotografías de osos). La fuerza, la majestuosidad y la presencia de este ejemplar adulto de oso pardo (Ursus arctos) son impresionantes. La luz suave del amanecer resalta los detalles de su pelaje y crea un ambiente mágico alrededor de este magnífico animal.",
         },
         {
             "id": 10,
             "image_url": "assets/instagram/foto010.jpg",
-            "caption": "Uno de mis animales favoritos. Con esa majestuosidad, ese porte, esa cornamenta imponente... El ciervo es sin duda uno de los animales más bellos y emblemáticos de la fauna europea. Fotografía realizada en el Parque Natural de Redes (Principado de Asturias), en plena época de berrea.",
         },
     ]
+    
+    # Add captions in the requested language
+    lang = lang if lang in ["es", "en"] else "es"
+    for photo in photos:
+        photo["caption"] = PHOTO_CAPTIONS.get(photo["id"], {}).get(lang, "")
+    
+    return photos

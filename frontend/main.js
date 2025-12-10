@@ -1,7 +1,7 @@
 const API_BASE = "https://icdata-api.onrender.com";
 
-// idioma actual
-let currentLang = "es";
+// idioma actual - cargar del localStorage o usar español por defecto
+let currentLang = localStorage.getItem("language") || "es";
 
 // Variables del tema personalizado
 let themeSettings = {
@@ -121,15 +121,24 @@ const TRANSLATIONS = {
     nav_notes: "Notas",
     nav_contact: "Contacto",
 
-    github_title: "Proyectos destacados de GitHub",
+    github_title: "Otros proyectos en mi GitHub",
     github_subtitle: "Datos servidos por el backend en Python",
 
     projects_title: "Proyectos destacados",
     projects_subtitle: "Un poco más de contexto sobre lo que construyo",
 
+    featured_em_pulse_title: "¿Qué es EM-PULSE?",
+    featured_em_pulse_desc: "EM-PULSE es una plataforma web integral creada con el propósito de sensibilizar y educar sobre la esclerosis múltiple, una enfermedad que afecta a millones de personas alrededor del mundo.",
+    featured_em_pulse_objective_title: "Mi objetivo",
+    featured_em_pulse_objective_desc: "Ayudar a familiares, amigos y el entorno cercano de las personas diagnosticadas con EM a entender mejor los síntomas, los desafíos diarios y las realidades de vivir con esta condición. La empatía y la comprensión son clave para una mejor calidad de vida.",
+    featured_em_pulse_learned_title: "Lo que aprendí",
+    featured_em_pulse_conclusion: "Este proyecto fue fundamental en mi formación como desarrollador full stack, demostrando que la tecnología puede ser una herramienta poderosa para el bien social.",
+    featured_em_pulse_presentation: "La presentación del proyecto se realizará en Enero 2026",
+
     instagram_title: "Fotografía & visual",
     instagram_subtitle:
       "¡Puedes ver todas mis fotografías en Instagram!",
+    instagram_view_post: "Ver en Instagram ↗",
 
     notes_title: "Notas",
     notes_subtitle: "Pequeños resúmenes de lo que voy aprendiendo",
@@ -145,6 +154,29 @@ const TRANSLATIONS = {
   
 
     footer_tagline: "Hecho con FastAPI, TailwindCSS y mucho café ☕",
+    
+    // Captions de fotos de Instagram
+    photo_1_caption: "De mis fotos favoritas. Me llevó muchos meses conseguir el encuadre y la luz perfectos para capturar este mágico momento ¡La paciencia y la perseverancia siempre dan sus frutos! Gracias a la distancia del 600mm f4 de Canon, pude poner el hide a varios metros y mantener una distancia de seguridad suficiente.",
+    photo_2_caption: "Un hermoso ejemplar, con la cornamenta en plena fase de crecimiento. Los ciervos son animales impresionantes, y fotografiarlos en su hábitat natural es una experiencia única que siempre me llena de emoción. El lugar, en uno de mis rincones favoritos del Parque Natural de Redes (Principado de Asturias), ayuda a que el encuadre sea genial.",
+    photo_11_caption: "Fotografía realizada gracias a un hide casero en el medio del río, poniendo carnaza (eliminada mediante las herramientas de Adobe Photoshop) y esperando pacientemente a que se decidiera a ponerse en una posición fotogénica. El agua en primer plano, el valle detrás de él y la gran montaña en el fondo ayudan a crear una fotografía que, personalmente, forma parte de mis Top10 mejores fotografías.",
+    photo_3_caption: "Lugar emblemático del Principado de Asturias, lugar católico de visita obligada. Se trata de la Cueva Santa, situada cerca de la Basílica de Santa María la Real de Covadonga. Fotografía con un gran angular, jugando con la velocidad de obturación para conseguir ese tan precioso efecto seda en la cascada.",
+    photo_4_caption: "Enero de 2021, en plena tormenta Filomena. Esta preciosa cierva y un servidor, bajo la enorme ventisca, compartimos un momento bellísimo cuando me miró fíjamente y tuve la oportunidad para capturar esta imagen. La nieve cayendo, el viento y el frío no fueron impedimento para que esta fotografía formara parte de mis favoritas.",
+    photo_5_caption: "Trabajo realizado gracias a un maestro de la cetrería. La luz y la composición están estudiadas, con un par de flashes en un estudio fotografíco. Se consiguió crear una luz suave y envolvente, que resalta los detalles del ave y crea un ambiente dramático.",
+    photo_6_caption: "Un gamo, en la Sierra del Sueve (Principado de Asturias). Fotografía realizada a ras de suelo, con un tumbing hide, con un 300mm de tamron. La luz suave del amanecer, el entorno natural y la posición del animal hacen que esta fotografía sea de las que más he vendido.",
+    photo_7_caption: "Un precioso zorro rojo (Vulpes vulpes), fotografiado en plena naturaleza, en el Parque Natural de Somiedo (Principado de Asturias). La bonita nevada hace de la escena un entorno mágico, y el zorro, con su pelaje espeso y su mirada curiosa, añade un toque de vida y dinamismo a la imagen.",
+    photo_8_caption: "¿Qué es más hermoso que disfrutar de la compañía de una madre protectora con sus cachorros? Una de las zonas oseras más importantes del Principado de Asturias, ofrece escenas tan magníficas e impactantes como ésta.",
+    photo_9_caption: "El Rey. Sin duda mi favorita (hablando de fotografías de osos). La fuerza, la majestuosidad y la presencia de este ejemplar adulto de oso pardo (Ursus arctos) son impresionantes. La luz suave del amanecer resalta los detalles de su pelaje y crea un ambiente mágico alrededor de este magnífico animal.",
+    photo_10_caption: "Uno de mis animales favoritos. Con esa majestuosidad, ese porte, esa cornamenta imponente... El ciervo es sin duda uno de los animales más bellos y emblemáticos de la fauna europea. Fotografía realizada en el Parque Natural de Redes (Principado de Asturias), en plena época de berrea.",
+    
+    // PWA ICDATA
+    pwa_description: "Descarga mi portafolio como una aplicación nativa en tu smartphone. Tendrás acceso a todo mi contenido en cualquier momento, incluso sin conexión a internet.",
+    pwa_info_title: "¿Qué es una PWA?",
+    pwa_info_desc: "Una Progressive Web App (PWA) es una aplicación web que funciona como una app nativa. Se instala directamente desde tu navegador sin necesidad de acceder a la App Store.",
+    pwa_info_item_1: "✅ Se instala en segundos desde tu navegador",
+    pwa_info_item_2: "✅ Funciona sin conexión a internet",
+    pwa_info_item_3: "✅ Ocupa muy poco espacio en tu dispositivo",
+    pwa_info_item_4: "✅ Acceso rápido como una app nativa",
+    pwa_disclaimer: "Funciona sin conexión • Acceso rápido • Compatible iOS, Android y navegadores",
   },
   en: {
     hero_tagline: "professional portfolio",
@@ -158,14 +190,23 @@ const TRANSLATIONS = {
     nav_notes: "Notes",
     nav_contact: "Contact",
 
-    github_title: "Featured GitHub projects",
+    github_title: "Other projects on my GitHub",
     github_subtitle: "Data served by the Python backend",
 
     projects_title: "Featured projects",
     projects_subtitle: "A bit more context about what I build",
 
+    featured_em_pulse_title: "What is EM-PULSE?",
+    featured_em_pulse_desc: "EM-PULSE is a comprehensive web platform created to raise awareness and educate about multiple sclerosis, a disease that affects millions of people around the world.",
+    featured_em_pulse_objective_title: "My goal",
+    featured_em_pulse_objective_desc: "To help family, friends and the close environment of people diagnosed with MS better understand the symptoms, daily challenges and realities of living with this condition. Empathy and understanding are key to a better quality of life.",
+    featured_em_pulse_learned_title: "What I learned",
+    featured_em_pulse_conclusion: "This project was fundamental in my training as a full stack developer, demonstrating that technology can be a powerful tool for social good.",
+    featured_em_pulse_presentation: "The project will be presented in January 2026",
+
     instagram_title: "Photography & visual",
     instagram_subtitle: "A bit of what I see when I'm not coding",
+    instagram_view_post: "View on Instagram ↗",
 
     notes_title: "Notes",
     notes_subtitle: "Short summaries of what I'm learning",
@@ -180,6 +221,29 @@ const TRANSLATIONS = {
     contact_btn_cv: "Download CV (PDF)",
 
     footer_tagline: "Made with FastAPI, TailwindCSS and a lot of coffee ☕",
+    
+    // Photo captions
+    photo_1_caption: "One of my favorite photos. It took me many months to achieve the perfect framing and lighting to capture this magical moment. Patience and perseverance always pay off! Thanks to the range of my Canon 600mm f4, I was able to place the hide several meters away and maintain a safe distance.",
+    photo_2_caption: "A beautiful specimen with antlers in full growth phase. Deer are impressive animals, and photographing them in their natural habitat is a unique experience that always fills me with emotion. The location, in one of my favorite corners of the Redes Natural Park (Asturias), helps create an excellent composition.",
+    photo_11_caption: "Photo taken from a homemade hide in the middle of the river, using bait (removed with Adobe Photoshop tools) and patiently waiting for the right moment. The water in the foreground, the valley behind and the large mountain in the background help create a photograph that is personally part of my Top 10 best photos.",
+    photo_3_caption: "An emblematic location in Asturias and a must-visit Catholic site. This is the Holy Cave, located near the Basilica of Santa María la Real de Covadonga. Shot with a wide-angle lens, playing with shutter speed to achieve that precious silk effect on the waterfall.",
+    photo_4_caption: "January 2021, in the midst of Storm Filomena. This beautiful doe and I shared a beautiful moment in the enormous blizzard when she looked directly at me and I had the chance to capture this image. Falling snow, wind and cold did not prevent this photo from becoming one of my favorites.",
+    photo_5_caption: "Work done thanks to a master of falconry. The light and composition are carefully studied, with a pair of flashes in a photo studio. A soft, enveloping light was achieved, highlighting the details of the bird and creating a dramatic atmosphere.",
+    photo_6_caption: "A fallow deer in the Sierra del Sueve (Asturias). Photo taken at ground level with a tumbing hide and a 300mm Tamron lens. The soft light of dawn, the natural environment and the animal's position make this one of my best-selling photographs.",
+    photo_7_caption: "A beautiful red fox (Vulpes vulpes), photographed in the wild at the Somiedo Natural Park (Asturias). The lovely snowfall makes the scene a magical setting, and the fox, with its thick fur and curious gaze, adds a touch of life and dynamism to the image.",
+    photo_8_caption: "What is more beautiful than enjoying the company of a protective mother with her cubs? One of the most important bear zones in Asturias offers scenes as magnificent and striking as this one.",
+    photo_9_caption: "The King. Undoubtedly my favorite (speaking of bear photographs). The strength, majesty and presence of this adult brown bear specimen (Ursus arctos) are impressive. The soft light of dawn highlights the details of its fur and creates a magical atmosphere around this magnificent animal.",
+    photo_10_caption: "One of my favorite animals. With that majesty, that bearing, that imposing antlers... The deer is undoubtedly one of the most beautiful and emblematic animals of European fauna. Photo taken at the Redes Natural Park (Asturias), during the rutting season.",
+    
+    // PWA ICDATA
+    pwa_description: "Download my portfolio as a native application on your smartphone. You'll have access to all my content at any time, even without internet connection.",
+    pwa_info_title: "What is a PWA?",
+    pwa_info_desc: "A Progressive Web App (PWA) is a web application that works like a native app. It installs directly from your browser without needing to access the App Store.",
+    pwa_info_item_1: "✅ Installs in seconds from your browser",
+    pwa_info_item_2: "✅ Works without internet connection",
+    pwa_info_item_3: "✅ Takes up very little space on your device",
+    pwa_info_item_4: "✅ Quick access like a native app",
+    pwa_disclaimer: "Works offline • Fast access • Compatible iOS, Android and browsers",
   },
 };
 
@@ -210,6 +274,14 @@ function applyTranslations() {
     "projects-title": "projects_title",
     "projects-subtitle": "projects_subtitle",
 
+    "featured-em-pulse-title": "featured_em_pulse_title",
+    "featured-em-pulse-desc": "featured_em_pulse_desc",
+    "featured-em-pulse-objective-title": "featured_em_pulse_objective_title",
+    "featured-em-pulse-objective-desc": "featured_em_pulse_objective_desc",
+    "featured-em-pulse-learned-title": "featured_em_pulse_learned_title",
+    "featured-em-pulse-conclusion": "featured_em_pulse_conclusion",
+    "featured-em-pulse-presentation": "featured_em_pulse_presentation",
+
     "instagram-title": "instagram_title",
     "instagram-subtitle": "instagram_subtitle",
 
@@ -225,6 +297,15 @@ function applyTranslations() {
     "contact-btn-cv": "contact_btn_cv",
 
     "footer-tagline": "footer_tagline",
+    
+    "pwa-description": "pwa_description",
+    "pwa-info-title": "pwa_info_title",
+    "pwa-info-desc": "pwa_info_desc",
+    "pwa-info-item-1": "pwa_info_item_1",
+    "pwa-info-item-2": "pwa_info_item_2",
+    "pwa-info-item-3": "pwa_info_item_3",
+    "pwa-info-item-4": "pwa_info_item_4",
+    "pwa-disclaimer": "pwa_disclaimer",
   };
 
   // Elementos que se actualizan con textContent
@@ -387,9 +468,14 @@ function setupLangSwitch() {
   function changeLang(lang) {
     if (currentLang === lang) return;
     currentLang = lang;
+    localStorage.setItem("language", lang);
     applyActiveStyles();
     applyTranslations();
     loadProfile();
+    
+    // Cerrar modales abiertos antes de recargar contenido
+    closeModal();
+    closeNoteModal();
     
     // Recargar secciones de lazy loading si ya fueron cargadas
     const notesSection = document.getElementById("notes");
@@ -397,8 +483,13 @@ function setupLangSwitch() {
       loadNotes();
     }
     
+    // Recargar fotos de Instagram si ya fueron cargadas
+    const instagramSection = document.getElementById("instagram-photos");
+    if (instagramSection && instagramSection.dataset.instagramLoaded) {
+      loadInstagramPhotos();
+    }
+    
     // GitHub no necesita recarga por idioma (es independiente del idioma)
-    // Instagram tampoco necesita recarga por idioma
   }
 
   esButtons.forEach((btn) =>
@@ -860,13 +951,30 @@ async function loadInstagramPhotos() {
   container.innerHTML =
     "<p class='text-xs text-slate-400'>Cargando fotos...</p>";
   try {
-    const res = await fetch(`${API_BASE}/api/instagram-photos`);
+    const res = await fetch(`${API_BASE}/api/instagram-photos?lang=${currentLang}`);
     if (!res.ok) {
       throw new Error(`Fotos: status ${res.status}`);
     }
     const photos = await res.json();
 
     container.innerHTML = "";
+    
+    // Mapeo de photo.id a clave de traducción
+    const captionKeyMap = {
+      1: "photo_1_caption",
+      2: "photo_2_caption",
+      11: "photo_11_caption",
+      3: "photo_3_caption",
+      4: "photo_4_caption",
+      5: "photo_5_caption",
+      6: "photo_6_caption",
+      7: "photo_7_caption",
+      8: "photo_8_caption",
+      9: "photo_9_caption",
+      10: "photo_10_caption",
+    };
+    
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS["es"];
 
     photos.forEach((photo) => {
       const card = document.createElement("div");
@@ -874,7 +982,9 @@ async function loadInstagramPhotos() {
         "bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-sm cursor-pointer";
 
       const hasPostUrl = photo.post_url;
-      const rawCaption = (photo.caption || "").trim();
+      // Obtener caption desde traducciones en lugar del backend
+      const captionKey = captionKeyMap[photo.id];
+      const rawCaption = (captionKey && t[captionKey]) ? t[captionKey] : (photo.caption || "").trim();
 
       // ---- SOLO 37 CARACTERES + [LEER MÁS] si hay más texto ----
       let preview = rawCaption;
@@ -904,7 +1014,7 @@ async function loadInstagramPhotos() {
               ? `<a href="${photo.post_url}" target="_blank"
                    onclick="event.stopPropagation()"
                    class="inline-flex items-center gap-1 text-[0.7rem] text-slate-400 hover:text-emerald-400 transition">
-                   Ver en Instagram ↗
+                   ${t.instagram_view_post}
                  </a>`
               : ""
           }
@@ -912,10 +1022,15 @@ async function loadInstagramPhotos() {
       `;
 
       const imgEl = card.querySelector("img");
-      card.addEventListener("click", () => openModal(photo, imgEl));
+      // Pasar el caption traducido al modal
+      const photoWithCaption = { ...photo, caption: rawCaption };
+      card.addEventListener("click", () => openModal(photoWithCaption, imgEl));
 
       container.appendChild(card);
     });
+
+    // Marcar que las fotos de Instagram han sido cargadas
+    container.dataset.instagramLoaded = "true";
   } catch (err) {
     console.error("Error cargando fotos", err);
     container.innerHTML =

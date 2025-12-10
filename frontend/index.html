@@ -38,7 +38,7 @@
 <header class="header-sticky">
   <div class="header-container">
     <!-- IZQUIERDA: logo + nombre -->
-    <div class="brand-wrapper">
+    <a href="#about" class="brand-wrapper brand-link">
       <div class="brand-icon">
         <img
           src="assets/instagram/principal.jpg"
@@ -47,7 +47,7 @@
         />
       </div>
       <span class="brand-text">icdata</span>
-    </div>
+    </a>
 
     <!-- ESPACIADOR PARA EMPUJAR NAV + HAMBURGUESA A LA DERECHA -->
     <div class="spacer"></div>
@@ -341,7 +341,7 @@
                 <span class="card-tech-tag">TailwindCSS</span>
                 <span class="card-tech-tag">IA Ollama</span>
               </div>
-              <p class="card-presentation-note">
+              <p id="featured-em-pulse-presentation" class="card-presentation-note">
                 La presentación del proyecto se realizará en Enero 2026
               </p>
             </div>
@@ -351,17 +351,17 @@
         <!-- Columna derecha: Descripción expandida -->
         <div class="projects-featured-right">
           <div class="projects-featured-content">
-            <h3 class="projects-featured-title">¿Qué es EM-PULSE?</h3>
-            <p class="projects-featured-text">
+            <h3 id="featured-em-pulse-title" class="projects-featured-title">¿Qué es EM-PULSE?</h3>
+            <p id="featured-em-pulse-desc" class="projects-featured-text">
               EM-PULSE es una plataforma web integral creada con el propósito de <span class="font-semibold text-emerald-300">sensibilizar y educar</span> sobre la esclerosis múltiple, una enfermedad que afecta a millones de personas alrededor del mundo.
             </p>
             
-            <h4 class="projects-featured-subtitle">Mi objetivo</h4>
-            <p class="projects-featured-text">
+            <h4 id="featured-em-pulse-objective-title" class="projects-featured-subtitle">Mi objetivo</h4>
+            <p id="featured-em-pulse-objective-desc" class="projects-featured-text">
               Ayudar a familiares, amigos y el entorno cercano de las personas diagnosticadas con EM a <span class="font-semibold text-emerald-300">entender mejor los síntomas, los desafíos diarios y las realidades</span> de vivir con esta condición. La empatía y la comprensión son clave para una mejor calidad de vida.
             </p>
 
-            <h4 class="projects-featured-subtitle">Lo que aprendí</h4>
+            <h4 id="featured-em-pulse-learned-title" class="projects-featured-subtitle">Lo que aprendí</h4>
             <ul class="projects-featured-list">
               <li>Integración completa de una arquitectura <span class="font-semibold">backend-frontend-database</span></li>
               <li>Desarrollo de APIs RESTful robustas con <span class="font-semibold">FastAPI</span></li>
@@ -376,7 +376,7 @@
               <li>Gestión de estados complejos y componentes reutilizables</li>
             </ul>
 
-            <p class="projects-featured-text">
+            <p id="featured-em-pulse-conclusion" class="projects-featured-text">
               Este proyecto fue fundamental en mi formación como desarrollador full stack, demostrando que la tecnología puede ser una <span class="font-semibold text-emerald-300">herramienta poderosa para el bien social</span>.
             </p>
           </div>
@@ -451,7 +451,7 @@
 
   <!-- Modal para fotos de Instagram -->
   <div id="photo-modal"
-       class="modal-overlay">
+       class="modal-overlay hidden">
     <div id="modal-content"
          class="modal-container">
       <button id="modal-close"
@@ -470,7 +470,7 @@
 
 <!-- Modal para artículos / notas -->
 <div id="note-modal"
-     class="modal-overlay">
+     class="modal-overlay hidden">
   <div
     class="note-modal-container"
   >
@@ -589,22 +589,22 @@
         <h2 class="pwa-title">ICDATA</h2>
       </div>
 
-      <p class="pwa-description">
+      <p class="pwa-description" id="pwa-description">
         Descarga mi portafolio como una <span class="font-semibold text-emerald-300">aplicación nativa</span> en tu smartphone. 
         Tendrás acceso a todo mi contenido en cualquier momento, incluso sin conexión a internet.
       </p>
 
       <div class="pwa-info-box">
-        <p class="pwa-info-title">¿Qué es una PWA?</p>
-        <p>
+        <p class="pwa-info-title" id="pwa-info-title">¿Qué es una PWA?</p>
+        <p id="pwa-info-desc">
           Una <strong>Progressive Web App (PWA)</strong> es una aplicación web que funciona como una app nativa. 
           Se instala directamente desde tu navegador sin necesidad de acceder a la App Store.
         </p>
-        <ul class="pwa-info-list">
-          <li>✅ Se instala en segundos desde tu navegador</li>
-          <li>✅ Funciona sin conexión a internet</li>
-          <li>✅ Ocupa muy poco espacio en tu dispositivo</li>
-          <li>✅ Acceso rápido como una app nativa</li>
+        <ul class="pwa-info-list" id="pwa-info-list">
+          <li id="pwa-info-item-1">✅ Se instala en segundos desde tu navegador</li>
+          <li id="pwa-info-item-2">✅ Funciona sin conexión a internet</li>
+          <li id="pwa-info-item-3">✅ Ocupa muy poco espacio en tu dispositivo</li>
+          <li id="pwa-info-item-4">✅ Acceso rápido como una app nativa</li>
         </ul>
       </div>
 
@@ -614,7 +614,7 @@
                 class="pwa-install-btn">
           📲 Instalar ICDATA como App
         </button>
-        <p class="pwa-disclaimer">
+        <p class="pwa-disclaimer" id="pwa-disclaimer">
           Funciona sin conexión • Acceso rápido • Compatible iOS, Android y navegadores
         </p>
       </div>
