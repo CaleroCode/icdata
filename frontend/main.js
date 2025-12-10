@@ -471,25 +471,25 @@ function setupLangSwitch() {
     localStorage.setItem("language", lang);
     applyActiveStyles();
     applyTranslations();
+    
+    // Recargar perfil (presentación/bio) que está visible desde el inicio
     loadProfile();
     
     // Cerrar modales abiertos antes de recargar contenido
     closeModal();
     closeNoteModal();
     
-    // Recargar secciones de lazy loading si ya fueron cargadas
-    const notesSection = document.getElementById("notes");
-    if (notesSection && notesSection.dataset.notesLoaded) {
-      loadNotes();
-    }
-    
-    // Recargar fotos de Instagram si ya fueron cargadas
-    const instagramSection = document.getElementById("instagram-photos");
+    // Recargar fotos de Instagram si ya fueron cargadas (tienen captions multiidioma)
+    const instagramSection = document.getElementById("instagram");
     if (instagramSection && instagramSection.dataset.instagramLoaded) {
       loadInstagramPhotos();
     }
     
-    // GitHub no necesita recarga por idioma (es independiente del idioma)
+    // Recargar notas si fueron cargadas
+    const notesSection = document.getElementById("notes");
+    if (notesSection && notesSection.dataset.notesLoaded) {
+      loadNotes();
+    }
   }
 
   esButtons.forEach((btn) =>
