@@ -84,6 +84,10 @@ def get_profile(lang: str = "es"):
             "Service Workers",
             "REST APIs",
         ],
+        "AI & Machine Learning": [
+            "IA PROPHET",
+            "IA OLLAMA",
+        ],
         "Design, 3D & Video": [
             "Adobe Photoshop",
             "Adobe Illustrator",
