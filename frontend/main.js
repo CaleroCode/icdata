@@ -177,6 +177,20 @@ const TRANSLATIONS = {
     pwa_info_item_3: "✅ Ocupa muy poco espacio en tu dispositivo",
     pwa_info_item_4: "✅ Acceso rápido como una app nativa",
     pwa_disclaimer: "Funciona sin conexión • Acceso rápido • Compatible iOS, Android y navegadores",
+    
+    // Biografía (rol + presentación personal)
+    profile_role: "Desarrollador full stack en progreso · Diseñador visual & fotógrafo de fauna",
+    profile_bio: "Soy un profesional creativo con amplia experiencia en el uso de la suite Adobe, especializado en Photoshop, After Effects, Premiere y Lightroom, herramientas con las que he desarrollado proyectos de diseño visual y edición. Mi trayectoria como fotógrafo de fauna salvaje me ha permitido perfeccionar mi mirada artística, la atención al detalle y la capacidad para contar historias a través de imágenes.\n\nCuento también con experiencia en funciones administrativas, lo que me ha dotado de habilidades organizativas, gestión de proyectos y trabajo en equipo. Durante los períodos en los que no ejercí funciones creativas, trabajé en el sector metal, experiencia que me permitió adquirir competencias para soportar la presión, manejar el estrés y gestionar el trabajo de forma eficiente.\n\nActualmente, estoy ampliando mis horizontes profesionales y tecnológicos al cursar un bootcamp para convertirme en desarrollador full stack, un camino que me permite unir mi perfil creativo con el mundo del desarrollo web y la programación. Mi objetivo es integrar mi experiencia visual con las soluciones digitales, creando proyectos que combinen diseño, funcionalidad y tecnología.",
+    
+    // Notas
+    note_aprendizajes_em_pulse_title: "Lo que aprendí haciendo EM-PULSE",
+    note_aprendizajes_em_pulse_content: "EM-PULSE nació como un proyecto técnico y terminó siendo también un proyecto humano.\n\n1. Empatía antes que código\nTrabajar con un tema como la esclerosis múltiple me obligó a pensar en cómo se siente la persona que usa la app y qué entiende de verdad.\n\n2. Accesibilidad básica\nIncluso en un proyecto pequeño empecé a cuidar contraste, tamaños de fuente y jerarquía visual.\n\n3. Lenguaje claro\nTuve que aprender a explicar conceptos médicos y técnicos de forma sencilla, sin perder rigor pero evitando abrumar.\n\n4. Menos pantallas, más intención\nDescubrí que muchas pantallas se podían simplificar si me preguntaba constantemente: \"¿Qué necesita realmente ver esta persona ahora mismo?\".\n\n5. Microcopys con cariño\nLos pequeños textos de feedback (\"guardado\", \"error\", \"vuelve cuando puedas\") también pueden acompañar emocionalmente al usuario.\n\n6. Diseño pensando en la fatiga\nLa esclerosis múltiple implica cansancio: tuve que tenerlo en cuenta al elegir tamaños, espaciados y evitar saturar de información.\n\n7. Backend con propósito\nFastAPI no era solo un stack de moda: necesitaba diseñar endpoints que respondieran a necesidades concretas del proyecto y no al revés.\n\n8. Datos como responsabilidad\nCualquier información relacionada con salud, aunque sea indirecta, hay que tratarla con más respeto y cuidado que un CRUD cualquiera.\n\n9. Documentar para el futuro yo\nDejar notas, diagramas y explicaciones me ahorró tiempo cuando retomé el proyecto semanas después.\n\n10. Mezclar tecnología y humanidad\nEl aprendizaje más grande fue entender que una buena app sobre salud no es solo código limpio, sino también sensibilidad y respeto hacia quienes la usan.",
+    
+    note_cosas_fastapi_title: "10 cosas que me hubiera gustado saber antes de usar FastAPI",
+    note_cosas_fastapi_content: "FastAPI me ha gustado mucho, pero hay varias cosas que habría agradecido saber antes.\n\n1. Empezar simple\nNo hace falta montar una arquitectura enorme para aprender. Un par de endpoints bien pensados enseñan muchísimo.\n\n2. Pydantic ayuda de verdad\nDefinir modelos desde el principio evita muchos errores de tipos y validaciones.\n\n3. CORS desde el inicio\nSi vas a tener un frontend aparte, conviene configurar CORS pronto para no volverse loco con los bloqueos del navegador.\n\n4. Separar esquemas de modelos\nNo es lo mismo el modelo de la base de datos que el esquema que expones en la API. Separarlos hace el código más claro.\n\n5. Manejar errores de forma explícita\nLevantar HTTPException con mensajes claros evita bugs silenciosos y mejora el feedback al frontend.\n\n6. Versionar la API\nAunque el proyecto sea pequeño, empezar usando rutas tipo /api/v1/... ayuda a no sufrir cuando quieras cambiar cosas.\n\n7. Dependencias reutilizables\nLas dependencias de FastAPI (como obtener el usuario actual o la sesión de DB) son oro si las piensas bien desde el principio.\n\n8. Settings centralizados\nTener la configuración (URLs, claves, DEBUG, etc.) en un solo sitio evita perseguir constantes sueltas por todo el proyecto.\n\n9. Auto docs no significa auto diseño\nLa documentación automática de Swagger es genial, pero sigue siendo tu responsabilidad diseñar una API entendible.\n\n10. Pensar en el despliegue desde el día 1\nSaber cómo vas a ejecutar FastAPI en producción (uvicorn, gunicorn, Docker, etc.) te evita rehacer parte del proyecto al final.",
+    
+    note_pygame_y_estados_title: "Qué me enseñó un juego en Pygame sobre los estados",
+    note_pygame_y_estados_content: "Nutty Lucky empezó como un experimento con Pygame y acabó enseñándome bastante sobre estructura de código.\n\n1. El bucle de juego\nSeparar entrada, actualización y dibujado hace que el juego sea mucho más fácil de mantener.\n\n2. Estados de juego\nTener estados como MENU, RUNNING o GAME_OVER evita tener un montón de condicionales repartidos por todo el código.\n\n3. Entidades pequeñas y claras\nCrear clases para jugador, enemigos, plataformas, etc. ayuda a no meter toda la lógica en un solo archivo gigante.\n\n4. Colisiones con cabeza\nLas colisiones son más fáciles de manejar cuando separas la detección de la reacción (qué pasa cuando chocan).\n\n5. Velocidades y física sencillas\nNo hace falta una simulación realista: con unas pocas reglas bien pensadas, el juego ya \"se siente\" bien.\n\n6. Recursos organizados\nTener carpetas claras para sprites, sonidos y mapas ahorra tiempo y hace que el proyecto se vea más profesional.\n\n7. Depurar con HUD sencillo\nMostrar puntuación, vidas o FPS en pantalla me ayudó muchísimo a entender qué estaba pasando en tiempo real.\n\n8. Pausas y reintentos\nImplementar pausa y reinicio del nivel me obligó a estructurar mejor cómo se inicializaba y reseteaba el estado del juego.\n\n9. Ajustar la dificultad\nTocar pequeñas cosas como la velocidad de los enemigos o la frecuencia de aparición de obstáculos cambia totalmente la sensación del juego.\n\n10. Terminar algo jugable\nMás allá de la perfección técnica, el mayor aprendizaje fue llevar una idea desde \"prototipo raro\" hasta algo que alguien puede jugar y disfrutar.",
   },
   en: {
     hero_tagline: "professional portfolio",
@@ -244,6 +258,20 @@ const TRANSLATIONS = {
     pwa_info_item_3: "✅ Takes up very little space on your device",
     pwa_info_item_4: "✅ Quick access like a native app",
     pwa_disclaimer: "Works offline • Fast access • Compatible iOS, Android and browsers",
+    
+    // Biography (role + personal presentation)
+    profile_role: "Full stack developer in progress · Visual designer & wildlife photographer",
+    profile_bio: "I am a creative professional with extensive experience using the Adobe suite, specialising in Photoshop, After Effects, Premiere and Lightroom. With these tools I have developed visual design and editing projects. My background as a wildlife photographer has helped me refine my artistic eye, attention to detail and the ability to tell stories through images.\n\nI also have experience in administrative roles, which has given me strong organisational skills, project management abilities and teamwork. During the periods when I was not working in creative positions, I worked in the metal industry, an experience that taught me to handle pressure, manage stress and work efficiently.\n\nCurrently I am expanding my professional and technical horizons by studying a full stack development bootcamp, a path that allows me to connect my creative profile with web development and programming. My goal is to integrate my visual experience with digital solutions, creating projects that combine design, functionality and technology.",
+    
+    // Notes
+    note_em_pulse_lessons_title: "What I learned building EM-PULSE",
+    note_em_pulse_lessons_content: "EM-PULSE started as a technical project and ended up being a human one too.\n\n1. Empathy before code\nWorking with multiple sclerosis forced me to think about how the person using the app feels and what they really understand.\n\n2. Basic accessibility\nEven in a small project I had to care about contrast, font sizes and visual hierarchy.\n\n3. Clear language\nI had to explain medical and technical ideas in a simple way, without losing accuracy but avoiding overwhelming people.\n\n4. Fewer screens, more intention\nMany screens could be simplified just by asking: \"What does this person really need to see right now?\".\n\n5. Caring microcopy\nSmall pieces of text (\"saved\", \"error\", \"come back later\") can also support the user emotionally.\n\n6. Design aware of fatigue\nMultiple sclerosis often means tiredness: that influenced how much text, how many actions and how much visual noise I allowed.\n\n7. Backend with a reason\nFastAPI was not just a trendy framework: I needed endpoints that answered specific problems, not the other way around.\n\n8. Data as a responsibility\nAny information related to health, even indirectly, must be handled with more care than a typical CRUD.\n\n9. Documenting for future me\nLeaving notes, diagrams and short explanations saved me time when I came back to the project weeks later.\n\n10. Mixing technology and humanity\nThe biggest lesson: a good health-related app is not only clean code, it is also sensitivity and respect for the people using it.",
+    
+    note_fastapi_things_i_wish_i_knew_title: "10 things I wish I had known before using FastAPI",
+    note_fastapi_things_i_wish_i_knew_content: "FastAPI is great, but there are a few things I wish I had known from the start.\n\n1. Start small\nYou don't need a huge architecture to learn. A couple of well-designed endpoints teach a lot.\n\n2. Pydantic really helps\nDefining models from the beginning avoids many bugs related to types and validation.\n\n3. Configure CORS early\nIf you have a separate frontend, set CORS as soon as possible so the browser does not block your requests.\n\n4. Separate schemas from models\nThe database model is not the same as the API schema. Separating them makes the code clearer.\n\n5. Handle errors explicitly\nRaising HTTPException with clear messages improves debugging and the frontend experience.\n\n6. Think about versioning\nUsing paths like /api/v1/... from day one makes later changes and new versions less painful.\n\n7. Reusable dependencies\nFastAPI dependencies (like getting the current user or DB session) are powerful if you design them carefully.\n\n8. Centralised settings\nStoring config (URLs, keys, DEBUG, etc.) in one place avoids chasing constants in multiple files.\n\n9. Auto docs ≠ auto design\nSwagger docs are nice, but you are still responsible for designing an API that is easy to understand.\n\n10. Think deployment from day 1\nKnowing how you'll run FastAPI in production (uvicorn, gunicorn, Docker, etc.) saves refactors at the end of the project.",
+    
+    note_pygame_game_states_title: "What building a Pygame game taught me about state management",
+    note_pygame_game_states_content: "Nutty Lucky started as a small Pygame experiment and ended up teaching me a lot about structure.\n\n1. The game loop\nSplitting input, update and draw phases makes the game easier to reason about.\n\n2. Game states\nHaving states like MENU, RUNNING or GAME_OVER keeps the code from turning into a giant if/else jungle.\n\n3. Small, focused entities\nCreating classes for player, enemies and platforms keeps logic from living in one huge file.\n\n4. Collisions with intent\nIt is easier to manage collisions when you separate \"detecting\" from \"reacting\".\n\n5. Simple physics\nYou don't need realistic physics. A few consistent rules can make the game feel good enough.\n\n6. Organised assets\nA clear folder structure for sprites, sounds and maps saves time and looks more professional.\n\n7. Debug HUD\nShowing score, lives or FPS on screen really helps to see what is happening during gameplay.\n\n8. Pause and restart\nImplementing pause and restart forced me to design how to initialise and reset game state properly.\n\n9. Tuning difficulty\nTiny tweaks to speed, spawn rate or hit boxes change the entire feel of the game.\n\n10. Finishing something playable\nBeyond technical details, the biggest win was taking an idea from \"weird prototype\" to something someone can actually play and enjoy.",
   },
 };
 
@@ -420,15 +448,20 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-async function fetchNoteDetail(slug) {
-  try {
-    const res = await fetch(`${API_BASE}/api/notes/${slug}?lang=${currentLang}`);
-    if (!res.ok) throw new Error(`Nota: status ${res.status}`);
-    return await res.json();
-  } catch (err) {
-    console.error("Error cargando nota", err);
-    return null;
-  }
+// Cargar detalle de nota desde traducciones locales (sin hacer fetch al backend)
+function fetchNoteDetail(slug) {
+  const translations = TRANSLATIONS[currentLang];
+  const noteKeyMap = {
+    "aprendizajes-em-pulse": { title: "note_aprendizajes_em_pulse_title", content: "note_aprendizajes_em_pulse_content", id: 1 },
+    "em-pulse-lessons": { title: "note_em_pulse_lessons_title", content: "note_em_pulse_lessons_content", id: 1 },
+    "cosas-fastapi": { title: "note_cosas_fastapi_title", content: "note_cosas_fastapi_content", id: 2 },
+    "fastapi-things-i-wish-i-knew": { title: "note_fastapi_things_i_wish_i_knew_title", content: "note_fastapi_things_i_wish_i_knew_content", id: 2 },
+    "pygame-y-estados": { title: "note_pygame_y_estados_title", content: "note_pygame_y_estados_content", id: 3 },
+    "pygame-game-states": { title: "note_pygame_game_states_title", content: "note_pygame_game_states_content", id: 3 }
+  };
+  const keys = noteKeyMap[slug];
+  if (!keys || !translations) return null;
+  return { id: keys.id, slug, title: translations[keys.title] || "", content: translations[keys.content] || "" };
 }
 
 // ----- Selector de idioma (desktop + móvil) -----
@@ -811,88 +844,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ----- Perfil -----
-async function loadProfile() {
+// Cargar perfil desde traducciones locales (sin hacer fetch al backend)
+function loadProfile() {
   const bioContainer = document.getElementById("profile-bio");
-  const skillsContainer = document.getElementById("skills");
-  const linkGithub = document.getElementById("link-github");
-  const linkInstagram = document.getElementById("link-instagram");
-  const linkLinkedin = document.getElementById("link-linkedin");
-  const allReposLink = document.getElementById("all-repos-link");
-  const instagramMoreLink = document.getElementById("instagram-link-more");
-
-  try {
-    const res = await fetch(`${API_BASE}/api/profile?lang=${currentLang}`);
-    if (!res.ok) {
-      throw new Error(`Perfil: status ${res.status}`);
-    }
-    const data = await res.json();
-
-    // Bio en varios párrafos
-    if (bioContainer) {
-      bioContainer.innerHTML = "";
-      const paragraphs = data.bio.split(/\n\s*\n/);
-      paragraphs.forEach((para) => {
-        const p = document.createElement("p");
-        p.className = "mb-3";
-        p.textContent = para.trim();
-        bioContainer.appendChild(p);
-      });
-    }
-
-    // Links
-    if (linkGithub && data.links?.github) {
-      linkGithub.href = data.links.github;
-    }
-    if (linkInstagram && data.links?.instagram) {
-      linkInstagram.href = data.links.instagram;
-    }
-    if (linkLinkedin && data.links?.linkedin) {
-      linkLinkedin.href = data.links.linkedin;
-    }
-
-    if (allReposLink && data.links?.github) {
-      allReposLink.href = `${data.links.github}?tab=repositories`;
-    }
-
-    if (instagramMoreLink && data.links?.instagram) {
-      instagramMoreLink.href = data.links.instagram;
-    }
-
-    // Skills agrupadas por categorías
-    if (skillsContainer && data.skills && typeof data.skills === "object") {
-      skillsContainer.innerHTML = "";
-
-      Object.entries(data.skills).forEach(([category, list]) => {
-        const block = document.createElement("div");
-        block.className = "mb-4";
-
-        const title = document.createElement("p");
-        title.className =
-          "text-[0.7rem] uppercase tracking-[0.2em] text-slate-400 mb-1";
-        title.textContent = category;
-        block.appendChild(title);
-
-        const listWrapper = document.createElement("div");
-        listWrapper.className = "flex flex-wrap gap-2";
-
-        list.forEach((skill) => {
-          const badge = document.createElement("span");
-          badge.className =
-            "px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-200";
-          badge.textContent = skill;
-          listWrapper.appendChild(badge);
-        });
-
-        block.appendChild(listWrapper);
-        skillsContainer.appendChild(block);
-      });
-    }
-  } catch (err) {
-    console.error("Error cargando profile", err);
-    if (bioContainer) {
-      bioContainer.textContent =
-        "No se ha podido cargar la información del perfil.";
-    }
+  const translations = TRANSLATIONS[currentLang];
+  
+  // Bio en varios párrafos
+  if (bioContainer && translations) {
+    bioContainer.innerHTML = "";
+    const paragraphs = translations.profile_bio.split(/\n\s*\n/);
+    paragraphs.forEach((para) => {
+      const p = document.createElement("p");
+      p.className = "mb-3";
+      p.textContent = para.trim();
+      bioContainer.appendChild(p);
+    });
   }
 }
 
@@ -1039,190 +1005,40 @@ async function loadInstagramPhotos() {
 }
 
 // ----- Notas / Mini blog -----
-async function loadNotes() {
+function loadNotes() {
   const container = document.getElementById("notes-list");
   if (!container) return;
+  container.innerHTML = "";
+  const t = TRANSLATIONS[currentLang] || TRANSLATIONS["es"];
+  
+  // Notas desde traducciones locales
+  const notesList = currentLang === "en" ? [
+    { id: 1, slug: "em-pulse-lessons", title: t.note_em_pulse_lessons_title },
+    { id: 2, slug: "fastapi-things-i-wish-i-knew", title: t.note_fastapi_things_i_wish_i_knew_title },
+    { id: 3, slug: "pygame-game-states", title: t.note_pygame_game_states_title }
+  ] : [
+    { id: 1, slug: "aprendizajes-em-pulse", title: t.note_aprendizajes_em_pulse_title },
+    { id: 2, slug: "cosas-fastapi", title: t.note_cosas_fastapi_title },
+    { id: 3, slug: "pygame-y-estados", title: t.note_pygame_y_estados_title }
+  ];
 
-  container.innerHTML =
-    "<p class='text-xs text-slate-400'>Cargando notas...</p>";
+  // Nota sobre PWA
+  const pwaNoteCard = document.createElement("article");
+  pwaNoteCard.className = "bg-gradient-to-br from-emerald-900/30 to-slate-900 border-2 border-emerald-400/50 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-emerald-300 transition";
+  const pwaTitle = currentLang === "en" ? "Learning PWA! 🚀" : "¡Aprendiendo PWA! 🚀";
+  const pwaSummary = currentLang === "en" ? "Understanding Progressive Web Apps, Service Workers, and offline-first architecture" : "Entendiendo Progressive Web Apps, Service Workers y arquitectura offline-first";
+  pwaNoteCard.innerHTML = `<header class="mb-3"><h3 class="text-sm font-semibold mb-1">${pwaTitle}</h3><p class="text-xs text-slate-300">${pwaSummary}</p></header><p class="text-[0.7rem] text-emerald-300 mt-2 inline-flex items-center gap-1">${currentLang === "en" ? "Read full article ↗" : "Leer artículo completo ↗"}</p>`;
+  container.appendChild(pwaNoteCard);
 
-  try {
-    const res = await fetch(`${API_BASE}/api/notes?lang=${currentLang}`);
-    if (!res.ok) {
-      throw new Error(`Notas: status ${res.status}`);
-    }
-    const notes = await res.json();
-
-    container.innerHTML = "";
-
-    // Nota sobre PWA (agregada localmente)
-    const pwaNoteCard = document.createElement("article");
-    pwaNoteCard.className =
-      "bg-gradient-to-br from-emerald-900/30 to-slate-900 border-2 border-emerald-400/50 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-emerald-300 transition";
-
-    const pwaContent = currentLang === "en"
-      ? {
-          title: "Learning PWA! 🚀",
-          summary: "Understanding Progressive Web Apps, Service Workers, and offline-first architecture",
-          fullText: `Learning Progressive Web Apps has been an exciting journey. PWAs are web applications that work like native apps, and I've implemented a complete system for my portfolio.
-
-What is a Progressive Web App?
-
-A PWA combines the best features of web and native applications. It installs directly from the browser without needing an app store. The key difference is that PWAs work offline, load instantly from cache, and feel like native applications on your device.
-
-Key Technologies Used
-
-1. manifest.json - This file defines the app metadata. It includes the app name, description, icons, theme colors, start URL, and display mode (standalone). Browsers read this file to understand what the app is and how to present it to users.
-
-2. Service Worker (sw.js) - This is a JavaScript worker running in the background. It intercepts network requests and caches assets. I implemented a network-first strategy: try the network first, and if it's unavailable, serve from cache. This makes the app work offline and load faster.
-
-3. beforeinstallprompt API - This browser API handles the native installation prompt. When a user visits the site, the browser captures an install event. My code then shows a custom install button that, when clicked, triggers the native installation dialog.
-
-4. Dynamic Theming System - The app maintains color preferences across installation. I used an HSL-based system (Hue, Saturation, Brightness) with localStorage persistence. The theme sliders work perfectly in the installed app.
-
-What I Learned
-
-1. Intersection Observer API - Instead of listening to scroll events constantly, Intersection Observer lets you monitor when elements enter the viewport. This is much more efficient for lazy loading.
-
-2. Service Worker Caching Strategies - Different resources need different caching strategies. API responses should be network-first (always try fresh data). Static assets should be cache-first (load fast, update in background).
-
-3. HSL Color Manipulation - Working with HSL colors is more flexible than hex. I can adjust hue, saturation, and brightness independently, making dynamic theming much easier.
-
-4. localStorage Validation - Storing data in localStorage is great, but you need to validate it. If brightness gets cached at 6%, the app turns black. I added validation to reset bad states automatically.
-
-5. iOS PWA Limitations - iOS doesn't have the same PWA support as Android. There's no install prompt. Users must manually tap "Add to Home Screen" from the share menu. This was important to understand for cross-platform support.
-
-Browser Compatibility
-
-Chrome and Edge have full PWA support with install prompts. Firefox supports Service Workers and installation. Safari is limited—no install prompt, but PWAs work as web apps. Android Chrome has excellent support. Testing across browsers revealed these differences were crucial.
-
-Benefits of This Implementation
-
-1. No App Store - Users install directly from the browser, no waiting for app store approval.
-
-2. Smaller Size - The PWA is about 100KB. Native apps are typically 50-200MB.
-
-3. Instant Updates - Changes deploy immediately. No app store review process.
-
-4. Works Offline - Critical content stays cached locally. The app is usable without internet.
-
-5. Native Feel - The installed app appears on the home screen like a native app. It has its own window and icon.
-
-Building this PWA taught me how to bridge web and native experiences. It's a powerful approach that's becoming increasingly important in web development.`
-        }
-      : {
-          title: "¡Aprendiendo PWA! 🚀",
-          summary: "Entendiendo Progressive Web Apps, Service Workers y arquitectura offline-first",
-          fullText: `Aprender sobre Progressive Web Apps ha sido un viaje muy emocionante. Las PWAs son aplicaciones web que funcionan como apps nativas, y he implementado un sistema completo para mi portafolio.
-
-¿Qué es una Progressive Web App?
-
-Una PWA combina las mejores características de aplicaciones web y nativas. Se instala directamente desde el navegador sin necesidad de app store. La diferencia clave es que las PWAs funcionan sin internet, cargan instantáneamente desde caché, y se sienten como aplicaciones nativas en tu dispositivo.
-
-Tecnologías Clave Utilizadas
-
-1. manifest.json - Este archivo define los metadatos de la app. Incluye el nombre, descripción, iconos, colores del tema, URL de inicio y modo de visualización (standalone). Los navegadores leen este archivo para entender qué es la app y cómo presentarla a los usuarios.
-
-2. Service Worker (sw.js) - Es un JavaScript worker que corre en segundo plano. Intercepta solicitudes de red y cachea assets. Implementé una estrategia network-first: intenta la red primero, y si no está disponible, sirve desde caché. Esto hace que la app funcione offline y cargue más rápido.
-
-3. API beforeinstallprompt - Esta API del navegador maneja el diálogo nativo de instalación. Cuando un usuario visita el sitio, el navegador captura un evento de instalación. Mi código entonces muestra un botón de instalación personalizado que, al hacer clic, activa el diálogo nativo de instalación.
-
-4. Sistema de Temas Dinámicos - La app mantiene preferencias de color después de instalar. Usé un sistema basado en HSL (Tonalidad, Saturación, Brillo) con persistencia en localStorage. Los sliders de tema funcionan perfectamente en la app instalada.
-
-Lo que Aprendí
-
-1. Intersection Observer API - En lugar de escuchar constantemente eventos de scroll, Intersection Observer te permite monitorear cuándo los elementos entran al viewport. Esto es mucho más eficiente para lazy loading.
-
-2. Estrategias de Caching en Service Worker - Diferentes recursos necesitan diferentes estrategias de caching. Las respuestas de API deben ser network-first (siempre intentar datos frescos). Los assets estáticos deben ser cache-first (cargar rápido, actualizar en segundo plano).
-
-3. Manipulación de Colores HSL - Trabajar con colores HSL es más flexible que hex. Puedo ajustar tonalidad, saturación y brillo independientemente, haciendo que los temas dinámicos sean mucho más fáciles.
-
-4. Validación de localStorage - Almacenar datos en localStorage es excelente, pero necesitas validar. Si el brillo se cachea al 6%, la app se vuelve negra. Añadí validación para resetear estados malos automáticamente.
-
-5. Limitaciones de PWA en iOS - iOS no tiene el mismo soporte de PWA que Android. No hay diálogo de instalación. Los usuarios deben tocar manualmente "Agregar a Pantalla de Inicio" desde el menú compartir. Fue importante entender esto para soporte multiplataforma.
-
-Compatibilidad con Navegadores
-
-Chrome y Edge tienen soporte completo de PWA con diálogos de instalación. Firefox soporta Service Workers e instalación. Safari es limitado—sin diálogo de instalación, pero las PWAs funcionan como apps web. Android Chrome tiene excelente soporte. Probar en múltiples navegadores reveló que estas diferencias eran cruciales.
-
-Beneficios de Esta Implementación
-
-1. Sin App Store - Los usuarios instalan directamente desde el navegador, sin esperar aprobación de app store.
-
-2. Tamaño Pequeño - La PWA es aproximadamente 100KB. Las apps nativas típicamente son 50-200MB.
-
-3. Actualizaciones Instantáneas - Los cambios se despliegan inmediatamente. Sin proceso de revisión de app store.
-
-4. Funciona Offline - El contenido crítico permanece cacheado localmente. La app es usable sin internet.
-
-5. Sensación Nativa - La app instalada aparece en la pantalla de inicio como una app nativa. Tiene su propia ventana e icono.
-
-Construir esta PWA me enseñó cómo combinar experiencias web y nativas. Es un enfoque poderoso que se vuelve cada vez más importante en el desarrollo web.`
-        };
-
-    pwaNoteCard.innerHTML = `
-      <header class="mb-3">
-        <h3 class="text-sm font-semibold mb-1">${pwaContent.title}</h3>
-        <p class="text-xs text-slate-300">${pwaContent.summary}</p>
-      </header>
-      <p class="text-[0.7rem] text-emerald-300 mt-2 inline-flex items-center gap-1">
-        ${
-          currentLang === "en"
-            ? "Read full article ↗"
-            : "Leer artículo completo ↗"
-        }
-      </p>
-    `;
-
-    pwaNoteCard.addEventListener("click", () => {
-      openNoteModal({
-        title: pwaContent.title,
-        content: pwaContent.fullText
-      });
+  // Resto de notas
+  notesList.forEach((note) => {
+    const card = document.createElement("article");
+    card.className = "bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-emerald-400/70 transition";
+    card.innerHTML = `<header class="mb-3"><h3 class="text-sm font-semibold mb-1">${note.title}</h3></header><p class="text-[0.7rem] text-emerald-300 mt-2 inline-flex items-center gap-1">${currentLang === "en" ? "Read full article ↗" : "Leer artículo completo ↗"}</p>`;
+    card.addEventListener("click", () => {
+      const noteData = fetchNoteDetail(note.slug);
+      if (noteData) openNoteModal(noteData);
     });
-
-    container.appendChild(pwaNoteCard);
-
-    // Resto de notas del backend
-    notes.forEach((note) => {
-      const card = document.createElement("article");
-      card.className =
-        "bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between cursor-pointer hover:border-emerald-400/70 transition";
-
-      card.innerHTML = `
-        <header class="mb-3">
-          <h3 class="text-sm font-semibold mb-1">${note.title}</h3>
-          <p class="text-xs text-slate-300">${note.summary}</p>
-        </header>
-        <p class="text-[0.7rem] text-emerald-300 mt-2 inline-flex items-center gap-1">
-          ${
-            currentLang === "en"
-              ? "Read full article ↗"
-              : "Leer artículo completo ↗"
-          }
-        </p>
-      `;
-
-      card.addEventListener("click", async () => {
-        const fullNote = await fetchNoteDetail(note.slug);
-        if (fullNote && fullNote.content) {
-          openNoteModal(fullNote);
-        } else {
-          openNoteModal({
-            title: note.title,
-            content:
-              currentLang === "en"
-                ? "The full content of this note could not be loaded right now."
-                : "No se ha podido cargar el contenido completo de esta nota ahora mismo.",
-          });
-        }
-      });
-
-      container.appendChild(card);
-    });
-  } catch (err) {
-    console.error("Error cargando notas", err);
-    container.innerHTML =
-      "<p class='text-xs text-red-400'>No se pudieron cargar las notas.</p>";
-  }
+    container.appendChild(card);
+  });
 }
