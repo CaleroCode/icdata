@@ -1,6 +1,6 @@
 // Service Worker para PWA - Cachea archivos para funcionar offline
 
-const CACHE_NAME = 'icdata-v1';
+const CACHE_NAME = 'icdata-v2-2026-01-11';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -45,6 +45,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   // Solo cachear requests GET
   if (event.request.method !== 'GET') {
+    return;
+  }
+
+  // NUNCA cachear index.html - siempre ir a la red
+  if (event.request.url.includes('index.html') || event.request.destination === 'document') {
+    event.respondWith(fetch(event.request));
     return;
   }
 
