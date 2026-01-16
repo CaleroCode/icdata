@@ -443,12 +443,9 @@ async def get_github_repos():
         )
 
     destacados = {
-        "EM-pulse",
-        "CocinIA",
-        "nutty_lucky",
         "julias-run",
-        "github-search",
-        "AgendaApp",
+        "ajedrez",
+        "traductor",
     }
 
     repos_filtrados = [r for r in repos_filtrados if r["name"] in destacados]
@@ -524,51 +521,30 @@ PHOTO_CAPTIONS = {
 @app.get("/api/instagram-photos")
 def get_instagram_photos(lang: str = "es"):
     photos = [
-        {
-            "id": 1,
-            "image_url": "assets/instagram/foto1.jpg",
-        },
-        {
-            "id": 2,
-            "image_url": "assets/instagram/foto2.jpg",
-        },
-        {
-            "id": 11,
-            "image_url": "assets/instagram/foto011.jpg",
-        },
-        {
-            "id": 3,
-            "image_url": "assets/instagram/foto3.jpg",
-        },
-        {
-            "id": 4,
-            "image_url": "assets/instagram/foto4.jpg",
-        },
-        {
-            "id": 5,
-            "image_url": "assets/instagram/foto5.jpg",
-        },
-        {
-            "id": 6,
-            "image_url": "assets/instagram/foto6.jpg",
-        },
-        {
-            "id": 7,
-            "image_url": "assets/instagram/foto7.jpg",
-        },
-        {
-            "id": 8,
-            "image_url": "assets/instagram/foto8.jpg",
-        },
-        {
-            "id": 9,
-            "image_url": "assets/instagram/foto9.jpg",
-        },
-        {
-            "id": 10,
-            "image_url": "assets/instagram/foto010.jpg",
-        },
+        {"id": 1, "image_url": "assets/instagram/foto1.jpg"},
+        {"id": 2, "image_url": "assets/instagram/foto2.jpg"},
+        {"id": 11, "image_url": "assets/instagram/foto011.jpg"},
+        {"id": 3, "image_url": "assets/instagram/foto3.jpg"},
+        {"id": 4, "image_url": "assets/instagram/foto4.jpg"},
+        {"id": 5, "image_url": "assets/instagram/foto5.jpg"},
+        {"id": 6, "image_url": "assets/instagram/foto6.jpg"},
+        {"id": 7, "image_url": "assets/instagram/foto7.jpg"},
+        {"id": 8, "image_url": "assets/instagram/foto8.jpg"},
+        {"id": 9, "image_url": "assets/instagram/foto9.jpg"},
+        {"id": 10, "image_url": "assets/instagram/foto010.jpg"},
     ]
+    
+    # Agregar URLs optimizadas para cada foto
+    for photo in photos:
+        base_url = photo["image_url"]
+        # LQIP (Low Quality Image Placeholder) - 50x50px muy comprimido
+        photo["lqip_url"] = f"{base_url}?w=50&h=50&q=20&blur=10"
+        # Responsive srcset
+        photo["srcset"] = {
+            "mobile": f"{base_url}?w=300&h=300&fit=crop&q=80",    # Celular
+            "tablet": f"{base_url}?w=500&h=500&fit=crop&q=85",    # Tablet
+            "desktop": f"{base_url}?w=800&h=800&fit=crop&q=90",   # Desktop
+        }
     
     # Add captions in the requested language
     lang = lang if lang in ["es", "en"] else "es"
