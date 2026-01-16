@@ -7,7 +7,7 @@ GITHUB_USERNAME = "CaleroCode"
 
 # Repos de fallback por si la llamada a GitHub falla
 FALLBACK_REPOS = [
-    
+    {
         "name": "JULIA'S RUN",
         "description": "🎮 Julia's Run — Proyecto educativo de Programación Orientada a Objetos Juego en Python + Pygame para aprender POO de forma práctica e interactiva. Incluye notebook Jupyter, guía pedagógica y código legacy para analizar y mejorar.",
         "url": "https://github.com/CaleroCode/julias-run",
