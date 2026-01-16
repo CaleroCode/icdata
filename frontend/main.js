@@ -782,10 +782,6 @@ const sectionObserver = new IntersectionObserver((entries) => {
         entry.target.dataset.githubLoaded = "true";
         loadGithubRepos();
       }
-      if (entry.target.id === "instagram" && !entry.target.dataset.instagramLoaded) {
-        entry.target.dataset.instagramLoaded = "true";
-        loadInstagramPhotos();
-      }
       if (entry.target.id === "notes" && !entry.target.dataset.notesLoaded) {
         entry.target.dataset.notesLoaded = "true";
         loadNotes();
@@ -809,13 +805,11 @@ document.addEventListener("DOMContentLoaded", () => {
   applyTranslations();
   loadProfile();
 
-  // Observer para lazy loading de GitHub, Instagram y Notas
+  // Observer para lazy loading de GitHub y Notas
   const githubSection = document.getElementById("github");
-  const instagramSection = document.getElementById("instagram");
   const notesSection = document.getElementById("notes");
 
   if (githubSection) sectionObserver.observe(githubSection);
-  if (instagramSection) sectionObserver.observe(instagramSection);
   if (notesSection) sectionObserver.observe(notesSection);
 
   // Scroll-to-top
@@ -920,164 +914,6 @@ async function loadGithubRepos() {
 }
 
 // ----- Instagram fotos -----
-async function loadInstagramPhotos() {
-  const container = document.getElementById("instagram-photos");
-  if (!container) return;
-
-  container.innerHTML =
-    "<p class='text-xs text-slate-400'>Cargando fotos...</p>";
-  try {
-    const res = await fetch(`${API_BASE}/api/instagram-photos?lang=${currentLang}`);
-    if (!res.ok) {
-      throw new Error(`Fotos: status ${res.status}`);
-    }
-    const allPhotos = await res.json();
-
-    container.innerHTML = "";
-    container.dataset.allPhotos = JSON.stringify(allPhotos);
-    container.dataset.displayedCount = "0";
-
-    // Mostrar solo las primeras 6 fotos
-    const photosToShow = allPhotos.slice(0, 6);
-    renderInstagramPhotos(photosToShow, container, allPhotos);
-
-    // Configurar infinite scroll
-    setupInfiniteScroll(container, allPhotos);
-
-    // Marcar que las fotos de Instagram han sido cargadas
-    container.dataset.instagramLoaded = "true";
-  } catch (err) {
-    console.error("Error cargando fotos", err);
-    container.innerHTML =
-      "<p class='text-xs text-red-400'>Error: " + err.message + "</p>";
-  }
-}
-
-function renderInstagramPhotos(photos, container, allPhotos) {
-  // Mapeo de photo.id a clave de traducción
-  const captionKeyMap = {
-    1: "photo_1_caption",
-    2: "photo_2_caption",
-    11: "photo_11_caption",
-    3: "photo_3_caption",
-    4: "photo_4_caption",
-    5: "photo_5_caption",
-    6: "photo_6_caption",
-    7: "photo_7_caption",
-    8: "photo_8_caption",
-    9: "photo_9_caption",
-    10: "photo_10_caption",
-  };
-  
-  const t = TRANSLATIONS[currentLang] || TRANSLATIONS["es"];
-
-  photos.forEach((photo) => {
-    const card = document.createElement("div");
-    card.className =
-      "bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-sm cursor-pointer";
-
-    const hasPostUrl = photo.post_url;
-    // Obtener caption desde traducciones
-    const captionKey = captionKeyMap[photo.id];
-    const rawCaption = (captionKey && t[captionKey]) ? t[captionKey] : (photo.caption || "").trim();
-
-    // Solo 37 caracteres + [LEER MÁS] si hay más
-    let preview = rawCaption;
-    let hasMore = false;
-
-    if (rawCaption.length > 37) {
-      preview = rawCaption.slice(0, 37).trimEnd();
-      hasMore = true;
-    }
-
-    // Determinar qué imagen usar según viewport
-    const getResponsiveUrl = () => {
-      const width = window.innerWidth;
-      if (width < 768) return photo.srcset.mobile;        // Celular
-      if (width < 1024) return photo.srcset.tablet;       // Tablet
-      return photo.srcset.desktop;                         // Desktop
-    };
-
-    card.innerHTML = `
-      <div class="aspect-video bg-slate-800 relative overflow-hidden">
-        <!-- LQIP: placeholder borroso que se muestra primero -->
-        <img src="${photo.lqip_url}"
-             alt="Loading..."
-             class="w-full h-full object-cover blur-md absolute inset-0"
-             style="filter: blur(10px);" />
-        
-        <!-- Imagen principal con srcset responsivo -->
-        <img src="${getResponsiveUrl()}"
-             srcset="${photo.srcset.mobile} 300w, ${photo.srcset.tablet} 500w, ${photo.srcset.desktop} 800w"
-             sizes="(max-width: 640px) 300px, (max-width: 1024px) 500px, 800px"
-             alt="${preview}"
-             loading="lazy"
-             decoding="async"
-             class="w-full h-full object-cover instagram-photo absolute inset-0 transition-opacity duration-300"
-             onload="this.style.opacity='1'; this.previousElementSibling.style.display='none';"
-             style="opacity: 0;" />
-      </div>
-      <div class="p-3">
-        <p class="text-xs text-slate-200 mb-2">
-          ${preview}${
-            hasMore
-              ? ' <span class="text-emerald-300 font-semibold">[LEER MÁS]</span>'
-              : ""
-          }
-        </p>
-        ${
-          hasPostUrl
-            ? `<a href="${photo.post_url}" target="_blank"
-                 onclick="event.stopPropagation()"
-                 class="inline-flex items-center gap-1 text-[0.7rem] text-slate-400 hover:text-emerald-400 transition">
-                 ${t.instagram_view_post}
-               </a>`
-            : ""
-        }
-      </div>
-    `;
-
-    const imgEl = card.querySelector(".instagram-photo");
-    
-    // Pasar el caption traducido al modal
-    const photoWithCaption = { ...photo, caption: rawCaption };
-    card.addEventListener("click", () => openModal(photoWithCaption, imgEl));
-
-    container.appendChild(card);
-  });
-
-  container.dataset.displayedCount = String(photos.length);
-}
-
-// Infinite scroll para cargar más fotos
-function setupInfiniteScroll(container, allPhotos) {
-  const instagramSection = document.getElementById("instagram");
-  if (!instagramSection) return;
-
-  // Intersection Observer para detectar cuando se llega al final
-  const scrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const displayedCount = parseInt(container.dataset.displayedCount || "0");
-        
-        // Si hay más fotos para cargar
-        if (displayedCount < allPhotos.length) {
-          // Cargar 3 fotos más
-          const nextPhotos = allPhotos.slice(displayedCount, displayedCount + 3);
-          renderInstagramPhotos(nextPhotos, container, allPhotos);
-        }
-      }
-    });
-  }, { rootMargin: "200px" });
-
-  // Crear un elemento centinela al final del contenedor
-  const sentinel = document.createElement("div");
-  sentinel.className = "h-20 flex items-center justify-center";
-  sentinel.innerHTML = "<p class='text-xs text-slate-500'>Cargando más fotos...</p>";
-  container.appendChild(sentinel);
-  
-  scrollObserver.observe(sentinel);
-}
 
 // ----- Notas / Mini blog -----
 function loadNotes() {
