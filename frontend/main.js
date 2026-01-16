@@ -812,8 +812,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const githubSection = document.getElementById("github");
   const notesSection = document.getElementById("notes");
 
-  if (githubSection) sectionObserver.observe(githubSection);
-  if (notesSection) sectionObserver.observe(notesSection);
+  if (githubSection) {
+    sectionObserver.observe(githubSection);
+    // Si GitHub ya es visible al cargar, cargarlo inmediatamente
+    const githubRect = githubSection.getBoundingClientRect();
+    if (githubRect.top < window.innerHeight && githubRect.bottom > 0) {
+      githubSection.dataset.loaded = "true";
+      githubSection.dataset.githubLoaded = "true";
+      loadGithubRepos();
+    }
+  }
+  
+  if (notesSection) {
+    sectionObserver.observe(notesSection);
+    // Si Notas ya es visible al cargar, cargarlas inmediatamente
+    const notesRect = notesSection.getBoundingClientRect();
+    if (notesRect.top < window.innerHeight && notesRect.bottom > 0) {
+      notesSection.dataset.loaded = "true";
+      notesSection.dataset.notesLoaded = "true";
+      loadNotes();
+    }
+  }
 
   // Scroll-to-top
   const scrollBtn = document.getElementById("scroll-top");
