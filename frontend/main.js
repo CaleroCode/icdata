@@ -483,25 +483,25 @@ function setupLangSwitch() {
   const enButtons = [btnEn, btnEnMobile].filter(Boolean);
 
   function applyActiveStyles() {
-    esButtons.forEach((btn) => {
-      btn.classList.remove("border-slate-700", "text-slate-400");
-      btn.classList.add("border-emerald-400", "text-emerald-300");
-    });
-
-    enButtons.forEach((btn) => {
-      btn.classList.remove("border-emerald-400", "text-emerald-300");
-      btn.classList.add("border-slate-700", "text-slate-400");
-    });
-
-    if (currentLang === "en") {
-      // invertimos estilos
+    if (currentLang === "es") {
+      // ES es el idioma activo
       esButtons.forEach((btn) => {
-        btn.classList.add("border-slate-700", "text-slate-400");
-        btn.classList.remove("border-emerald-400", "text-emerald-300");
+        btn.classList.remove("lang-button");
+        btn.classList.add("lang-button-active");
       });
       enButtons.forEach((btn) => {
-        btn.classList.add("border-emerald-400", "text-emerald-300");
-        btn.classList.remove("border-slate-700", "text-slate-400");
+        btn.classList.remove("lang-button-active");
+        btn.classList.add("lang-button");
+      });
+    } else {
+      // EN es el idioma activo
+      enButtons.forEach((btn) => {
+        btn.classList.remove("lang-button");
+        btn.classList.add("lang-button-active");
+      });
+      esButtons.forEach((btn) => {
+        btn.classList.remove("lang-button-active");
+        btn.classList.add("lang-button");
       });
     }
   }
