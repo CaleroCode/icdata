@@ -8,28 +8,22 @@ GITHUB_USERNAME = "CaleroCode"
 # Repos de fallback por si la llamada a GitHub falla
 FALLBACK_REPOS = [
     {
-        "name": "EM-pulse",
-        "description": "Plataforma web sobre esclerosis múltiple para sensibilizar y acompañar a pacientes y entorno.",
-        "url": "https://github.com/CaleroCode/EM-pulse",
-        "topics": ["python", "fastapi", "react"],
-    },
-    {
-        "name": "CocinIA",
-        "description": "App que genera recetas personalizadas usando modelos de lenguaje y Flask.",
-        "url": "https://github.com/CaleroCode/CocinIA",
-        "topics": ["python", "flask", "ia"],
-    },
-    {
-        "name": "nutty_lucky",
-        "description": "Endless runner en Pygame con una ardilla muy intensa.",
-        "url": "https://github.com/CaleroCode/nutty_lucky",
-        "topics": ["python", "pygame", "game-dev"],
-    },
-    {
         "name": "julias-run",
         "description": "Juego educativo en Pygame para enseñar POO de forma práctica.",
         "url": "https://github.com/CaleroCode/julias-run",
         "topics": ["python", "pygame", "educacion"],
+    },
+    {
+        "name": "ajedrez",
+        "description": "Aplicación de ajedrez con interfaz interactiva.",
+        "url": "https://github.com/CaleroCode/ajedrez",
+        "topics": ["python", "juego", "ajedrez"],
+    },
+    {
+        "name": "traductor",
+        "description": "Herramienta de traducción con soporte multiidioma.",
+        "url": "https://github.com/CaleroCode/traductor",
+        "topics": ["python", "traduccion", "ia"],
     },
 ]
 
@@ -545,6 +539,9 @@ def get_instagram_photos(lang: str = "es"):
             "tablet": f"{base_url}?w=500&h=500&fit=crop&q=85",    # Tablet
             "desktop": f"{base_url}?w=800&h=800&fit=crop&q=90",   # Desktop
         }
+        # Post URL por defecto vacío
+        if "post_url" not in photo:
+            photo["post_url"] = None
     
     # Add captions in the requested language
     lang = lang if lang in ["es", "en"] else "es"

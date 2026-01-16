@@ -191,6 +191,10 @@ const TRANSLATIONS = {
     
     note_pygame_y_estados_title: "Qué me enseñó un juego en Pygame sobre los estados",
     note_pygame_y_estados_content: "Nutty Lucky empezó como un experimento con Pygame y acabó enseñándome bastante sobre estructura de código.\n\n1. El bucle de juego\nSeparar entrada, actualización y dibujado hace que el juego sea mucho más fácil de mantener.\n\n2. Estados de juego\nTener estados como MENU, RUNNING o GAME_OVER evita tener un montón de condicionales repartidos por todo el código.\n\n3. Entidades pequeñas y claras\nCrear clases para jugador, enemigos, plataformas, etc. ayuda a no meter toda la lógica en un solo archivo gigante.\n\n4. Colisiones con cabeza\nLas colisiones son más fáciles de manejar cuando separas la detección de la reacción (qué pasa cuando chocan).\n\n5. Velocidades y física sencillas\nNo hace falta una simulación realista: con unas pocas reglas bien pensadas, el juego ya \"se siente\" bien.\n\n6. Recursos organizados\nTener carpetas claras para sprites, sonidos y mapas ahorra tiempo y hace que el proyecto se vea más profesional.\n\n7. Depurar con HUD sencillo\nMostrar puntuación, vidas o FPS en pantalla me ayudó muchísimo a entender qué estaba pasando en tiempo real.\n\n8. Pausas y reintentos\nImplementar pausa y reinicio del nivel me obligó a estructurar mejor cómo se inicializaba y reseteaba el estado del juego.\n\n9. Ajustar la dificultad\nTocar pequeñas cosas como la velocidad de los enemigos o la frecuencia de aparición de obstáculos cambia totalmente la sensación del juego.\n\n10. Terminar algo jugable\nMás allá de la perfección técnica, el mayor aprendizaje fue llevar una idea desde \"prototipo raro\" hasta algo que alguien puede jugar y disfrutar.",
+    
+    note_aprendiendo_pwa_title: "¡Aprendiendo PWA! 🚀",
+    note_aprendiendo_pwa_content: "Construir este portafolio como una PWA ha sido una experiencia fascinante de aprendizaje sobre el futuro de las aplicaciones web.\n\n1. Los Service Workers son poderosos\nSe sitúan entre tu aplicación y la red, permitiendo funcionalidad offline, estrategias de caché y sincronización en segundo plano.\n\n2. El ciclo de vida importa\nEntender los eventos install, activate y fetch es clave para construir PWAs confiables.\n\n3. Estrategias de caché\nNetflix usa network-first para contenido fresco, Gmail usa cache-first para assets. Elegir la estrategia correcta por ruta es crucial.\n\n4. Los manifests hacen apps descubribles\nUn simple manifest.json le dice al navegador todo lo necesario para instalar tu app como una experiencia nativa.\n\n5. Iconos y splash screens\nEl pulido visual importa incluso para apps web. Un conjunto de iconos bien dimensionados y una splash screen hacen sentir al usuario que está usando una app \"real\".\n\n6. El diseño responsivo es obligatorio\nLas PWAs deben funcionar en móviles, tablets, escritorios y todo lo demás.\n\n7. El rendimiento es parte del conjunto de características\nLazy loading, code splitting, optimización de imágenes y caché no son solo nice-to-haves: definen si los usuarios mantienen la app.\n\n8. La confianza se gana mediante confiabilidad\nUna app que funciona offline construye confianza de formas que un sitio web tradicional no puede.\n\n9. Probar en dispositivos reales\nChrome DevTools es genial, pero nada se compara a probar en un teléfono real con una red lenta.\n\n10. Las PWAs llegaron para quedarse\nCierran la brecha entre web y nativo, ofreciendo la apertura de la web con la experiencia de las apps. El futuro es emocionante.",
+  },
   },
   en: {
     hero_tagline: "professional portfolio",
@@ -272,6 +276,9 @@ const TRANSLATIONS = {
     
     note_pygame_game_states_title: "What building a Pygame game taught me about state management",
     note_pygame_game_states_content: "Nutty Lucky started as a small Pygame experiment and ended up teaching me a lot about structure.\n\n1. The game loop\nSplitting input, update and draw phases makes the game easier to reason about.\n\n2. Game states\nHaving states like MENU, RUNNING or GAME_OVER keeps the code from turning into a giant if/else jungle.\n\n3. Small, focused entities\nCreating classes for player, enemies and platforms keeps logic from living in one huge file.\n\n4. Collisions with intent\nIt is easier to manage collisions when you separate \"detecting\" from \"reacting\".\n\n5. Simple physics\nYou don't need realistic physics. A few consistent rules can make the game feel good enough.\n\n6. Organised assets\nA clear folder structure for sprites, sounds and maps saves time and looks more professional.\n\n7. Debug HUD\nShowing score, lives or FPS on screen really helps to see what is happening during gameplay.\n\n8. Pause and restart\nImplementing pause and restart forced me to design how to initialise and reset game state properly.\n\n9. Tuning difficulty\nTiny tweaks to speed, spawn rate or hit boxes change the entire feel of the game.\n\n10. Finishing something playable\nBeyond technical details, the biggest win was taking an idea from \"weird prototype\" to something someone can actually play and enjoy.",
+    
+    note_learning_pwa_title: "Learning PWA! 🚀",
+    note_learning_pwa_content: "Building this portfolio as a PWA has been a fascinating learning experience about the future of web apps.\n\n1. Service Workers are powerful\nThey sit between your app and the network, enabling offline functionality, caching strategies and background sync.\n\n2. The lifecycle matters\nUnderstanding install, activate and fetch events is key to building reliable PWAs.\n\n3. Cache strategies\nNetflix uses network-first for fresh content, Gmail uses cache-first for assets. Choosing the right strategy per route is crucial.\n\n4. Manifests make apps discoverable\nA simple manifest.json tells the browser everything needed to install your app as a native-like experience.\n\n5. Icons and splash screens\nVisual polish matters even for web apps. A properly sized icon set and splash screen make users feel like they're using a \"real\" app.\n\n6. Responsive design is non-negotiable\nPWAs must work on phones, tablets, desktops and everything in between.\n\n7. Performance is part of the feature set\nLazy loading, code splitting, image optimization and caching aren't just nice-to-haves: they define whether users keep the app.\n\n8. Trust is earned through reliability\nAn app that works offline builds trust in ways a traditional website cannot.\n\n9. Testing on real devices\nChrome DevTools is great, but nothing beats testing on an actual phone with a slow network.\n\n10. PWAs are here to stay\nThey bridge the gap between web and native, offering the openness of the web with the experience of apps. The future is exciting.",
   },
 };
 
@@ -457,7 +464,9 @@ function fetchNoteDetail(slug) {
     "cosas-fastapi": { title: "note_cosas_fastapi_title", content: "note_cosas_fastapi_content", id: 2 },
     "fastapi-things-i-wish-i-knew": { title: "note_fastapi_things_i_wish_i_knew_title", content: "note_fastapi_things_i_wish_i_knew_content", id: 2 },
     "pygame-y-estados": { title: "note_pygame_y_estados_title", content: "note_pygame_y_estados_content", id: 3 },
-    "pygame-game-states": { title: "note_pygame_game_states_title", content: "note_pygame_game_states_content", id: 3 }
+    "pygame-game-states": { title: "note_pygame_game_states_title", content: "note_pygame_game_states_content", id: 3 },
+    "aprendiendo-pwa": { title: "note_aprendiendo_pwa_title", content: "note_aprendiendo_pwa_content", id: 4 },
+    "learning-pwa": { title: "note_learning_pwa_title", content: "note_learning_pwa_content", id: 4 }
   };
   const keys = noteKeyMap[slug];
   if (!keys || !translations) return null;
@@ -877,12 +886,6 @@ async function loadGithubRepos() {
     }
     let repos = await res.json();
 
-    // Filtrar solo los 3 repositorios que queremos mostrar
-    const reposToShow = ["julias-run", "ajedrez", "traductor"];
-    repos = repos.filter(repo => reposToShow.includes(repo.name));
-    // Mantener el orden especificado
-    repos.sort((a, b) => reposToShow.indexOf(a.name) - reposToShow.indexOf(b.name));
-
     container.innerHTML = "";
     repos.forEach((repo) => {
       const card = document.createElement("a");
@@ -946,7 +949,7 @@ async function loadInstagramPhotos() {
   } catch (err) {
     console.error("Error cargando fotos", err);
     container.innerHTML =
-      "<p class='text-xs text-red-400'>No se pudieron cargar las fotos.</p>";
+      "<p class='text-xs text-red-400'>Error: " + err.message + "</p>";
   }
 }
 
@@ -1100,6 +1103,10 @@ function loadNotes() {
   const pwaTitle = currentLang === "en" ? "Learning PWA! 🚀" : "¡Aprendiendo PWA! 🚀";
   const pwaSummary = currentLang === "en" ? "Understanding Progressive Web Apps, Service Workers, and offline-first architecture" : "Entendiendo Progressive Web Apps, Service Workers y arquitectura offline-first";
   pwaNoteCard.innerHTML = `<header class="mb-3"><h3 class="text-sm font-semibold mb-1">${pwaTitle}</h3><p class="text-xs text-slate-300">${pwaSummary}</p></header><p class="text-[0.7rem] text-emerald-300 mt-2 inline-flex items-center gap-1">${currentLang === "en" ? "Read full article ↗" : "Leer artículo completo ↗"}</p>`;
+  pwaNoteCard.addEventListener("click", () => {
+    const noteData = fetchNoteDetail("aprendiendo-pwa");
+    if (noteData) openNoteModal(noteData);
+  });
   container.appendChild(pwaNoteCard);
 
   // Resto de notas
