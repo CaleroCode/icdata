@@ -7,21 +7,21 @@ GITHUB_USERNAME = "CaleroCode"
 
 # Repos de fallback por si la llamada a GitHub falla
 FALLBACK_REPOS = [
-    {
-        "name": "julias-run",
-        "description": "Juego educativo en Pygame para enseñar POO de forma práctica.",
+    
+        "name": "JULIA'S RUN",
+        "description": "🎮 Julia's Run — Proyecto educativo de Programación Orientada a Objetos Juego en Python + Pygame para aprender POO de forma práctica e interactiva. Incluye notebook Jupyter, guía pedagógica y código legacy para analizar y mejorar.",
         "url": "https://github.com/CaleroCode/julias-run",
         "topics": ["python", "pygame", "educacion"],
     },
     {
-        "name": "ajedrez",
-        "description": "Aplicación de ajedrez con interfaz interactiva.",
+        "name": "AJEDREZ",
+        "description": "Aplicación web que permite jugar al ajedrez online en tiempo real y chatear con tu oponente durante la partida.",
         "url": "https://github.com/CaleroCode/ajedrez",
         "topics": ["python", "juego", "ajedrez"],
     },
     {
-        "name": "traductor",
-        "description": "Herramienta de traducción con soporte multiidioma.",
+        "name": "TRADUCTOR",
+        "description": "Chat en tiempo real para dos usuarios con traducción automática simultánea, diseñado con Node.js, Socket.IO y traducción vía API.",
         "url": "https://github.com/CaleroCode/traductor",
         "topics": ["python", "traduccion", "ia"],
     },
