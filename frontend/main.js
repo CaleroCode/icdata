@@ -528,12 +528,22 @@ function setupLangSwitch() {
     }
   }
 
-  esButtons.forEach((btn) =>
-    btn.addEventListener("click", () => changeLang("es"))
-  );
-  enButtons.forEach((btn) =>
-    btn.addEventListener("click", () => changeLang("en"))
-  );
+  esButtons.forEach((btn) => {
+    if (btn) {
+      btn.addEventListener("click", () => {
+        console.log("Clicked ES button");
+        changeLang("es");
+      });
+    }
+  });
+  enButtons.forEach((btn) => {
+    if (btn) {
+      btn.addEventListener("click", () => {
+        console.log("Clicked EN button");
+        changeLang("en");
+      });
+    }
+  });
 
   // estado inicial
   applyActiveStyles();
@@ -868,13 +878,20 @@ async function loadGithubRepos() {
   container.innerHTML =
     "<p class='text-xs text-slate-400'>Cargando repos...</p>";
   try {
+    console.log("Fetching repos from:", API_BASE + "/api/github-repos");
     const res = await fetch(`${API_BASE}/api/github-repos`);
     if (!res.ok) {
       throw new Error(`Repos: status ${res.status}`);
     }
     let repos = await res.json();
+    console.log("Repos received:", repos);
 
     container.innerHTML = "";
+    if (!repos || repos.length === 0) {
+      container.innerHTML = "<p class='text-xs text-red-400'>No repos found</p>";
+      return;
+    }
+    
     repos.forEach((repo) => {
       const card = document.createElement("a");
       card.href = repo.url;
