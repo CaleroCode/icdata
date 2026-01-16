@@ -859,7 +859,7 @@ function loadProfile() {
   const bioContainer = document.getElementById("profile-bio");
   const translations = TRANSLATIONS[currentLang];
   
-  // Bio en varios párrafos
+  // Limpiar el contenedor y recargar con el idioma actual
   if (bioContainer && translations) {
     bioContainer.innerHTML = "";
     const paragraphs = translations.profile_bio.split(/\n\s*\n/);
