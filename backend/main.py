@@ -398,68 +398,9 @@ def get_note_detail(slug: str, lang: str = "es"):
 # ---------- GITHUB REPOS ----------
 @app.get("/api/github-repos")
 async def get_github_repos():
-    url = f"https://api.github.com/users/{GITHUB_USERNAME}/repos"
-
-    try:
-        async with httpx.AsyncClient() as client:
-            response = await client.get(
-                url,
-                headers={
-                    "Accept": "application/vnd.github+json",
-                    "User-Agent": "icdata-portfolio",
-                },
-                timeout=10.0,
-            )
-    except httpx.RequestError as e:
-        print(f"[GitHub] Error de conexión: {e}")
-        return FALLBACK_REPOS
-
-    if response.status_code != 200:
-        print(
-            f"[GitHub] Respuesta no OK: {response.status_code} - {response.text[:200]}"
-        )
-        return FALLBACK_REPOS
-
-    repos_data = response.json()
-
-    repos_filtrados = []
-    for repo in repos_data:
-        if repo.get("fork"):
-            continue
-
-        repos_filtrados.append(
-            {
-                "name": repo.get("name"),
-                "description": repo.get("description") or "Sin descripción.",
-                "url": repo.get("html_url"),
-                "topics": repo.get("topics") or [],
-            }
-        )
-
-    destacados = {
-        "julias-run",
-        "ajedrez",
-        "traductor",
-    }
-
-    repos_filtrados = [r for r in repos_filtrados if r["name"] in destacados]
-
-    for r in repos_filtrados:
-        if not r["topics"]:
-            nombre = r["name"].lower()
-            if "django" in nombre:
-                r["topics"] = ["python", "django"]
-            elif "fastapi" in nombre:
-                r["topics"] = ["python", "fastapi"]
-            elif "pygame" in nombre:
-                r["topics"] = ["python", "pygame"]
-            else:
-                r["topics"] = ["python", "project"]
-
-    if not repos_filtrados:
-        return FALLBACK_REPOS
-
-    return repos_filtrados
+    # Devolver directamente los repos destacados sin hacer llamada a GitHub
+    # (Esto es más rápido y evita dependencias de la API de GitHub)
+    return FALLBACK_REPOS
 
 
 # ---------- INSTAGRAM FOTOS ----------

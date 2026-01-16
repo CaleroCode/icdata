@@ -521,12 +521,6 @@ function setupLangSwitch() {
     closeModal();
     closeNoteModal();
     
-    // Recargar fotos de Instagram si ya fueron cargadas (tienen captions multiidioma)
-    const instagramSection = document.getElementById("instagram");
-    if (instagramSection && instagramSection.dataset.instagramLoaded) {
-      loadInstagramPhotos();
-    }
-    
     // Recargar notas si fueron cargadas
     const notesSection = document.getElementById("notes");
     if (notesSection && notesSection.dataset.notesLoaded) {
