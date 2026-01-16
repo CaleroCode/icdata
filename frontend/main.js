@@ -123,12 +123,13 @@ const TRANSLATIONS = {
 
     github_title: "Otros proyectos en mi GitHub",
     github_subtitle: "Datos servidos por el backend en Python",
+    all_repos_link_text: "Ver todos los repos en GitHub",
 
     projects_title: "Proyectos destacados",
     projects_subtitle: "Un poco más de contexto sobre lo que construyo",
 
     featured_em_pulse_title: "¿Qué es EM-PULSE?",
-    featured_em_pulse_desc: "EM-PULSE es una plataforma web integral creada con el propósito de sensibilizar y educar sobre la esclerosis múltiple, una enfermedad que afecta a millones de personas alrededor del mundo.",
+    featured_em_pulse_desc: "EM-PULSE es una plataforma web integral creada con el propósito de <span class=\"font-semibold text-emerald-300\">sensibilizar y educar</span> sobre la esclerosis múltiple, una enfermedad que afecta a millones de personas alrededor del mundo.",
     featured_em_pulse_objective_title: "Mi objetivo",
     featured_em_pulse_objective_desc: "Ayudar a familiares, amigos y el entorno cercano de las personas diagnosticadas con EM a entender mejor los síntomas, los desafíos diarios y las realidades de vivir con esta condición. La empatía y la comprensión son clave para una mejor calidad de vida.",
     featured_em_pulse_learned_title: "Lo que aprendí",
@@ -138,6 +139,7 @@ const TRANSLATIONS = {
     instagram_title: "Fotografía & visual",
     instagram_subtitle:
       "¡Puedes ver todas mis fotografías en Instagram!",
+    instagram_link_text: "Ver más fotos en Instagram",
     instagram_view_post: "Ver en Instagram ↗",
 
     notes_title: "Notas",
@@ -209,12 +211,13 @@ const TRANSLATIONS = {
 
     github_title: "Other projects on my GitHub",
     github_subtitle: "Data served by the Python backend",
+    all_repos_link_text: "View all repos on GitHub",
 
     projects_title: "Featured projects",
     projects_subtitle: "A bit more context about what I build",
 
     featured_em_pulse_title: "What is EM-PULSE?",
-    featured_em_pulse_desc: "EM-PULSE is a comprehensive web platform created to raise awareness and educate about multiple sclerosis, a disease that affects millions of people around the world.",
+    featured_em_pulse_desc: "EM-PULSE is a comprehensive web platform created to <span class=\"font-semibold text-emerald-300\">raise awareness and educate</span> about multiple sclerosis, a disease that affects millions of people around the world.",
     featured_em_pulse_objective_title: "My goal",
     featured_em_pulse_objective_desc: "To help family, friends and the close environment of people diagnosed with MS better understand the symptoms, daily challenges and realities of living with this condition. Empathy and understanding are key to a better quality of life.",
     featured_em_pulse_learned_title: "What I learned",
@@ -224,6 +227,7 @@ const TRANSLATIONS = {
     instagram_title: "Photography & visual",
     instagram_subtitle: "A bit of what I see when I'm not coding",
     instagram_view_post: "View on Instagram ↗",
+    instagram_link_text: "View more photos on Instagram",
 
     notes_title: "Notes",
     notes_subtitle: "Short summaries of what I'm learning",
@@ -304,6 +308,7 @@ function applyTranslations() {
 
     "github-title": "github_title",
     "github-subtitle": "github_subtitle",
+    "all-repos-link-text": "all_repos_link_text",
 
     "projects-title": "projects_title",
     "projects-subtitle": "projects_subtitle",
@@ -318,6 +323,7 @@ function applyTranslations() {
 
     "instagram-title": "instagram_title",
     "instagram-subtitle": "instagram_subtitle",
+    "instagram-link-text": "instagram_link_text",
 
     "notes-title": "notes_title",
     "notes-subtitle": "notes_subtitle",
@@ -354,6 +360,12 @@ function applyTranslations() {
   const heroTitleEl = document.getElementById("hero-title");
   if (heroTitleEl && t.hero_title) {
     heroTitleEl.innerHTML = t.hero_title;
+  }
+
+  // EM-PULSE desc tiene span con estilos, necesita innerHTML
+  const emPulseDescEl = document.getElementById("featured-em-pulse-desc");
+  if (emPulseDescEl && t.featured_em_pulse_desc) {
+    emPulseDescEl.innerHTML = t.featured_em_pulse_desc;
   }
 }
 
