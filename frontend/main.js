@@ -133,6 +133,31 @@ const TRANSLATIONS = {
     featured_em_pulse_objective_title: "Mi objetivo",
     featured_em_pulse_objective_desc: "Ayudar a familiares, amigos y el entorno cercano de las personas diagnosticadas con EM a entender mejor los síntomas, los desafíos diarios y las realidades de vivir con esta condición. La empatía y la comprensión son clave para una mejor calidad de vida.",
     featured_em_pulse_learned_title: "Lo que aprendí",
+    featured_em_pulse_lessons: [
+      { title: "Full Stack Development", desc: "Arquitectura completa backend-frontend-database integrada" },
+      { title: "Backend con Django + Django REST Framework", desc: "APIs RESTful robustas y escalables" },
+      { title: "Frontend con React 19 + Vite", desc: "Interfaces reactivas, optimizadas y modernas" },
+      { title: "Bases de datos", desc: "SQLite en desarrollo, PostgreSQL en producción (Neon)" },
+      { title: "6 módulos educativos completos", desc: "¿Qué es EM?, Tipos, Síntomas, EM-FORMA, Salud Mental, Derechos" },
+      { title: "Foro comunitario", desc: "Publicación de posts, comentarios, likes y búsqueda avanzada" },
+      { title: "Integración con APIs externas", desc: "NewsAPI (noticias actuales) y Hugging Face (chat IA)" },
+      { title: "Accesibilidad WCAG 2.1 AA", desc: "Cumplimiento de estándares para múltiples discapacidades" },
+      { title: "Personalización de accesibilidad", desc: "Modo oscuro/claro, tamaño de fuente (80%-160%), movimiento reducido" },
+      { title: "PWA (Progressive Web App)", desc: "Instalable sin App Store, funciona offline, caché inteligente con Service Workers" },
+      { title: "Compartir en redes sociales", desc: "Integración con Twitter/X, Facebook, WhatsApp, LinkedIn, Email y copia de enlace" },
+      { title: "Newsletter y suscriptores", desc: "Sistema de suscripción personalizado" },
+      { title: "Búsqueda avanzada", desc: "Filtrado por tipo (posts, noticias, síntomas) y ordenamiento" },
+      { title: "Exportación a PDF", desc: "Descarga de contenido con marca de agua EM-PULSE" },
+      { title: "SEO optimizado", desc: "Sitemaps XML, meta tags descriptivos, estructura semántica HTML5" },
+      { title: "Cumplimiento legal", desc: "GDPR compliant, Política de Privacidad, Términos de Servicio, descargo médico" },
+      { title: "Admin Django personalizado", desc: "Gestión de contenido, usuarios y moderación" },
+      { title: "Autenticación por Token", desc: "Django REST Framework con seguridad" },
+      { title: "Diseño responsive", desc: "Mobile-first, funcionando perfectamente en Android, iOS, Windows y Mac" },
+      { title: "Rendimiento optimizado", desc: "Lazy loading, caché de datos, minificación, load time <2s" },
+      { title: "Deployment en producción", desc: "Render (backend) + Neon PostgreSQL, HTTPS automático, deploy automático con git push" },
+      { title: "UX/UI centrado en usuario", desc: "Diseño empático, dark theme profesional, transiciones suaves, modales intuitivos" },
+      { title: "Estado global y componentes reutilizables", desc: "Gestión eficiente de estado en React" }
+    ],
     featured_em_pulse_conclusion: "Este proyecto fue fundamental en mi formación como desarrollador full stack, demostrando que la tecnología puede ser una herramienta poderosa para el bien social.",
     featured_em_pulse_presentation: "La presentación del proyecto se realizará en Enero 2026",
 
@@ -221,6 +246,31 @@ const TRANSLATIONS = {
     featured_em_pulse_objective_title: "My goal",
     featured_em_pulse_objective_desc: "To help family, friends and the close environment of people diagnosed with MS better understand the symptoms, daily challenges and realities of living with this condition. Empathy and understanding are key to a better quality of life.",
     featured_em_pulse_learned_title: "What I learned",
+    featured_em_pulse_lessons: [
+      { title: "Full Stack Development", desc: "Complete backend-frontend-database architecture integration" },
+      { title: "Backend with Django + Django REST Framework", desc: "Robust and scalable RESTful APIs" },
+      { title: "Frontend with React 19 + Vite", desc: "Reactive, optimized and modern interfaces" },
+      { title: "Databases", desc: "SQLite in development, PostgreSQL in production (Neon)" },
+      { title: "6 complete educational modules", desc: "What is MS?, Types, Symptoms, EM-SHAPE, Mental Health, Rights" },
+      { title: "Community forum", desc: "Post publishing, comments, likes and advanced search" },
+      { title: "Integration with external APIs", desc: "NewsAPI (current news) and Hugging Face (AI chat)" },
+      { title: "WCAG 2.1 AA Accessibility", desc: "Compliance with standards for multiple disabilities" },
+      { title: "Accessibility customization", desc: "Dark/light mode, font size (80%-160%), reduced motion" },
+      { title: "PWA (Progressive Web App)", desc: "Installable without App Store, works offline, smart caching with Service Workers" },
+      { title: "Share on social networks", desc: "Integration with Twitter/X, Facebook, WhatsApp, LinkedIn, Email and link copy" },
+      { title: "Newsletter and subscribers", desc: "Personalized subscription system" },
+      { title: "Advanced search", desc: "Filtering by type (posts, news, symptoms) and sorting" },
+      { title: "PDF Export", desc: "Download content with EM-PULSE watermark" },
+      { title: "SEO optimized", desc: "XML sitemaps, descriptive meta tags, semantic HTML5 structure" },
+      { title: "Legal compliance", desc: "GDPR compliant, Privacy Policy, Terms of Service, medical disclaimer" },
+      { title: "Custom Django admin", desc: "Content management, users and moderation" },
+      { title: "Token Authentication", desc: "Django REST Framework with security" },
+      { title: "Responsive design", desc: "Mobile-first, working perfectly on Android, iOS, Windows and Mac" },
+      { title: "Optimized performance", desc: "Lazy loading, data caching, minification, load time <2s" },
+      { title: "Production deployment", desc: "Render (backend) + Neon PostgreSQL, automatic HTTPS, auto-deploy with git push" },
+      { title: "User-centered UX/UI", desc: "Empathetic design, professional dark theme, smooth transitions, intuitive modals" },
+      { title: "Global state and reusable components", desc: "Efficient state management in React" }
+    ],
     featured_em_pulse_conclusion: "This project was fundamental in my training as a full stack developer, demonstrating that technology can be a powerful tool for social good.",
     featured_em_pulse_presentation: "The project will be presented in January 2026",
 
@@ -366,6 +416,17 @@ function applyTranslations() {
   const emPulseDescEl = document.getElementById("featured-em-pulse-desc");
   if (emPulseDescEl && t.featured_em_pulse_desc) {
     emPulseDescEl.innerHTML = t.featured_em_pulse_desc;
+  }
+
+  // EM-PULSE lessons list - renderizar dinámicamente
+  const emPulseListEl = document.getElementById("featured-em-pulse-list");
+  if (emPulseListEl && t.featured_em_pulse_lessons) {
+    emPulseListEl.innerHTML = "";
+    t.featured_em_pulse_lessons.forEach((lesson) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="font-semibold">${lesson.title}</span> - ${lesson.desc}`;
+      emPulseListEl.appendChild(li);
+    });
   }
 }
 
