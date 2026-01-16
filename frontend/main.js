@@ -129,6 +129,7 @@ const TRANSLATIONS = {
     projects_subtitle: "Un poco más de contexto sobre lo que construyo",
 
     featured_em_pulse_title: "¿Qué es EM-PULSE?",
+    em_pulse_subtitle: "Plataforma web para sensibilizar sobre la esclerosis múltiple",
     featured_em_pulse_desc: "EM-PULSE es una plataforma web integral creada con el propósito de <span class=\"font-semibold text-emerald-300\">sensibilizar y educar</span> sobre la esclerosis múltiple, una enfermedad que afecta a millones de personas alrededor del mundo.",
     featured_em_pulse_objective_title: "Mi objetivo",
     featured_em_pulse_objective_desc: "Ayudar a familiares, amigos y el entorno cercano de las personas diagnosticadas con EM a entender mejor los síntomas, los desafíos diarios y las realidades de vivir con esta condición. La empatía y la comprensión son clave para una mejor calidad de vida.",
@@ -242,6 +243,7 @@ const TRANSLATIONS = {
     projects_subtitle: "A bit more context about what I build",
 
     featured_em_pulse_title: "What is EM-PULSE?",
+    em_pulse_subtitle: "Web platform to raise awareness about multiple sclerosis",
     featured_em_pulse_desc: "EM-PULSE is a comprehensive web platform created to <span class=\"font-semibold text-emerald-300\">raise awareness and educate</span> about multiple sclerosis, a disease that affects millions of people around the world.",
     featured_em_pulse_objective_title: "My goal",
     featured_em_pulse_objective_desc: "To help family, friends and the close environment of people diagnosed with MS better understand the symptoms, daily challenges and realities of living with this condition. Empathy and understanding are key to a better quality of life.",
@@ -364,6 +366,7 @@ function applyTranslations() {
     "projects-subtitle": "projects_subtitle",
 
     "featured-em-pulse-title": "featured_em_pulse_title",
+    "em-pulse-subtitle": "em_pulse_subtitle",
     "featured-em-pulse-desc": "featured_em_pulse_desc",
     "featured-em-pulse-objective-title": "featured_em_pulse_objective_title",
     "featured-em-pulse-objective-desc": "featured_em_pulse_objective_desc",
