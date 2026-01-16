@@ -768,6 +768,7 @@ const sectionObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting && !entry.target.dataset.loaded) {
       entry.target.dataset.loaded = "true";
       
+      // Cargar GitHub e Instagram en paralelo si ambos se necesitan
       if (entry.target.id === "github" && !entry.target.dataset.githubLoaded) {
         entry.target.dataset.githubLoaded = "true";
         loadGithubRepos();
@@ -874,7 +875,13 @@ async function loadGithubRepos() {
     if (!res.ok) {
       throw new Error(`Repos: status ${res.status}`);
     }
-    const repos = await res.json();
+    let repos = await res.json();
+
+    // Filtrar solo los 3 repositorios que queremos mostrar
+    const reposToShow = ["Julias'Run", "ajedrez", "Traductor"];
+    repos = repos.filter(repo => reposToShow.includes(repo.name));
+    // Mantener el orden especificado
+    repos.sort((a, b) => reposToShow.indexOf(a.name) - reposToShow.indexOf(b.name));
 
     container.innerHTML = "";
     repos.forEach((repo) => {
@@ -962,10 +969,13 @@ async function loadInstagramPhotos() {
       }
 
       card.innerHTML = `
-        <div class="aspect-video bg-slate-800">
-          <img src="${photo.image_url}"
+        <div class="aspect-video bg-slate-800 relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-800 animate-pulse"></div>
+          <img src="${photo.thumbnail_url || photo.image_url}"
                alt="${preview}"
-               class="w-full h-full object-cover instagram-photo" />
+               loading="lazy"
+               decoding="async"
+               class="w-full h-full object-cover instagram-photo absolute inset-0" />
         </div>
         <div class="p-3">
           <p class="text-xs text-slate-200 mb-2">
@@ -988,6 +998,7 @@ async function loadInstagramPhotos() {
       `;
 
       const imgEl = card.querySelector("img");
+      
       // Pasar el caption traducido al modal
       const photoWithCaption = { ...photo, caption: rawCaption };
       card.addEventListener("click", () => openModal(photoWithCaption, imgEl));
